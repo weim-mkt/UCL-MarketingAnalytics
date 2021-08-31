@@ -1,15 +1,16 @@
 # Detailed Class Descriptions
 
-The class schedules are tentative and are subject to changes based on our progress. Students are expected to complete the required preparation work for each week's class, including reading case studies, preparing for case questions, etc. Detailed guideline on how to prepare for each week are described below. Please follow the guideline unless otherwise informed.
+Students are expected to complete the required preparation work for each week's class, including reading case studies, preparing for case questions, etc. Detailed guidelines on how to prepare for each week are described below. Please follow the guidelines unless otherwise informed.
 
-Notes: 
+Note that the class schedules are tentative and are **subject to changes based on our progress**, which means this online supplement may be updated regularly. Therefore, It's a good practice to come back and check if there are any updates to the guideline each Wednesday before Thursday's class.
+
+Some explanations:
 
 - `(before class)` means the reading material should be read and prepared before that week's class.
 
 - `(after class)` means the reading material serves as a supplementary after-class reading to enhance your understanding of the week's lecture contents.
 
 - `(optional)` means the reading material is technically challenging but can be handy when you need them. You can selectively read them based on your time availability.
-
 
 ## Week 1
 
@@ -37,21 +38,19 @@ Notes:
 
 **Readings:**
 
--   Supplementary reading: "Customer Lifetime Social Value" (after-class; optional)
+-   Assignment 1 Part I: Vodafone: Using CLV for Better Marketing Decisions (before-class, 15 min prep time)
 
--   Assignment 1 Part I: Vodafone: Using CLV for Better Marketing Decisions (**before-class**)
+-   Supplementary reading: "Customer Lifetime Social Value" (after-class; optional)
 
 **Preparations:**
 
--   Important: Please read the Vodafone case carefully before Week 1's class. Highlight any information (such as figures or key information) you feel may be relevant to solving the case. We will discuss the Vodafone case in class and solve the "in-class" questions at the end of the case.
-
--   For next week, please bring your laptop to class with R and RStudio installed.
+-   Important: Please read the Vodafone case carefully before Week 1's class. Highlight any information (such as figures or key information) you feel may be relevant to solving the case. We will discuss the Vodafone case in class and solve the "in-class" questions which are listed at the end of the case.
 
 -  If you haven't learned linear algebra before and if your time allows, I recommend you start reading ["Review of basic linear algebra"](https://www.cs.cmu.edu/~zkolter/course/15-884/linalg-review.pdf), which is a prerequisite for Week 4.
 
 **Assignment 1:**
 
-- Assignment 1 examines your learning outcome from Week 1 to Week 4, including CLV; basic customer analysis; and causal inference. You now have access to Assignment I.  I suggest you start working on the "CLV" part now so that you leave yourselves enough time for the remaining questions.
+- Assignment 1 examines your learning outcome from Week 1 to Week 4, including CLV; basic customer analysis; and causal inference. You now have access to Part I of Assignment 1.  I suggest you start working on the part I now so that you leave yourselves enough time for the remaining parts.
 
 ## Week 2
 
@@ -73,7 +72,7 @@ Notes:
 
 **Preparations:**
 
--   You should have installed R and RStudio on your laptops before this week's class
+-   You should have installed R and RStudio on your laptops **before this class**
 
 ### Class 4: Basic Customer Analysis with R
 
@@ -85,20 +84,19 @@ Notes:
 
 **Readings:**
 
--   Case study: "Basic Customer Analysis: Amazon Prime" (before class, expected 10 min)
+-   Case study: "Basic Customer Analysis: Amazon Prime" (before class, 10 min prep time)
 
 -   Supplementary reading: data.table Cheat Sheet (after class)
 
--  Assignment 1 Part II: "Basic Customer Analysis with Amazon Data" (after class)
-
--  You should be able to solve the part II of assignment 1 after this week's class. Remember not to procrastinate until the deadline!
-
+-  Assignment 1 Part II: "Basic Customer Analysis with Amazon Sales Data" (after class)
 
 **Preparations:**
 
--   Please read the case "Basic Customer Analysis: Amazon Prime". There are quite a few questions at the end of the case. We will devote most of this class to hands-on exercise with R and data.table, answering the questions posed at the end of the Amazon Prime case.
+-   Please read the case "Basic Customer Analysis: Amazon Prime". There are quite a few questions at the end of the case. We will devote most of this class to hands-on exercise with R and data.table, answering the questions listed at the end of the Amazon Prime case.
 
--   We will use the dataset "Amazon Prime.csv" from Moodle. Remember to download the dataset to your hard disk before class.
+    -   We will use the dataset "Amazon Prime.csv" from Moodle. Remember to download the dataset to your hard disk before class.
+
+-  You should be able to solve the part II of assignment 1 after this week's class. Get started now and remember not to procrastinate until the deadline!
 
 ## Week 3
 
@@ -112,7 +110,7 @@ Notes:
 
 **Readings:**
 
--  Case study: "When Marketing Analytics Can Go Wrong: Case Studies" (before class, expected 5 min for each case)
+-  Case study: "When Marketing Analytics Can Go Wrong: Case Studies" (before class, 20 min prep time)
 
 **Preparations:**
 
@@ -132,7 +130,7 @@ Notes:
 
 **Readings:**
 
--   Case study: "Superb Trucks Lp: How to Conduct a Field Experiment" (before class, expected 20 min)
+-   Case study: "Superb Trucks Lp: How to Conduct a Field Experiment" (before class, 20 min prep time)
 
 **Preparations:**
 
@@ -157,7 +155,7 @@ Notes:
 
 **Readings:**
 
--   Prerequisite reading: ["Review of basic linear algebra"](before class)
+-   Prerequisite reading: "Review of basic linear algebra" (before class, 60 min prep time)
 
 -   Supplementary reading: "Practical Regression: Regression Basics" (before and after class)
 
@@ -177,7 +175,7 @@ Notes:
 
 **Readings:**
 
-- Supplementary reading: "Practical Regression: Introduction to Endogeneity: Omitted Variable Bias)"
+- Supplementary reading: "Practical Regression: Introduction to Endogeneity: Omitted Variable Bias" (before and after class)
 
 
 ## Week 5
@@ -194,7 +192,7 @@ Notes:
 
 **Readings:**
 
-- Supplementary reading: "Practical Regression: Causality and Instrumental Variables"
+- Supplementary reading: "Practical Regression: Causality and Instrumental Variables" (before and after class)
 
 **Preparations:**
 
@@ -226,7 +224,7 @@ Notes:
 
 -   Supplementary reading: "Assessing Prediction Accuracy of Machine Learning Models" (after class)
 
--   Supplementary reading: Varian, Hal R. 2014. 'Big Data: New Tricks for Econometrics'. Journal of Economic Perspectives 28 (2): 3--28.
+-   Supplementary reading: Varian, Hal R. 2014. 'Big Data: New Tricks for Econometrics'. Journal of Economic Perspectives 28 (2): 3--28. (after class)
 
     -   page 6-7: General Considerations for Prediction
     -   page 21-24: Econometrics and Machine Learning
@@ -249,7 +247,7 @@ Notes:
 
 **Readings:**
 
--   Case study: "UberEat: Mobile App Push Messaging" (before class)
+-   Case study: "UberEat: Mobile App Push Messaging" (before class, 10 min prep. time)
 
 -   Assignment 2: "Amazon Prime: Using Predictive Analytics to Improve Marketing ROI" (after class)
 
@@ -257,7 +255,7 @@ Notes:
 
 -   Read and prepare "UberEat: Mobile App Push Messaging" for class discussion; the dataset "UberEat.csv" is on Moodle. Note that, for you to better understand and be able to compare different predictive models, we will be using the same UberEat case study and dataset in the next few weeks. Each week, we will learn a new predictive model, and you will learn how to apply different models on the UberEat dataset, and compare their performance.
 
--   It's time to catch up with our old friend J. again. After this class, you should be able to solve the Part I of Assignment 2 "Amazon Prime: Using Predictive Analytics to Improve Marketing ROI". It's good to start early as the second assignment accounts for 40% of the total grade.
+-   It's time to catch up with our old friend again in the assignment. After this class, you should be able to solve the Part I of Assignment 2 "Amazon Prime: Using Predictive Analytics to Improve Marketing ROI". It's good to start early as the second assignment accounts for 40% of the total grade.
 
 ## Week 7
 
@@ -275,7 +273,7 @@ Notes:
 
 **Readings:**
 
--  Supplementary reading: Varian, Hal R. 2014. 'Big Data: New Tricks for Econometrics'. Journal of Economic Perspectives 28 (2): 3--28.
+-  Supplementary reading: Varian, Hal R. 2014. 'Big Data: New Tricks for Econometrics'. Journal of Economic Perspectives 28 (2): 3--28. (after class)
 
     -   page 15: Variable Selection
 
@@ -297,9 +295,9 @@ Notes:
 
 **Preparations:**
 
--   Prepare "UberEat: Mobile App Push Messaging Campagin with RFM Analysis" for class discussion; the dataset "UberEat.csv" is on Moodle. This time, I will demonstrate how to use logistic regression to solve the UberEat case. We will also compare the performance of logistic regression with that of RFM model.
+-   This week, I will demonstrate how to use logistic regression to solve the UberEat case. We will also compare the performance of logistic regression with that of RFM model.
 
--   At this point we have covered everything you need to know to work on the upcoming second assignment.
+-   At this point we have covered everything you need to know to work on the second assignment.
 
 ## Week 9
 
@@ -321,9 +319,9 @@ Notes:
 
 -   Supplementary reading: R-blog, ["<https://www.r-bloggers.com/2020/04/automl-frameworks-in-r-python/>"] (before and after class)
 
--   Supplementary reading: Varian, Hal R. 2014. 'Big Data: New Tricks for Econometrics'. Journal of Economic Perspectives 28 (2): 3--28.
+-   Supplementary reading: Varian, Hal R. 2014. 'Big Data: New Tricks for Econometrics'. Journal of Economic Perspectives 28 (2): 3--28. (after class)
 
-    -   page 7-15: Classification and Regression Trees (after class)
+    -   page 7-15: Classification and Regression Trees
     
 **Preparations:**
 
@@ -339,9 +337,10 @@ Notes:
 
 **Readings:**
 
-- Supplementary reading: Knott, Hayes, and Neslin "Next-Product-to-Buy Models for Cross-Selling Applications," Journal of Interactive Marketing 16(3) (2002)
+- Case study: "Cross-Selling Insurance Products Using Predictive Analytics" (before class)
 
-- Case study: "Cross-Selling Insurance Products Using Predictive Analytics"
+- Supplementary reading: Knott, Hayes, and Neslin "Next-Product-to-Buy Models for Cross-Selling Applications," Journal of Interactive Marketing 16(3) (2002) (after class)
+
 
 **Preparations:**
 

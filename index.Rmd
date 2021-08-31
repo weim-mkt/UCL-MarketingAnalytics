@@ -14,11 +14,9 @@ output:
       toolbar:
         position: fixed
       edit : null
-      download: null
+      download: [pdf]
       search:
-        engine: lunr # or fuse
-        # options to control/tune search engine behavior (for
-        # fuse.js, refer to https://fusejs.io/api/options.html)
+        engine: lunr
         options: null
       fontsettings:
         theme: white
@@ -35,10 +33,19 @@ output:
         whatsapp: false
         all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper']
       info: true
+  bookdown::pdf_book:
+    config:
+      toc: true
+      number_sections: false
+      
+      
 documentclass: book
 biblio-style: apalike
 link-citations: yes
 output_dir: "docs"
+fontsize: 11pt
+geometry: margin=1in
+delete_merged_file: true
 ---
 
 # Preface

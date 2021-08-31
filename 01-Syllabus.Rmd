@@ -9,7 +9,11 @@
 
 *Office*: S3, Level 38, One Canada Square
 
-*Office hour*: Details to be announced in Week 1
+*Office hour*: 
+
+- [Appointment link](https://liveuclac.sharepoint.com/:x:/s/MSIN0094MarketingAnalytics-2021-2022/EWD_4NkH-NhEqyw7Ab3wbBABtAotIn4TjsK7TrvQFeBTOw?e=mSbfAq)
+
+- Please refer to the office hour session for how to make office hour appointments. More details to be confirmed in Week 1's class.
 
 ## Teaching Assistants
 
@@ -70,9 +74,9 @@ During (and even after) this module, whenever your run into any problems with R,
 
 Much of the learning during the course will happen with the help of individual assignments. Each assignment is carefully designed to examine the learning outcome of the topics taught during the previous weeks. Your final grade in this module will be based on 3 individual assignments with their associated weights as follows:
 
--   1st assignment, 30% weight, 1500 words, due on Oct 12
--   2nd assignment, 40% weight, 2000 words, due on Oct 26
--   3rd assignment, 30% weight, 1500 words, due on Nov 16
+-   1st assignment, 30% weight, 1500 words, due on Oct 29
+-   2nd assignment, 40% weight, 2000 words, due on Nov 26
+-   3rd assignment, 30% weight, 1500 words, due on Dec 17
 
 Detailed assignment descriptions will be given in due course.
 
