@@ -1,0 +1,375 @@
+# Detailed Class Descriptions
+
+The class schedules are tentative and are subject to changes based on our progress. Students are expected to complete the required preparation work for each week's class, including reading case studies, preparing for case questions, etc. Detailed guideline on how to prepare for each week are described below. Please follow the guideline unless otherwise informed.
+
+Notes: 
+
+- `(before class)` means the reading material should be read and prepared before that week's class.
+
+- `(after class)` means the reading material serves as a supplementary after-class reading to enhance your understanding of the week's lecture contents.
+
+- `(optional)` means the reading material is technically challenging but can be handy when you need them. You can selectively read them based on your time availability.
+
+
+## Week 1
+
+### Class 1: Introduction to Marketing Process
+
+**Class objectives:**
+
+-   To provide an overview of the course topics and requirements
+
+-   To understand the typical marketing process in real-life examples
+
+**Readings:**
+
+-   Supplementary reading: "Marketing Process" (after-class)
+
+### Class 2: Marketing Metrics: Customer Lifetime Value
+
+**Class objectives:**
+
+-   Understand common marketing metrics
+
+-   Know how to compute customer lifetime value and how to use CLV to guide marketing decisions
+
+-   Apply CLV calculation in real-life business cases: Tesco & Vodafone
+
+**Readings:**
+
+-   Supplementary reading: "Customer Lifetime Social Value" (after-class; optional)
+
+-   Assignment 1 Part I: Vodafone: Using CLV for Better Marketing Decisions (**before-class**)
+
+**Preparations:**
+
+-   Important: Please read the Vodafone case carefully before Week 1's class. Highlight any information (such as figures or key information) you feel may be relevant to solving the case. We will discuss the Vodafone case in class and solve the "in-class" questions at the end of the case.
+
+-   For next week, please bring your laptop to class with R and RStudio installed.
+
+-  If you haven't learned linear algebra before and if your time allows, I recommend you start reading ["Review of basic linear algebra"](https://www.cs.cmu.edu/~zkolter/course/15-884/linalg-review.pdf), which is a prerequisite for Week 4.
+
+**Assignment 1:**
+
+- Assignment 1 examines your learning outcome from Week 1 to Week 4, including CLV; basic customer analysis; and causal inference. You now have access to Assignment I.  I suggest you start working on the "CLV" part now so that you leave yourselves enough time for the remaining questions.
+
+## Week 2
+
+### Class 3: Review of Statistics
+
+**Class objectives:**
+
+-   Understand the type of data and variables commonly used in marketing analytics
+
+-   Review of statistics
+
+    -   Statistical inference & hypothesis testing
+
+    -   Statistical tests commonly used in marketing
+
+**Readings:**
+
+-   "Tips for using statistics in marketing analytics" (after class)
+
+**Preparations:**
+
+-   You should have installed R and RStudio on your laptops before this week's class
+
+### Class 4: Basic Customer Analysis with R
+
+**Class objectives:**
+
+-   Understand the usage and syntax of R data.table packages for data manipulation
+
+-   Able to apply basic statistics for basic customer analysis in business cases
+
+**Readings:**
+
+-   Case study: "Basic Customer Analysis: Amazon Prime" (before class, expected 10 min)
+
+-   Supplementary reading: data.table Cheat Sheet (after class)
+
+-  Assignment 1 Part II: "Basic Customer Analysis with Amazon Data" (after class)
+
+-  You should be able to solve the part II of assignment 1 after this week's class. Remember not to procrastinate until the deadline!
+
+
+**Preparations:**
+
+-   Please read the case "Basic Customer Analysis: Amazon Prime". There are quite a few questions at the end of the case. We will devote most of this class to hands-on exercise with R and data.table, answering the questions posed at the end of the Amazon Prime case.
+
+-   We will use the dataset "Amazon Prime.csv" from Moodle. Remember to download the dataset to your hard disk before class.
+
+## Week 3
+
+### Class 5: When Marketing Analytics Can Go Wrong
+
+**Class objectives:**
+
+-   Learn how to tell good analytics from bad ones
+
+-   Understand how to avoid interpreting statistical results incorrectly
+
+**Readings:**
+
+-  Case study: "When Marketing Analytics Can Go Wrong: Case Studies" (before class, expected 5 min for each case)
+
+**Preparations:**
+
+-   Read all case studies carefully before class
+
+-   Prepare and think over the questions at the end of each case for class discussion
+
+### Class 6: Causal Inference and Randomized Experiments
+
+**Class objectives:**
+
+-   Understand the Rubin causal inference framework
+
+-   Know the keys steps to run experiments
+
+-   Understand the pitfalls when running experiments
+
+**Readings:**
+
+-   Case study: "Superb Trucks Lp: How to Conduct a Field Experiment" (before class, expected 20 min)
+
+**Preparations:**
+
+-   Read the case "Superb Trucks Lp" before class. We will demonstrate how to use field experiments to solve marketing problems with this 
+
+
+## Week 4
+
+### Class 7: Linear Regression Basics
+
+**Class objectives:**
+
+- Understand the concept of "data generating process" and a "model"
+
+- Understand linear regression models from different perspectives
+
+- Understand how to interpret the regression coefficients
+    -   Continuous variables and standardization
+    -   Log transformation
+    -   Categorical variables
+    -   Interactions
+
+**Readings:**
+
+-   Prerequisite reading: ["Review of basic linear algebra"](before class)
+
+-   Supplementary reading: "Practical Regression: Regression Basics" (before and after class)
+
+**Preparations:**
+
+-   This week, we will learn the OLS linear regression model. This is the simplest yet most powerful model for data analytics, and it is the cornerstone of the remaining contents of this module. Therefore, it is important that you are well-prepared and stay focused for the class.
+
+-  *Important:* Please finish the "Review of basic linear algebra" before class. This is important, as during the lecture, I will show you how to run regression using linear algebra.
+
+### Class 8: Endogeneity with Observational Data
+
+**Class objectives:**
+
+- Understand the concept of selection bias
+
+-   Understand the common causes of endogeneity from observational data
+
+**Readings:**
+
+- Supplementary reading: "Practical Regression: Introduction to Endogeneity: Omitted Variable Bias)"
+
+
+## Week 5
+
+### Class 9: Tackling Endogeneity Part I: Non-Experimental Methods
+
+**Class objectives:**
+
+-   Understand the intuition behind the instrumental variable methods
+
+    -   Able to find appropriate instrumental variables to solve endogeneity using 2SLS method.
+
+-   Understand the intuition behind the fixed effects
+
+**Readings:**
+
+- Supplementary reading: "Practical Regression: Causality and Instrumental Variables"
+
+**Preparations:**
+
+### Class 10: Tackling Endogeneity Part II: Quasi-Experimental Methods
+
+**Class objectives:**
+
+-   Understand the intuition and how to use difference-in-differences method
+
+-   Understand the intuition and how to use regression discontinuity method
+
+-   Learn real-life applications of quasi-experimental methods
+
+
+## Week 6
+
+
+### Class 11: Foundations of Predictive Analytics
+
+**Class objectives:**
+
+-   Understand the difference between prescriptive analytics and predictive analytics
+
+-   Understand the bias-variance tradeoff in predictive analytics
+
+-   Understand the difference between regression problems and classification problems
+
+**Readings:**
+
+-   Supplementary reading: "Assessing Prediction Accuracy of Machine Learning Models" (after class)
+
+-   Supplementary reading: Varian, Hal R. 2014. 'Big Data: New Tricks for Econometrics'. Journal of Economic Perspectives 28 (2): 3--28.
+
+    -   page 6-7: General Considerations for Prediction
+    -   page 21-24: Econometrics and Machine Learning
+
+### Class 12: Prospecting New Customers: RFM Analysis
+
+**Class objectives:**
+
+-   Understand how to use RFM analysis to prospect new customers and improve the effectiveness of marketing activities
+
+    -   The concept of RFM
+
+    -   The steps to do RFM
+
+    -   Break-even analysis of RFM
+
+    -   Important variants of RFM
+
+-   Understand the concept of "lift" and "gain", and how to use the concepts to evaluate predictive models
+
+**Readings:**
+
+-   Case study: "UberEat: Mobile App Push Messaging" (before class)
+
+-   Assignment 2: "Amazon Prime: Using Predictive Analytics to Improve Marketing ROI" (after class)
+
+**Preparations:**
+
+-   Read and prepare "UberEat: Mobile App Push Messaging" for class discussion; the dataset "UberEat.csv" is on Moodle. Note that, for you to better understand and be able to compare different predictive models, we will be using the same UberEat case study and dataset in the next few weeks. Each week, we will learn a new predictive model, and you will learn how to apply different models on the UberEat dataset, and compare their performance.
+
+-   It's time to catch up with our old friend J. again. After this class, you should be able to solve the Part I of Assignment 2 "Amazon Prime: Using Predictive Analytics to Improve Marketing ROI". It's good to start early as the second assignment accounts for 40% of the total grade.
+
+## Week 7
+
+### Class 13 & 14: Regression Problems: A Revisit to Regression Models
+
+**Class objectives:**
+
+-   Review of simple linear regression models
+
+-   Learn the definition and application of step-wise and backward stepwise regression models.
+
+-   Learn the concept of L1 and L2 regularization in the context of linear regression models
+
+-   Know the pros and cons of Lasso and Ridge regressions; Understand when and how to apply the two regularized regression models
+
+**Readings:**
+
+-  Supplementary reading: Varian, Hal R. 2014. 'Big Data: New Tricks for Econometrics'. Journal of Economic Perspectives 28 (2): 3--28.
+
+    -   page 15: Variable Selection
+
+## Week 8
+
+### Class 15 & 16: Classification Problems: Logistic Regression
+
+**Class objectives:**
+
+-   Understand the mathematics and intuition behind the logistic regression
+
+-   Understand how to interpret logistic regression results
+
+    -   probability, odds, odds ratio, and log odds ratio
+
+-   Understand how to score customers using logistic regression
+
+-   Compare the predictive power of logistic regression against RFM analysis
+
+**Preparations:**
+
+-   Prepare "UberEat: Mobile App Push Messaging Campagin with RFM Analysis" for class discussion; the dataset "UberEat.csv" is on Moodle. This time, I will demonstrate how to use logistic regression to solve the UberEat case. We will also compare the performance of logistic regression with that of RFM model.
+
+-   At this point we have covered everything you need to know to work on the upcoming second assignment.
+
+## Week 9
+
+### Class 17: Advanced Machine Learnings Models
+
+**Class objectives:**
+
+-   Learn the intuition behind advanced machine learning models and their application
+
+    -   Decision tree
+
+    -   Bagging and boosting models
+
+    -   Deep learning
+
+-   Learn how to use automatic machine learning tools to make our life easier
+
+**Readings:**
+
+-   Supplementary reading: R-blog, ["<https://www.r-bloggers.com/2020/04/automl-frameworks-in-r-python/>"] (before and after class)
+
+-   Supplementary reading: Varian, Hal R. 2014. 'Big Data: New Tricks for Econometrics'. Journal of Economic Perspectives 28 (2): 3--28.
+
+    -   page 7-15: Classification and Regression Trees (after class)
+    
+**Preparations:**
+
+- Follow the instructions in [https://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html) and install h2o package on your laptop before the class.
+
+### Class 18: Cross-selling and Up-selling
+
+**Class objectives:**
+
+- Understand the benefits of using customer purchase data for customer development
+
+- Understand how to cross-sell and up-sell
+
+**Readings:**
+
+- Supplementary reading: Knott, Hayes, and Neslin "Next-Product-to-Buy Models for Cross-Selling Applications," Journal of Interactive Marketing 16(3) (2002)
+
+- Case study: "Cross-Selling Insurance Products Using Predictive Analytics"
+
+**Preparations:**
+
+- Please read the "Cross-Selling Insurance Products Using Predictive Analytics" before class. Since we have already learned all the tools in the previous weeks. Please try if you can develop you own predictive model using RFM and logistic regression, which we have covered in previous weeks.
+
+- In the class, I will demonstrate how to use more sophisticated machine learning techniques to solve the case.
+
+## Week 10
+
+### Class 19: Managing Customer Churns
+
+**Class objectives:**
+
+- Understand how to use attrition prediction for managing customer churn management
+
+**Readings:**
+
+- Case study: "Customer Churn Management Using Predictive Analytics" (before class)
+
+**Preparations:**
+
+- Read the case "Customer Churn Management Using Predictive Analytics" and prepare the questions for class discussion
+
+- Since we have covered all the necessary predictive models in the previous weeks, please explore the dataset and develop at least one predictive model for managing customer churn before class. I will invite some of you to share your solutions in class.
+
+### Class 20: Module Wrap-up
+
+**Class objectives:**
+
+-   To review and synthesize the module
+
