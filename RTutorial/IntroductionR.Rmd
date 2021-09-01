@@ -6,7 +6,7 @@ knitr::opts_chunk$set(echo = TRUE, include = TRUE)
 # R Tutorials
 This is a supplementary teaching material for the MSc Business Analytics program at UCL School of Management. This tutorial aims to provide a comprehensive introduction to the basics of R programming language.
 
-## Introduction to R Basics
+## Introduction to R History
 
 ### Class Objective
 
@@ -367,7 +367,7 @@ T & F # and
 
 T | F # or
 
-
+!T # not
 ```
 
 A special relational operation is `%in%` in R, which tests whether an element exists in the object.
@@ -616,11 +616,17 @@ poll_cars
 
 ### Variables
 
-In programming, a variable denotes an object (i.e. a variable is a name that refers to an object in the memory).
+In programming, a variable denotes an object, i.e., a variable is a name that refers to an object in the memory. Variables in R programming can be used to store any R object discussed previously, including numbers, characters, matrices, and data frames. 
 
-```{r variables, include=T, echo=T}
-x <- 1
-```
+R is a ***dynamically programmed language**, which means that unlike other programming languages (such as C++, which is a pain to debug), we do not have to declare the data type of a variable before we can use it in our program.
+
+For a variable to be valid, it should follow these rules
+
+* It should contain letters, numbers, and only dot or underscore characters.
+* It should not start with a number (eg:- 2iota)
+* It should not start with a dot followed by a number (eg:- .2iota)
+* It should not start with an underscore (eg:- _iota)
+* It should not be a reserved keyword.
 
 ### if/else
 
@@ -701,7 +707,7 @@ A function takes the argument as input, run some specified actions, and then ret
 
 Functions are very useful. When we would like to test different ideas, we can combine functions with loops: We can write a function which takes different parameters as input, and we can use a loop to go through all the possible combinations of parameters.
 
-#### Functions syntax
+#### User-defined function syntax
 
 Here is how to define a function in general:
 
