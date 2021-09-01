@@ -43,7 +43,7 @@ week-10-thu-09-dec
 class-19-managing-customer-churns
 class-20-module-wrap-up
 r-tutorials
-introduction-to-r-history
+r-history-and-setup
 class-objective
 what-is-r
 what-is-r-used-for

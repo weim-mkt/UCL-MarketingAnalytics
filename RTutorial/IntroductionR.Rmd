@@ -6,7 +6,7 @@ knitr::opts_chunk$set(echo = TRUE, include = TRUE)
 # R Tutorials
 This is a supplementary teaching material for the MSc Business Analytics program at UCL School of Management. This tutorial aims to provide a comprehensive introduction to the basics of R programming language.
 
-## Introduction to R History
+## R History and Setup
 
 ### Class Objective
 
