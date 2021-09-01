@@ -37,15 +37,11 @@ output:
     config:
       toc: true
       number_sections: false
-      
-      
 documentclass: book
 biblio-style: apalike
 link-citations: yes
-output_dir: "docs"
 fontsize: 11pt
 geometry: margin=1in
-delete_merged_file: true
 ---
 
 # Preface

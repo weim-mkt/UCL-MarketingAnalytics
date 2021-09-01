@@ -1,2 +1,5 @@
 # UCL-MarketingAnalytics
-This is the Github Repository for the Marketing Analytics Module at University College London
+
+This is the Github repository for the Marketing Analytics Module at University College London
+
+![](images/MarketingAnalyticsWordCloud.png)

@@ -2,3 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
+_book/
+documents/
+images/
+lecturenotes/
+draft/
+index.Rmd
