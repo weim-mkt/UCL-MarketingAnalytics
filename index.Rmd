@@ -14,7 +14,7 @@ output:
       toolbar:
         position: fixed
       edit : null
-      download: ["pdf"]
+      download: ['pdf']
       search:
         engine: lunr
         options: null
