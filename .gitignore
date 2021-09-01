@@ -2,10 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
-_book/
-documents/
-lecturenotes/
-draft/
-index.Rmd
-RTutorial/
-images/
+/_book/
+/documents/
+/lecturenotes/
+/draft/
+/index.Rmd
+/RTutorial/
+/images/
