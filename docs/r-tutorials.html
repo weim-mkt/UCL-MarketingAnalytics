@@ -310,10 +310,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.1.4</span> Popularity of R</h3>
 <p>R has been one of the most popular programming language used by statisticians, economists, and data analysts.</p>
 <p>Below is the popularity index of different languages by <a href="https://www.tiobe.com">tiobe.com</a>. R reached its historic highest place in August 2020, ranking the 8th most popular language among all.</p>
-<div class="figure">
-<img src="images/R%20ranking.png" width="564" alt="" />
-<p class="caption">R’s Ranking</p>
-</div>
+<p><img src="images/R%20ranking.png" style="display: block; margin: auto;" /></p>
 </div>
 <div id="install-and-setup-r-on-your-computers-step-1" class="section level3" number="4.1.5">
 <h3><span class="header-section-number">4.1.5</span> Install and Setup R on your computers: Step 1</h3>
@@ -326,10 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="screenshot-of-rconsole" class="section level3" number="4.1.6">
 <h3><span class="header-section-number">4.1.6</span> Screenshot of RConsole</h3>
 <p>R’s default user interface:</p>
-<div class="figure">
-<img src="images/r_console.png" alt="" />
-<p class="caption">R Console</p>
-</div>
+<p><img src="images/r_console.png" style="display: block; margin: auto;" /></p>
 </div>
 <div id="install-and-setup-r-on-your-computers-step-2" class="section level3" number="4.1.7">
 <h3><span class="header-section-number">4.1.7</span> Install and Setup R on your computers: Step 2</h3>
@@ -340,10 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="screenshot-of-rstudio" class="section level3" number="4.1.8">
 <h3><span class="header-section-number">4.1.8</span> Screenshot of RStudio</h3>
 <p>Our preferred R editor: Rstudio</p>
-<div class="figure">
-<img src="images/r_Rstudio.png" alt="" />
-<p class="caption">Rstudio</p>
-</div>
+<p><img src="images/r_Rstudio.png" style="display: block; margin: auto;" /></p>
 </div>
 <div id="glossary" class="section level3" number="4.1.9">
 <h3><span class="header-section-number">4.1.9</span> Glossary</h3>
@@ -815,10 +806,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb171-5"><a href="r-tutorials.html#cb171-5" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb171-6"><a href="r-tutorials.html#cb171-6" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##   id     name      wage male
-## 1  1    David  99864.82 TRUE
-## 2  2 Yongdong 101178.09 TRUE
-## 3  3     Anil  98476.43 TRUE
-## 4  4      Wei 100593.95 TRUE</code></pre>
+## 1  1    David 100700.21 TRUE
+## 2  2 Yongdong 101586.83 TRUE
+## 3  3     Anil 100558.49 TRUE
+## 4  4      Wei  98723.41 TRUE</code></pre>
 </div>
 <div id="data-frames-create-dataframe-using-read.csv" class="section level4" number="4.2.18.2">
 <h4><span class="header-section-number">4.2.18.2</span> Data Frames: create dataframe using read.csv()</h4>
@@ -850,7 +841,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## &#39;data.frame&#39;:    4 obs. of  4 variables:
 ##  $ id  : int  1 2 3 4
 ##  $ name: chr  &quot;David&quot; &quot;Yongdong&quot; &quot;Anil&quot; &quot;Wei&quot;
-##  $ wage: num  99865 101178 98476 100594
+##  $ wage: num  100700 101587 100558 98723
 ##  $ male: logi  TRUE TRUE TRUE TRUE</code></pre>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="r-tutorials.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(df, class)</span></code></pre></div>
 <pre><code>## $id
@@ -868,30 +859,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-frames-inspection" class="section level3" number="4.2.20">
 <h3><span class="header-section-number">4.2.20</span> Data Frames: inspection</h3>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="r-tutorials.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df, <span class="at">n=</span><span class="dv">3</span>) <span class="co"># first n observations</span></span></code></pre></div>
-<pre><code>##   id     name      wage male
-## 1  1    David  99864.82 TRUE
-## 2  2 Yongdong 101178.09 TRUE
-## 3  3     Anil  98476.43 TRUE</code></pre>
+<pre><code>##   id     name     wage male
+## 1  1    David 100700.2 TRUE
+## 2  2 Yongdong 101586.8 TRUE
+## 3  3     Anil 100558.5 TRUE</code></pre>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="r-tutorials.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df, <span class="at">n=</span><span class="dv">3</span>) <span class="co"># last n observations</span></span></code></pre></div>
 <pre><code>##   id     name      wage male
-## 2  2 Yongdong 101178.09 TRUE
-## 3  3     Anil  98476.43 TRUE
-## 4  4      Wei 100593.95 TRUE</code></pre>
+## 2  2 Yongdong 101586.83 TRUE
+## 3  3     Anil 100558.49 TRUE
+## 4  4      Wei  98723.41 TRUE</code></pre>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="r-tutorials.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;   &quot;name&quot; &quot;wage&quot; &quot;male&quot;</code></pre>
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="r-tutorials.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
 <pre><code>##        id           name                wage          male        
-##  Min.   :1.00   Length:4           Min.   : 98476   Mode:logical  
-##  1st Qu.:1.75   Class :character   1st Qu.: 99518   TRUE:4        
-##  Median :2.50   Mode  :character   Median :100229                 
-##  Mean   :2.50                      Mean   :100028                 
-##  3rd Qu.:3.25                      3rd Qu.:100740                 
-##  Max.   :4.00                      Max.   :101178</code></pre>
+##  Min.   :1.00   Length:4           Min.   : 98723   Mode:logical  
+##  1st Qu.:1.75   Class :character   1st Qu.:100100   TRUE:4        
+##  Median :2.50   Mode  :character   Median :100629                 
+##  Mean   :2.50                      Mean   :100392                 
+##  3rd Qu.:3.25                      3rd Qu.:100922                 
+##  Max.   :4.00                      Max.   :101587</code></pre>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="r-tutorials.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    4 obs. of  4 variables:
 ##  $ id  : int  1 2 3 4
 ##  $ name: chr  &quot;David&quot; &quot;Yongdong&quot; &quot;Anil&quot; &quot;Wei&quot;
-##  $ wage: num  99865 101178 98476 100594
+##  $ wage: num  100700 101587 100558 98723
 ##  $ male: logi  TRUE TRUE TRUE TRUE</code></pre>
 </div>
 <div id="data-frames-subsetting" class="section level3" number="4.2.21">
@@ -901,10 +892,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] &quot;David&quot;    &quot;Yongdong&quot; &quot;Anil&quot;     &quot;Wei&quot;</code></pre>
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="r-tutorials.html#cb199-1" aria-hidden="true" tabindex="-1"></a>df[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)] <span class="co"># can also subset like a matrix</span></span></code></pre></div>
 <pre><code>##       name      wage
-## 1    David  99864.82
-## 2 Yongdong 101178.09
-## 3     Anil  98476.43
-## 4      Wei 100593.95</code></pre>
+## 1    David 100700.21
+## 2 Yongdong 101586.83
+## 3     Anil 100558.49
+## 4      Wei  98723.41</code></pre>
 <p>We are interesting in the cylinders and the weights of inefficient cars (lower than 15 miles per gallon).</p>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="r-tutorials.html#cb201-1" aria-hidden="true" tabindex="-1"></a>poll_cars <span class="ot">&lt;-</span> mtcars[mtcars<span class="sc">$</span>mpg<span class="sc">&lt;</span><span class="dv">15</span>, <span class="fu">c</span>(<span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;wt&quot;</span>)] <span class="co"># remember to assign the generated dataframe to a new name</span></span>
 <span id="cb201-2"><a href="r-tutorials.html#cb201-2" aria-hidden="true" tabindex="-1"></a>poll_cars</span></code></pre></div>

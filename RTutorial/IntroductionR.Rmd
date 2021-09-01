@@ -46,7 +46,9 @@ R has been one of the most popular programming language used by statisticians, e
 
 Below is the popularity index of different languages by [tiobe.com](https://www.tiobe.com). R reached its historic highest place in August 2020, ranking the 8th most popular language among all.
 
-![R's Ranking](images/R%20ranking.png){width="564"}
+```{r, echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/R ranking.png")
+```
 
 ### Install and Setup R on your computers: Step 1
 
@@ -62,7 +64,9 @@ There are alternative ways to install and use R on your computers. Below is the 
 
 R's default user interface:
 
-![R Console](images/r_console.png)
+```{r, echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/r_console.png")
+```
 
 ### Install and Setup R on your computers: Step 2
 
@@ -76,7 +80,9 @@ For a introduction to the Rstudio IDE, refer to this [cheat sheet](https://githu
 
 Our preferred R editor: Rstudio
 
-![Rstudio](images/r_Rstudio.png)
+```{r, echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/r_Rstudio.png")
+```
 
 ### Glossary
 
