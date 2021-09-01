@@ -60,7 +60,7 @@ There are alternative ways to install and use R on your computers. Below is the 
 -   Note that R version is updated on a regular basis, to fix bugs or add new features. It's good to keep your R up to date with the official website.  
 -   However, sometimes across major versions, some R's base functions may be depreciated and cause breaks in your code, so it's important to read the R News after each update, so that you understand what's been updated in the latest version and if there will be any breaks in your previous code. (For a deeper understanding of this issue, please refer to this [article](http://datacolada.org/95) regarding reproducible research with R.)
 
-### Screenshot of RConsole
+### Screenshot of R Console
 
 R's default user interface:
 

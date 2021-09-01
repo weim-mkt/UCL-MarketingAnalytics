@@ -49,7 +49,7 @@ what-is-r
 what-is-r-used-for
 popularity-of-r
 install-and-setup-r-on-your-computers-step-1
-screenshot-of-rconsole
+screenshot-of-r-console
 install-and-setup-r-on-your-computers-step-2
 screenshot-of-rstudio
 glossary
