@@ -1,11 +1,3 @@
----
-title: "Introduction to R"
-subtitle: "MSC Business Analytics, UCL"
-author: "Yongdong Liu & Wei Miao"
-date: "`r Sys.Date()`"
-output:
-  slidy_presentation: default
----
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, include = TRUE)
