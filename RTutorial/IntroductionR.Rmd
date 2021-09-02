@@ -1,20 +1,27 @@
+---
+title: "Introduction to R"
+subtitle: "MSC Business Analytics, UCL"
+author: "Yongdong Liu & Wei Miao"
+date: "`r Sys.Date()`"
+output:
+  slidy_presentation: default
+---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, include = TRUE)
 ```
 
-# R Tutorials
-This is a supplementary teaching material for the MSc Business Analytics program at UCL School of Management. This tutorial aims to provide a comprehensive introduction to the basics of R programming language.
-
-## R History and Setup
+## Install and Setup R
 
 ### Class Objective
 
 Learning objective:
 
+- Understand R's history and main functionality
+
 -   Be able to setup R and Rstudio
 
--   Understand how use quickly install and load packages in R
+-   Understand how to use install and load packages in R
 
 -   Understand the key concepts of R
 
@@ -25,6 +32,8 @@ Learning objective:
 -   The ***R Project*** was initiated by Robert Gentleman and Ross Ihaka (University of Auckland) in the early 1990s as a different implementation of the S language, which was developed at Bell Laboratories.
 
 -   Since 1997, R has been developed by the ***R Development Core Team***.
+
+- Refer to the [Wiki](https://en.wikipedia.org/wiki/R_(programming_language)) page for a full history of R development.
 
 ### What is R used for?
 
@@ -44,7 +53,7 @@ You can even scrawl webpages and send emails with R once you install the right p
 
 R has been one of the most popular programming language used by statisticians, economists, and data analysts.
 
-Below is the popularity index of different languages by [tiobe.com](https://www.tiobe.com). R reached its historic highest place in August 2020, ranking the 8th most popular language among all.
+Below is the popularity index of different languages by [tiobe.com](https://www.tiobe.com). R reached its historic highest in August 2020, ranking the 8th among all.
 
 ```{r, echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/R ranking.png")
@@ -165,7 +174,7 @@ We can do the basic mathematical calculation in R as follows:
 2/2
 ```
 
-Common mathematical operations can also be used in R.
+Common mathematical operations/functions can also be used in R.
 
 ```{r calculator2, include=T, echo=T}
 log(1)
@@ -176,14 +185,14 @@ sqrt(25)
 
 ### Assign value
 
-In R, we use the left arrow to assign a value to an object `<-`
+In R, we normally use the left arrow to assign a value to an object `<-`
 
 ```{r assign, include=T, echo=T}
 x <- log(2)
 x
 ```
 
-You can also use equal sign `=` without issues, but it's recommended to stick with a language's tradition.
+You can also use equal sign `=` without issues, but it's recommended to stick with R's tradition.
 
 ### Data types
 
@@ -198,8 +207,6 @@ You can also use equal sign `=` without issues, but it's recommended to stick wi
 -   Character (e.g. "Wei", "UCL", "1 + 1 = 3", "TRUE", etc.)
 
 -   Factor/Categorical ("male", "female", etc.)
-
-- Special type: `NA` which stands for missing values, a very tricky type.
 
 ```{r, include=T, echo=T}
 # Character Vector
@@ -218,6 +225,8 @@ log4 <- c(TRUE, FALSE, FALSE, T, F)
 com5 <- c(2+3i, 3+5i, 4+5i)
 
 ```
+
+- Special type: `NA` which stands for missing values; this is a very tricky type that needs additional attention, as we will show below.
 
 ```{r, include=T, echo=T}
 
@@ -240,7 +249,7 @@ sum(is.na(missing))
 
 - `Inf` is infinity. You can have either positive or negative infinity.
 
-- `NaN` means Not a Number. It's an undefined value.
+- `NaN` means "Not a Number". It's an undefined value.
 
 ```{r, include=T, echo=T}
 a <- 1/0 #Inf
@@ -263,11 +272,11 @@ We can use `class()` to check the type of an object in R.
 
 ```{r, include=T, echo=T}
 
-a <- '1+1=2'
-
-a
-
+a <- '1+1'
 class(a)
+
+b <- 1+1
+class(b)
 
 ```
 
@@ -289,7 +298,7 @@ class(b)
 
 #### Creating vectors: c()
 
-Vector are created using the command `c()`.
+Vector can be created using the command `c()`.
 
 ```{r vectors_base, include=T, echo=T}
 x <- c(1, 3, 5, 10)
@@ -338,7 +347,7 @@ To understand all usages of a function, use `help()`
 
 #### Creating vectors: combine vectors
 
-You can use `c` to combine different vectors; this is very commonly used when concatenating vectors.
+You can use `c()` to combine different vectors; this is very commonly used when concatenating vectors.
 
 ```{r vectors_multiple, include=T, echo=T}
 x <- 1:3 # from 1 to 3
@@ -348,6 +357,9 @@ z
 ```
 
 ### Vectors: subsetting
+
+We put the index of elements we would like to extract in a **square bracket**. Different languages use different ways to index and subset vectors and matrices.  
+  - For instance, Matlab uses parentheses for subsetting vectors and matrices.
 
 ```{r vectors_subset, include=T, echo=T}
 x <- c(1,3,8,7) 
