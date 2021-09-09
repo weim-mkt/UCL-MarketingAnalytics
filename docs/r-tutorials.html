@@ -763,11 +763,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb171-4"><a href="r-tutorials.html#cb171-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">male =</span> <span class="fu">c</span>(T, T, T, T)</span>
 <span id="cb171-5"><a href="r-tutorials.html#cb171-5" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb171-6"><a href="r-tutorials.html#cb171-6" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
-<pre><code>##   id     name      wage male
-## 1  1    David  98837.64 TRUE
-## 2  2 Yongdong  98741.74 TRUE
-## 3  3     Anil 100995.15 TRUE
-## 4  4      Wei 100106.02 TRUE</code></pre>
+<pre><code>##   id     name     wage male
+## 1  1    David 98935.09 TRUE
+## 2  2 Yongdong 99841.69 TRUE
+## 3  3     Anil 99728.87 TRUE
+## 4  4      Wei 99986.08 TRUE</code></pre>
 </div>
 <div id="data-frames-create-dataframe-using-read.csv" class="section level4" number="3.2.18.2">
 <h4><span class="header-section-number">3.2.18.2</span> Data Frames: create dataframe using read.csv()</h4>
@@ -799,7 +799,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## &#39;data.frame&#39;:    4 obs. of  4 variables:
 ##  $ id  : int  1 2 3 4
 ##  $ name: chr  &quot;David&quot; &quot;Yongdong&quot; &quot;Anil&quot; &quot;Wei&quot;
-##  $ wage: num  98838 98742 100995 100106
+##  $ wage: num  98935 99842 99729 99986
 ##  $ male: logi  TRUE TRUE TRUE TRUE</code></pre>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="r-tutorials.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(df, class)</span></code></pre></div>
 <pre><code>## $id
@@ -817,30 +817,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-frames-inspection" class="section level3" number="3.2.20">
 <h3><span class="header-section-number">3.2.20</span> Data Frames: inspection</h3>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="r-tutorials.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df, <span class="at">n=</span><span class="dv">3</span>) <span class="co"># first n observations</span></span></code></pre></div>
-<pre><code>##   id     name      wage male
-## 1  1    David  98837.64 TRUE
-## 2  2 Yongdong  98741.74 TRUE
-## 3  3     Anil 100995.15 TRUE</code></pre>
+<pre><code>##   id     name     wage male
+## 1  1    David 98935.09 TRUE
+## 2  2 Yongdong 99841.69 TRUE
+## 3  3     Anil 99728.87 TRUE</code></pre>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="r-tutorials.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df, <span class="at">n=</span><span class="dv">3</span>) <span class="co"># last n observations</span></span></code></pre></div>
-<pre><code>##   id     name      wage male
-## 2  2 Yongdong  98741.74 TRUE
-## 3  3     Anil 100995.15 TRUE
-## 4  4      Wei 100106.02 TRUE</code></pre>
+<pre><code>##   id     name     wage male
+## 2  2 Yongdong 99841.69 TRUE
+## 3  3     Anil 99728.87 TRUE
+## 4  4      Wei 99986.08 TRUE</code></pre>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="r-tutorials.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;   &quot;name&quot; &quot;wage&quot; &quot;male&quot;</code></pre>
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="r-tutorials.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
-<pre><code>##        id           name                wage          male        
-##  Min.   :1.00   Length:4           Min.   : 98742   Mode:logical  
-##  1st Qu.:1.75   Class :character   1st Qu.: 98814   TRUE:4        
-##  Median :2.50   Mode  :character   Median : 99472                 
-##  Mean   :2.50                      Mean   : 99670                 
-##  3rd Qu.:3.25                      3rd Qu.:100328                 
-##  Max.   :4.00                      Max.   :100995</code></pre>
+<pre><code>##        id           name                wage         male        
+##  Min.   :1.00   Length:4           Min.   :98935   Mode:logical  
+##  1st Qu.:1.75   Class :character   1st Qu.:99530   TRUE:4        
+##  Median :2.50   Mode  :character   Median :99785                 
+##  Mean   :2.50                      Mean   :99623                 
+##  3rd Qu.:3.25                      3rd Qu.:99878                 
+##  Max.   :4.00                      Max.   :99986</code></pre>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="r-tutorials.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    4 obs. of  4 variables:
 ##  $ id  : int  1 2 3 4
 ##  $ name: chr  &quot;David&quot; &quot;Yongdong&quot; &quot;Anil&quot; &quot;Wei&quot;
-##  $ wage: num  98838 98742 100995 100106
+##  $ wage: num  98935 99842 99729 99986
 ##  $ male: logi  TRUE TRUE TRUE TRUE</code></pre>
 </div>
 <div id="data-frames-subsetting" class="section level3" number="3.2.21">
@@ -849,11 +849,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="r-tutorials.html#cb197-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>name <span class="co"># subset a column</span></span></code></pre></div>
 <pre><code>## [1] &quot;David&quot;    &quot;Yongdong&quot; &quot;Anil&quot;     &quot;Wei&quot;</code></pre>
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="r-tutorials.html#cb199-1" aria-hidden="true" tabindex="-1"></a>df[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)] <span class="co"># can also subset like a matrix</span></span></code></pre></div>
-<pre><code>##       name      wage
-## 1    David  98837.64
-## 2 Yongdong  98741.74
-## 3     Anil 100995.15
-## 4      Wei 100106.02</code></pre>
+<pre><code>##       name     wage
+## 1    David 98935.09
+## 2 Yongdong 99841.69
+## 3     Anil 99728.87
+## 4      Wei 99986.08</code></pre>
 <p>We are interesting in the cylinders and the weights of inefficient cars (lower than 15 miles per gallon).</p>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="r-tutorials.html#cb201-1" aria-hidden="true" tabindex="-1"></a>poll_cars <span class="ot">&lt;-</span> mtcars[mtcars<span class="sc">$</span>mpg<span class="sc">&lt;</span><span class="dv">15</span>, <span class="fu">c</span>(<span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;wt&quot;</span>)] <span class="co"># remember to assign the generated dataframe to a new name</span></span>
 <span id="cb201-2"><a href="r-tutorials.html#cb201-2" aria-hidden="true" tabindex="-1"></a>poll_cars</span></code></pre></div>
