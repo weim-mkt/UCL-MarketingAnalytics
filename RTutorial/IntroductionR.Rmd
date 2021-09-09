@@ -486,7 +486,7 @@ z
 ```{r matrix_operations2, include=T, echo=T}
 x+z   # elementwise addition
 x*z   # elementwise multiplication
-X%*%Y # matrix multiplication
+x%*%y # matrix multiplication
 ```
 
 #### Matrices' operations: inverse and transpose

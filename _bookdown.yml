@@ -2,7 +2,6 @@ output_dir: "docs"
 rmd_files: 
     - ["index.Rmd"]
     - ["lecturenotes/Syllabus.Rmd"]
-    - ["lecturenotes/ClassDescription.Rmd"]
     - ["RTutorial/RTutorialIndex.Rmd"] 
     - ["RTutorial/IntroductionR.Rmd"] 
     - ["lecturenotes/lecturenotes.Rmd"]      
