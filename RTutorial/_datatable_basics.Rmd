@@ -1,0 +1,1198 @@
+## data.table Basics
+
+### Class objective
+This tutorial introduces the `data.table` syntax and its general usage, including how to 
+
+- *subset* rows
+- *select* and *compute* based on existing variables
+- *generate* new variables
+- perform *group by* aggregation
+- *join* datasets
+
+
+### Load dataset: csv files {#data}
+
+```{r}
+library("data.table")
+```
+
+In this tutorial, we will use the Amazon Case Study data.
+
+We can use `data.table`'s fast-and-friendly file reader `fread` to load csv files.
+
+```{r}
+## put the data.csv into the folder
+
+file_path <- "/Users/weimiao/OneDrive - University College London/teaching/Marketing Analytics/2020-2021/Moodle slides/Week 2/Class 4/amazon.csv"
+
+# load data
+data_demo <- fread(file = file_path, 
+                 stringsAsFactors = F, 
+                 data.table = T)
+
+```
+
+- If you are not familiar with the file path system, please refer to this [link](https://lessons.livecode.com/m/4071/l/7536-how-do-i-get-the-path-to-common-folders-on-my-computer-or-device)
+
+### Load data: other files
+
+- If the raw data files are in other formats, you can use relevant packages to load the data into `data.frame` first and then convert them into data.table.
+
+- The R [`database` task view page](https://cran.r-project.org/web/views/Databases.html) provides a very comprehensive guide on how to load all formats of data into RStudio.
+
+### A first look at the dataset
+
+You can view the whole dataset using `
+
+```{r}
+# check the first 5 rows and final 5 rows of the dataset
+head(data_demo,5)
+tail(data_demo,5)
+
+# know the dimensions
+dim(data_demo)
+
+# the variable names
+names(data_demo)
+```
+
+### What is `data.table`?
+
+- `data.table` is an R package that provides **an enhanced version** of `data.frame`
+
+- In the [Data](#Data) section above, we already created a `data.table` using `fread()`. We can also create one using the `data.table()` function. Here is an example:
+
+```{r}
+DT = data.table(
+  ID = c("b","b","b","a","a","c"),
+  a = 1:6,
+  b = 7:12,
+  c = 13:18
+)
+DT
+
+class(DT)
+
+class(DT$ID)
+```
+
+You can also convert existing objects into a `data.table` using `setDT(DF)` or `data.table(DF)`
+
+```{r}
+DT = data.frame(
+  ID = c("b","b","b","a","a","c"),
+  a = 1:6,
+  b = 7:12,
+  c = 13:18
+)
+
+class(DT)
+class(DT$ID)
+setDT(DT)
+class(DT)
+```
+
+### Basic syntax of `data.table`
+
+In contrast to a `data.frame`, you can do a lot more a `data.table`. 
+
+To understand it, we will first look at the general form of `data.table` syntax, as shown below:
+
+```
+    DT[i, j, by]
+
+    ##   R:                 i                 j        by
+    ## SQL:  where | order by   select | update  group by
+```
+
+### Subset rows in `i`
+
+**Task**: Get all the customers in "London" whose total spending is higher than 100 pounds.
+
+```{r echo=TRUE}
+ans <- data_demo[city == "London" & total >= 100]
+head(ans)
+```
+
+- Within the frame of a `data.table`, columns can be referred to *as if they are variables*. Therefore, we simply refer to `city` and `total` as if they are variables. 
+    - In `data.frame`s, we must add the prefix `data_demo$` each time.
+
+-   The *row indices* that satisfy the condition `city == "London" & total >= 100` are computed, and since there is nothing else left to do, all columns from `data_demo` at rows corresponding to those *row indices* are simply returned as a new `data.table`.
+
+-   A comma after the condition in `i` is not required. But `city == "London" & total >= 100, ]` would work just fine. 
+    - In `data.frame`s, however, the comma is necessary.
+
+**Task**: Get the first two rows from `data_demo`.
+
+```{r}
+ans <- data_demo[1:2]
+ans
+```
+
+-   In this case, there is no condition. The row indices are already provided in `i`. We therefore return a `data.table` with all columns from `data_demo` at rows for those *row indices*.
+
+### Sort rows in `i`
+
+**Task**: sort `data_demo` first by column `city` in ascending order, and then by `gender` in descending order:
+
+```{r}
+ans <- data_demo[order(city, -gender)]
+head(ans)
+
+# if you dont want to use <-, try setorder(), these two are equivalent
+setorder(data_demo,city,-gender)
+```
+
+-   We can put a minus sign "-" in front of a column name within the frame of a `data.table` to sort in decreasing order.
+
+### Select column(s) in `j`
+
+**Task**: Select `electronics` column, but return it as a *vector*.
+
+```{r}
+ans <- data_demo[, electronics]
+head(ans)
+
+# data_demo[1:10, electronic]
+```
+
+-   Since columns can be referred to as if they are variables within the frame of `data.table`s, we directly refer to the *variable* we want to subset. Since we want *all the rows*, we simply skip `i`.
+
+-   It returns *all* the rows for the column `electronics`.
+
+#### -- Select `electronics` column, but return as a `data.table` instead.
+
+```{r}
+ans <- data_demo[, list(electronics)]
+# ans <- data_demo[, .(electronics)]
+
+head(ans)
+```
+
+-   We wrap the *variables* (column names) within `list()`, which ensures that a `data.table` is returned. In case of a single column name, not wrapping with `list()` returns a vector instead, as seen in the [previous example](#d)-Select-column(s)-in-j).
+
+-   `data.table` also allows wrapping columns with `.()` instead of `list()`. It is an *alias* to `list()`; they both mean the same. Feel free to use whichever you prefer; we have noticed most users seem to prefer `.()` for conciseness, so we will continue to use `.()` hereafter.
+
+`data.table`s (and `data.frame`s) are internally `list`s as well, with the stipulation that each element has the same length and the `list` has a `class` attribute. Allowing `j` to return a `list` enables converting and returning `data.table` very efficiently.
+
+#### Tip:
+
+As long as `j-expression` returns a `list`, each element of the list will be converted to a column in the resulting `data.table`. This makes `j` quite powerful, as we will see shortly. It is also very important to understand this for when you'd like to make more complicated queries!!
+
+#### -- Select both `electronics` and `nonelectronics` columns.
+
+```{r}
+ans <- data_demo[, .(electronics, nonelectronics)]
+head(ans)
+```
+
+-   Wrap both columns within `.()`, or `list()`. That's it.
+
+#### -- Select both `electronics` and `nonelectronics` columns *and* rename them to `elec` and `nonelect`.
+
+Since `.()` is just an alias for `list()`, we can name columns as we would while creating a `list`.
+
+```{r}
+ans <- data_demo[, .(elec = electronics, nonelect = nonelectronics)]
+head(ans)
+```
+
+That's it, but note that in this process, a new data.table is generated. This is normally used when you would like to generate a smaller dataset.
+
+### Compute or *do* in `j`
+
+#### -- How many customers have had total spending \> 100?
+
+```{r}
+head(data_demo[,.(electronics, nonelectronics)])
+
+head(data_demo[,(electronics + nonelectronics)])
+
+head(data_demo[,(electronics + nonelectronics)>100])
+
+data_demo[, sum( (electronics + nonelectronics) > 100 )]
+
+
+# or you can use i
+# nrow(data_demo[(electronics + nonelectronics) > 100 ])
+```
+
+#### What's happening here?
+
+-   `data.table`'s `j` can handle more than just *selecting columns* - it can handle *expressions*, i.e., *computing on columns*. This shouldn't be surprising, as columns can be referred to as if they are variables. Then we should be able to *compute* by calling functions on those variables. And that's what precisely happens here.
+
+### Subset in `i` *and* do in `j`
+
+#### -- Calculate the average spending on electronics and non-electronics for customers in "London" who have spent more than 100 pounds in total.
+
+```{r}
+ans <- data_demo[city == "London" & total >= 100,
+               .(m_elec = mean(electronics), m_nonelec = mean(nonelectronics))]
+ans
+```
+
+-   We first subset in `i` to find matching *row indices* where `city` equals `"London"`, and `total` \>= `100`. We *do not* subset the *entire* `data.table` corresponding to those rows *yet*.
+
+-   Now, we look at `j` and find that it uses only *two columns*. And what we have to do is to compute their `mean()`. Therefore we subset just those columns corresponding to the matching rows, and compute their `mean()`.
+
+#### -- How many females in London have made purchase more than £100?
+
+```{r}
+ans <- data_demo[city == "London" & total > 100 & (gender=="F"), length(first)]
+ans
+```
+
+The function `length()` requires an input argument. We just needed to compute the number of rows in the subset. We could have used any other column as input argument to `length()` really.
+
+This type of operation occurs quite frequently, especially while grouping (as we will see in the next section), to the point where `data.table` provides a *special symbol* `.N` for it.
+
+#### Special symbol `.N`:
+
+`.N` is a special built-in variable that holds the number of observations *in the current group*. It is particularly useful when combined with `by` as we'll see in the next section. In the absence of group by operations, it simply returns the number of rows in the subset.
+
+So we can now accomplish the same task by using `.N` as follows:
+
+```{r}
+ans <- data_demo[city == "London" & total > 100 & (gender=="F"), .N]
+ans
+```
+
+-   Once again, we subset in `i` to get the *row indices* where `city` equals *"London"*, and `total` is larger than *100*.
+
+-   We see that `j` uses only `.N` and no other columns. Therefore the entire subset is not materialised. We simply return the number of rows in the subset (which is just the length of row indices).
+
+-   Note that we did not wrap `.N` with `list()` or `.()`. Therefore a vector is returned.
+
+### Great! But how can I refer to columns by names in `j` (like in a `data.frame`)?
+
+If you're writing out the column names explicitly, there's no difference vis-a-vis `data.frame` (since v1.9.8).
+
+#### -- Select both `electronics` and `nonelectronics` columns the `data.frame` way.
+
+```{r}
+ans <- data_demo[, c("electronics", "nonelectronics")]
+head(ans)
+class(ans)
+```
+
+If you've stored the desired columns in a character vector, there are two options: Using the `..` prefix, or using the `with` argument.
+
+#### -- Select columns named in a variable using the `..` prefix
+
+```{r}
+select_cols = c("electronics", "nonelectronics")
+data_demo[ , ..select_cols]
+
+```
+
+For those familiar with the Unix terminal, the `..` prefix should be reminiscent of the "up-one-level" command, which is analogous to what's happening here -- the `..` signals to `data.table` to look for the `select_cols` variable "up-one-level", i.e., in the global environment in this case.
+
+#### -- Select columns named in a variable using `with = FALSE` (not recommended)
+
+```{r}
+data_demo[ , select_cols, with = FALSE]
+```
+
+The argument is named `with` after the R function `with()` because of similar functionality. Suppose you have a `data.frame` `DF` and you'd like to subset all rows where `x > 1`. In `base` R you can do the following:
+
+```{r}
+DF = data.frame(x = c(1,1,1,2,2,3,3,3), y = 1:8)
+
+## (1) normal way
+DF[DF$x > 1, ] # data.frame needs that ',' as well
+```
+
+```{r}
+## (2) using with
+DF[with(DF, x > 1), ]
+```
+
+-   Using `with()` in (2) allows using `DF`'s column `x` as if it were a variable.
+
+    Hence the argument name `with` in `data.table`. Setting `with = FALSE` disables the ability to refer to columns as if they are variables, thereby restoring the "`data.frame` mode".
+
+-   We can also *deselect* columns using `-` or `!`. For example:
+
+```{r}
+## not run
+
+# returns all columns except electronics and nonelectronics
+ans <- data_demo[, !c("electronics", "nonelectronics")]
+head(ans)
+# or
+ans <- data_demo[, -c("electronics", "nonelectronics")]
+head(ans)
+```
+
+## Aggregations
+
+We've already seen `i` and `j` from `data.table`'s general form in the previous section. In this section, we'll see how they can be combined together with `by` to perform operations *by group*. Let's look at some examples.
+
+### Grouping using `by`
+
+#### -- How can we get the count of customers corresponding to each city?
+
+```{r}
+data_demo[, .(.N), by = .(city)]
+
+data_demo[, .(count_of_customers = .N), by = .(city)]
+
+## if you want to use this dataset later, you need to assign it to a new name!!!
+
+
+## or equivalently using a character vector in 'by'
+# ans <- data_demo[, .(.N), by = "city"]
+```
+
+-   We know `.N` [is a special variable](#Special-symbol-.N:) that holds the number of rows in the current group. Grouping by `city` obtains the number of rows, `.N`, for each group.
+
+-   Since we did not provide a name for the column returned in `j`, it was named `N` automatically by recognising the special symbol `.N`.
+
+-   `by` also accepts a character vector of column names. This is particularly useful for coding programmatically, e.g., designing a function with the grouping columns as a (`character` vector) function argument.
+
+-   When there's only one column or expression to refer to in `j` and `by`, we can drop the `.()` notation. This is purely for convenience. We could instead do:
+
+```{r}
+ans <- data_demo[, .N, by = city]
+ans
+```
+
+-   We'll use this convenient form wherever applicable hereafter.
+
+#### -- How can we calculate the number of customers for each city who have spent more than £100?
+
+```{r}
+ans <- data_demo[total >= 100, .N, by = city]
+ans
+```
+
+-   We first obtain the row indices for the expression `total >= 100` from `i`.
+
+-   Using those *row indices*, we obtain the number of rows while grouped by `city`. Once again no columns are actually materialised here, because the `j-expression` does not require any columns to be actually subsetted and is therefore fast and memory efficient.
+
+#### -- How can we get the total number of customers for each `city, gender` pair who have spent more than £100?
+
+```{r}
+ans <- data_demo[total >= 100, .N, by = .(city, gender)]
+ans
+
+## or equivalently using a character vector in 'by'
+# ans <- data_demo[carrier == "AA", .N, by = c("city", "gender")]
+```
+
+-   `by` accepts multiple columns. We just provide all the columns by which to group by. Note the use of `.()` again in `by` -- again, this is just shorthand for `list()`, and `list()` can be used here as well. Again, we'll stick with `.()` in this tutorial.
+
+#### -- How can we get the average spending on electronics and nonelectronics of customers for each `city,gender` pair who have spent more than £100?
+
+```{r}
+ans <- data_demo[total >= 100,
+        .(m_electro = mean(electronics), m_nonelect = mean(nonelectronics)),
+        by = .(city, gender)]
+ans
+```
+
+-   Since we did not provide column names for the expressions in `j`, they were automatically generated as `V1` and `V2`.
+
+### Chaining
+
+Let's reconsider the task of [How can we get the total number of customers for each `city, gender` pair who have spent more than £100
+
+```{r}
+data_demo[total >= 100, .N, by = .(city, gender)]
+
+data_demo[total >= 100
+           ][, .N, by = .(city, gender)
+            ]
+```
+
+-   We can tack expressions one after another, *forming a chain* of operations, i.e., `DT[ ... ][ ... ][ ... ]`.
+
+-   Or you can also chain them vertically:
+
+        DT[ ...
+           ][ ...
+             ][ ...
+               ]
+
+## Summary
+
+The general form of `data.table` syntax is:
+
+    DT[i, j, by]
+
+We have seen so far that,
+
+#### Using `i`:
+
+-   We can subset rows similar to a `data.frame`- except you don't have to use `DT$` repetitively since columns within the frame of a `data.table` are seen as if they are *variables*.
+
+-   We can also sort a `data.table` using `order()`, which internally uses `data.table`'s fast order for performance.
+
+We can do much more in `i` by keying a `data.table`, which allows blazing fast subsets and joins. We will see this in the *"Keys and fast binary search based subsets"* and *"Joins and rolling joins"* tutorial.
+
+#### Using `j`:
+
+1.  Select columns the `data.table` way: `DT[, .(colA, colB)]`.
+
+2.  Select columns the `data.frame` way: `DT[, c("colA", "colB")]`.
+
+3.  Compute on columns: `DT[, .(sum(colA), mean(colB))]`.
+
+4.  Provide names if necessary: `DT[, .(sA =sum(colA), mB = mean(colB))]`.
+
+5.  Combine with `i`: `DT[colA > value, sum(colB)]`.
+
+#### Using `by`:
+
+-   Using `by`, we can group by columns by specifying a *list of columns* or a *character vector of column names* or even *expressions*. The flexibility of `j`, combined with `by` and `i` makes for a very powerful syntax.
+
+-   `by` can handle multiple columns and also *expressions*.
+
+As long as `j` returns a `list`, each element of the list will become a column in the resulting `data.table`.
+
+
+# Reference semantics
+
+This tutorial discusses *data.table*'s reference semantics which allows to *add/update/delete* columns of a *data.table by reference*, and also combine them with `i` and `by`. It is aimed at those who are already familiar with *data.table* syntax, its general form, how to subset rows in `i`, select and compute on columns, and perform aggregations by group. If you're not familiar with these concepts, please read the *"Introduction to data.table"* tutorial first.
+
+------------------------------------------------------------------------
+
+```{r}
+library("data.table")
+```
+
+## Data
+
+We will use the same `data_demo` data.
+
+```{r}
+## put the data.csv into the folder
+
+file_path <- "/Users/weimiao/OneDrive - University College London/teaching/Marketing Analytics/2020-2021/Moodle slides/Week 2/Class 4/amazon.csv"
+
+# load data
+data_demo <- fread(file_path, 
+                 stringsAsFactors = F, 
+                 data.table = T)
+```
+
+## Introduction
+
+In this tutorial, we will
+
+1.  first discuss reference semantics briefly and look at the two different forms in which the `:=` operator can be used
+
+2.  then see how we can *add/update/delete* columns *by reference* in `j` using the `:=` operator and how to combine with `i` and `by`.
+
+3.  and finally we will look at using `:=` for its *side-effect* and how we can avoid the side effects using `copy()`.
+
+## 1. Reference semantics
+
+All the operations we have seen so far in the previous tutorial resulted in a new data set. We will see how to *add* new column(s), *update* or *delete* existing column(s) on the original data.
+
+### a) Background
+
+Before we look at *reference semantics*, consider the *data.frame* shown below:
+
+```{r}
+DF = data.frame(ID = c("b","b","b","a","a","c"), a = 1:6, b = 7:12, c = 13:18)
+DF
+```
+
+When we did:
+
+```{r}
+DF$c <- 18:13               # (1) -- replace entire column
+# or
+DF$c[DF$ID == "b"] <- 15:13 # (2) -- subassign in column 'c'
+```
+
+both (1) and (2) resulted in deep copy of the entire data.frame in versions of `R` versions `< 3.1`. [It copied more than once](http://stackoverflow.com/q/23898969/559784). To improve performance by avoiding these redundant copies, *data.table* utilised the [available but unused `:=` operator in R](http://stackoverflow.com/q/7033106/559784).
+
+#### *shallow* vs *deep* copy
+
+A *shallow* copy is just a copy of the vector of column pointers (corresponding to the columns in a *data.frame* or *data.table*). The actual data is not physically copied in memory.
+
+A *deep* copy on the other hand copies the entire data to another location in memory.
+
+With *data.table's* `:=` operator, absolutely no copies are made in *both* (1) and (2), irrespective of R version you are using. This is because `:=` operator updates *data.table* columns *in-place* (by reference).
+
+### b) The `:=` operator
+
+It can be used in `j` in two ways:
+
+1.  The `LHS := RHS` form
+
+    ``` {.r}
+    DT[, c("colA", "colB", ...) := list(valA, valB, ...)]
+
+    # when you have only one column to assign to you
+    # can drop the quotes and list(), for convenience
+    DT[, colA := valA]
+    ```
+
+2.  The functional form
+
+    ``` {.r}
+    DT[, `:=`(colA = valA, # valA is assigned to colA
+              colB = valB, # valB is assigned to colB
+              ...
+    )]
+    ```
+
+Note that the code above explains how `:=` can be used. They are not working examples. We will start using them on `data_demo` *data.table* from the next section.
+
+-   In (a), `LHS` takes a character vector of column names and `RHS` a *list of values*. `RHS` just needs to be a `list`, irrespective of how its generated (e.g., using `lapply()`, `list()`, `mget()`, `mapply()` etc.). This form is usually easy to program with and is particularly useful when you don't know the columns to assign values to in advance.
+
+-   The result is returned *invisibly*.
+
+-   Since `:=` is available in `j`, we can combine it with `i` and `by` operations just like the aggregation operations we saw in the previous tutorial.
+
+In the two forms of `:=` shown above, note that we don't assign the result back to a variable. Because we don't need to. The input *data.table* is modified by reference. Let's go through examples to understand what we mean by this.
+
+For the rest of the tutorial, we will work with `data_demo` *data.table*.
+
+## 2. Add/update/delete columns *by reference*
+
+### a) Add columns by reference
+
+#### -- How can we add columns `home and sports spending` and `clothes and health spending` for each customer to `data_demo` *data.table*?
+
+```{r}
+data_demo[, `:=`(home_and_sports = home + sports, # total home and sports spending
+               clothes_and_health = clothes + health)] # total clothes and health spending
+head(data_demo)
+```
+
+#### Note that
+
+-   We did not have to assign the result back to `data_demo`.
+
+-   The `data_demo` *data.table* now contains the two newly added columns. This is what we mean by *added by reference*.
+
+### b) Update some rows of columns by reference - *sub-assign* by reference
+
+Let's take a look at all the `gender` available in the `data_demo` *data.table*:
+
+```{r}
+# get all 'gender' in data_demo
+data_demo[, sort(unique(gender))]
+```
+
+We see that there are totally `2` unique values in the data, but they are string variables. Let's change them into integers, where 1 stands for male and 0 standards for female.
+
+#### -- Replace those rows where `gender == 'M'` with the value `1`
+
+```{r}
+# subassign by reference
+data_demo[gender == "M", gender := "1"]
+head(data_demo)
+```
+
+-   We can use `i` along with `:=` in `j` the very same way as we have already seen in the "Introduction to data.table" tutorial.
+
+-   Column `gender` is replaced with `1` only on those *row indices* where the condition `gender == 'M'` specified in `i` evaluates to `TRUE`.
+
+#### Exercise:
+
+What is the difference between `data_demo[gender == "M", gender := "1" ]` and `data_demo[gender == "M"][, gender := "1"]`? Hint: The latter needs an assignment (`<-`) if you would want to use the result later.
+
+### c) Delete column by reference
+
+#### -- Remove `home_and_sports` and `clothes_and_health` column
+
+```{r}
+data_demo[, c("home_and_sports","clothes_and_health") := NULL]
+head(data_demo)
+```
+
+<a name="2c"></a> - Assigning `NULL` to a column *deletes* that column. And it happens *instantly*.
+
+-   We can also pass column numbers instead of names in the `LHS`, although it is good programming practice to use column names.
+
+-   When there is just one column to delete, we can drop the `c()` and double quotes and just use the column name *unquoted*, for convenience. That is:
+
+    ``` {.r}
+    data_demo[, home_and_sports := NULL]
+    ```
+
+    is equivalent to the code above.
+
+### d) `:=` along with grouping using `by`
+
+We have already seen the use of `i` along with `:=` in [Section 2b](#2b). Let's now see how we can use `:=` along with `by`.
+
+#### -- How can we add a new column which contains for each `city,gender` pair the total quantity?
+
+```{r}
+data_demo[, sum_quantity := sum(quantity), by = .(city, gender)]
+head(data_demo)
+data_demo[,.(sum_quantity = sum(quantity)), by = .(city,gender)]
+```
+
+-   We add a new column `sum_quantity` using the `:=` operator by reference.
+
+-   We provide the columns to group by the same way as shown in the *Introduction to data.table* tutorial. For each group, `sum(quantity)` is computed, which returns a single value. That value is recycled to fit the length of the group. Once again, no copies are being made at all. `data_demo` *data.table* is modified *in-place*.
+
+### e) Multiple columns and `:=`
+
+#### -- How can we add two more columns computing the sum of `quantity` and sum of `total` for each `city` `gender` pair?
+
+```{r}
+data_demo[, `:=`(sum_quantity = sum(quantity),
+                  sum_total = sum(total)), by = .(city, gender)]
+head(data_demo)
+```
+
+```{r}
+# To move the newly generated variables
+data_demo[, c("sum_quantity", "sum_total") := NULL]
+head(data_demo)
+```
+
+## 3) `:=` and `copy()`
+
+`:=` modifies the input object by reference. Apart from the features we have discussed already, sometimes we might want to use the update by reference feature for its side effect. And at other times it may not be desirable to modify the original object, in which case we can use `copy()` function, as we will see in a moment.
+
+### a) `:=` for its side effect
+
+Let's say we would like to create a function that would return the *maximum speed* for each month. But at the same time, we would also like to add the column `speed` to *data_demo*. We could write a simple function as follows:
+
+```{r}
+data_demo2 <- data_demo
+head(data_demo2,4)
+head(data_demo,4)
+```
+
+```{r}
+data_demo2[gender == "F" , gender:= "0"]
+head(data_demo2)
+```
+
+```{r}
+head(data_demo)
+```
+
+-   Note that the new column `gender` has been updaed in `data_demo` *data.table* as well. This is because `:=` performs operations by reference. Since `data_demo` and `data_demo2` refer to the same object in memory, modifying `data_demo2` also reflects on `data_demo`.
+
+### b) The `copy()` function
+
+In the previous section, we used `:=` for its side effect. But of course this may not be always desirable. Sometimes, we would like to pass a *data.table* object to a function, and might want to use the `:=` operator, but *wouldn't* want to update the original object. We can accomplish this using the function `copy()`.
+
+The `copy()` function *deep* copies the input object and therefore any subsequent update by reference operations performed on the copied object will not affect the original object.
+
+There are two particular places where `copy()` function is essential:
+
+Contrary to the situation we have seen in the previous point, we may not want the input data.table to a function to be modified *by reference*. As an example, let's consider the task in the previous section, except we don't want to modify `data_demo` by reference.
+
+```{r}
+data_demo2 <- copy(data_demo)
+
+head(data_demo2)
+
+head(data_demo)
+```
+
+```{r}
+data_demo2[gender == "1", gender := "M"]
+head(data_demo2)
+head(data_demo)
+```
+
+-   Using `copy()` function did not update `data_demo` *data.table* by reference. It doesn't change the column `gender`.
+
+## Summary
+
+#### The `:=` operator
+
+-   It is used to *add/update/delete* columns by reference.
+
+-   We have also seen how to use `:=` along with `i` and `by` the same way as we have seen in the *Introduction to data.table* tutorial. We can in the same way use `keyby`, chain operations together, and pass expressions to `by` as well all in the same way. The syntax is *consistent*.
+
+-   We can use `:=` for its side effect or use `copy()` to not modify the original object while updating by reference.
+
+So far we have seen a whole lot in `j`, and how to combine it with `by` and little of `i`. Let's turn our attention back to `i` in the next tutorial *"Keys and fast binary search based subset"* to perform *blazing fast subsets* by *keying data.tables*.
+
+# Keys and fast binary search based subset
+
+This vignette is aimed at those who are already familiar with *data.table* syntax, its general form, how to subset rows in `i`, select and compute on columns, add/modify/delete columns *by reference* in `j` and group by using `by`. If you're not familiar with these concepts, please read the "Introduction to data.table" and "Reference semantics" vignettes first.
+
+------------------------------------------------------------------------
+
+```{r}
+library("data.table")
+```
+
+## Data
+
+We will use the same `flights` data as in the "Introduction to data.table" vignette.
+
+```{r}
+flights <- fread("flights14.csv")
+head(flights)
+
+dim(flights)
+```
+
+## Introduction
+
+In this vignette, we will
+
+-   first introduce the concept of `key` in *data.table*, and set and use keys to perform *fast binary search* based subsets in `i`,
+
+-   see that we can combine key based subsets along with `j` and `by` in the exact same way as before,
+
+-   look at other additional useful arguments - `mult` and `nomatch`,
+
+-   and finally conclude by looking at the advantage of setting keys - perform *fast binary search based subsets* and compare with the traditional vector scan approach.
+
+## 1. Keys
+
+### a) What is a *key*?
+
+In the "Introduction to data.table" vignette, we saw how to subset rows in `i` using logical expressions, row numbers and using `order()`. In this section, we will look at another way of subsetting incredibly fast - using *keys*.
+
+But first, let's start by looking at *data.frames*. All *data.frames* have a row names attribute. Consider the *data.frame* `DF` below.
+
+```{r}
+set.seed(1L)
+DF = data.frame(ID1 = sample(letters[1:2], 10, TRUE),
+                ID2 = sample(1:3, 10, TRUE),
+                val = sample(10),
+                stringsAsFactors = FALSE,
+                row.names = sample(LETTERS[1:10]))
+DF
+
+rownames(DF)
+```
+
+We can *subset* a particular row using its row name as shown below:
+
+```{r}
+DF["C", ]
+```
+
+i.e., row names are more or less *an index* to rows of a *data.frame*. However,
+
+1.  Each row is limited to *exactly one* row name.
+
+    But, a person (for example) has at least two names - a *first* and a *second* name. It is useful to organise a telephone directory by *surname* then *first name*.
+
+2.  And row names should be *unique*.
+
+    ``` {.r}
+    rownames(DF) = sample(LETTERS[1:5], 10, TRUE)
+    # Warning: non-unique values when setting 'row.names': 'C', 'D'
+    # Error in `.rowNamesDF<-`(x, value = value): duplicate 'row.names' are not allowed
+    ```
+
+Now let's convert it to a *data.table*.
+
+```{r}
+DT = as.data.table(DF)
+DT
+
+rownames(DT)
+```
+
+-   Note that row names have been reset.
+
+-   *data.tables* never uses row names. Since *data.tables* **inherit** from *data.frames*, it still has the row names attribute. But it never uses them. We'll see in a moment as to why.
+
+    If you would like to preserve the row names, use `keep.rownames = TRUE` in `as.data.table()` - this will create a new column called `rn` and assign row names to this column.
+
+Instead, in *data.tables* we set and use `keys`. Think of a `key` as **supercharged rownames**.
+
+#### Keys and their properties {#keys-and-their-properties}
+
+1.  We can set keys on *multiple columns* and the column can be of *different types* -- *integer*, *numeric*, *character*, *factor*, *integer64* etc. *list* and *complex* types are not supported yet.
+
+2.  Uniqueness is not enforced, i.e., duplicate key values are allowed. Since rows are sorted by key, any duplicates in the key columns will appear consecutively.
+
+3.  Setting a `key` does *two* things:
+
+    1.  physically reorders the rows of the *data.table* by the column(s) provided *by reference*, always in *increasing* order.
+
+    2.  marks those columns as *key* columns by setting an attribute called `sorted` to the *data.table*.
+
+    Since the rows are reordered, a *data.table* can have at most one key because it can not be sorted in more than one way.
+
+For the rest of the vignette, we will work with `flights` data set.
+
+### b) Set, get and use keys on a *data.table*
+
+#### -- How can we set the column `origin` as key in the *data.table* `flights`?
+
+```{r}
+setkey(flights, origin)
+head(flights)
+
+## alternatively we can provide character vectors to the function 'setkeyv()'
+# setkeyv(flights, "origin") # useful to program with
+```
+
+-   You can use the function `setkey()` and provide the column names (without quoting them). This is helpful during interactive use.
+
+-   Alternatively you can pass a character vector of column names to the function `setkeyv()`. This is particularly useful while designing functions to pass columns to set key on as function arguments.
+
+-   Note that we did not have to assign the result back to a variable. This is because like the `:=` function we saw in the *"Introduction to data.table"* vignette, `setkey()` and `setkeyv()` modify the input *data.table* *by reference*. They return the result invisibly.
+
+-   The *data.table* is now reordered (or sorted) by the column we provided - `origin`. Since we reorder by reference, we only require additional memory of one column of length equal to the number of rows in the *data.table*, and is therefore very memory efficient.
+
+-   You can also set keys directly when creating *data.tables* using the `data.table()` function using `key` argument. It takes a character vector of column names.
+
+#### set\* and `:=`:
+
+In *data.table*, the `:=` operator and all the `set*` (e.g., `setkey`, `setorder`, `setnames` etc..) functions are the only ones which modify the input object *by reference*.
+
+Once you *key* a *data.table* by certain columns, you can subset by querying those key columns using the `.()` notation in `i`. Recall that `.()` is an *alias to* `list()`.
+
+#### -- Use the key column `origin` to subset all rows where the origin airport matches *"JFK"*
+
+```{r}
+flights[.("JFK")]
+
+## alternatively
+# flights[J("JFK")] (or) 
+# flights[list("JFK")]
+```
+
+-   The *key* column has already been set to `origin`. So it is sufficient to provide the value, here *"JFK"*, directly. The `.()` syntax helps identify that the task requires looking up the value *"JFK"* in the key column of *data.table* (here column `origin` of `flights` *data.table*).
+
+-   The *row indices* corresponding to the value *"JFK"* in `origin` is obtained first. And since there is no expression in `j`, all columns corresponding to those row indices are returned.
+
+-   On single column key of *character* type, you can drop the `.()` notation and use the values directly when subsetting, like subset using row names on *data.frames*.
+
+    ``` {.r}
+    flights["JFK"]              ## same as flights[.("JFK")]
+    ```
+
+-   We can subset any amount of values as required
+
+    ``` {.r}
+    flights[c("JFK", "LGA")]    ## same as flights[.(c("JFK", "LGA"))]
+    ```
+
+    This returns all columns corresponding to those rows where `origin` column matches either *"JFK"* or *"LGA"*.
+
+#### -- How can we get the column(s) a *data.table* is keyed by?
+
+Using the function `key()`.
+
+```{r}
+key(flights)
+```
+
+-   It returns a character vector of all the key columns.
+
+-   If no key is set, it returns `NULL`.
+
+### c) Keys and multiple columns
+
+To refresh, *keys* are like *supercharged* row names. We can set key on multiple columns and they can be of multiple types.
+
+#### -- How can I set keys on both `origin` *and* `dest` columns?
+
+```{r}
+setkey(flights, origin, dest)
+head(flights)
+
+## or alternatively
+# setkeyv(flights, c("origin", "dest")) # provide a character vector of column names
+
+key(flights)
+```
+
+-   It sorts the *data.table* first by the column `origin` and then by `dest` *by reference*.
+
+#### -- Subset all rows using key columns where first key column `origin` matches *"JFK"* and second key column `dest` matches *"MIA"*
+
+```{r}
+flights[.("JFK", "MIA")]
+```
+
+#### How does the subset work here?
+
+-   It is important to understand how this works internally. *"JFK"* is first matched against the first key column `origin`. And *within those matching rows*, *"MIA"* is matched against the second key column `dest` to obtain *row indices* where both `origin` and `dest` match the given values.
+
+-   Since no `j` is provided, we simply return *all columns* corresponding to those row indices.
+
+#### -- Subset all rows where just the first key column `origin` matches *"JFK"*
+
+```{r}
+key(flights)
+
+flights[.("JFK")] ## or in this case simply flights["JFK"], for convenience
+```
+
+-   Since we did not provide any values for the second key column `dest`, it just matches *"JFK"* against the first key column `origin` and returns all the matched rows.
+
+#### -- Subset all rows where just the second key column `dest` matches *"MIA"*
+
+```{r}
+flights[.(unique(origin), "MIA")]
+```
+
+#### What's happening here?
+
+-   Read [this](#How-does-the-subset-work-here?) again. The value provided for the second key column *"MIA"* has to find the matching values in `dest` key column *on the matching rows provided by the first key column `origin`*. We can not skip the values of key columns *before*. Therefore we provide *all* unique values from key column `origin`.
+
+-   *"MIA"* is automatically recycled to fit the length of `unique(origin)` which is *3*.
+
+## 2) Combining keys with `j` and `by`
+
+All we have seen so far is the same concept -- obtaining *row indices* in `i`, but just using a different method -- using `keys`. It shouldn't be surprising that we can do exactly the same things in `j` and `by` as seen from the previous vignettes. We will highlight this with a few examples.
+
+### a) Select in `j`
+
+#### -- Return `arr_delay` column as a *data.table* corresponding to `origin = "LGA"` and `dest = "TPA"`.
+
+```{r}
+key(flights)
+
+flights[.("LGA", "TPA"), .(arr_delay)]
+```
+
+-   The *row indices* corresponding to `origin == "LGA"` and `dest == "TPA"` are obtained using *key based subset*.
+
+-   Once we have the row indices, we look at `j` which requires only the `arr_delay` column. So we simply select the column `arr_delay` for those *row indices* in the exact same way as we have seen in *Introduction to data.table* vignette.
+
+-   We could have returned the result by using `with = FALSE` as well.
+
+    `flights[.("LGA", "TPA"), "arr_delay", with = FALSE]`
+
+### b) Chaining
+
+#### -- On the result obtained above, use chaining to order the column in decreasing order.
+
+```{r}
+flights[.("LGA", "TPA"), .(arr_delay)][order(-arr_delay)]
+```
+
+### c) Compute or *do* in `j`
+
+#### -- Find the maximum arrival delay corresponding to `origin = "LGA"` and `dest = "TPA"`.
+
+```{r}
+flights[.("LGA", "TPA"), max(arr_delay)]
+```
+
+-   We can verify that the result is identical to first value (486) from the previous example.
+
+### d) *sub-assign* by reference using `:=` in `j`
+
+We have seen this example already in the *Reference semantics* vignette. Let's take a look at all the `hours` available in the `flights` *data.table*:
+
+```{r}
+# get all 'hours' in flights
+flights[, sort(unique(hour))]
+```
+
+We see that there are totally `25` unique values in the data. Both *0* and *24* hours seem to be present. Let's go ahead and replace *24* with *0*, but this time using *key*.
+
+```{r}
+setkey(flights, hour)
+key(flights)
+
+flights[.(24), hour := 0L]
+key(flights)
+```
+
+-   We first set `key` to `hour`. This reorders `flights` by the column `hour` and marks that column as the `key` column.
+
+-   Now we can subset on `hour` by using the `.()` notation. We subset for the value *24* and obtain the corresponding *row indices*.
+
+-   And on those row indices, we replace the `key` column with the value `0`.
+
+-   Since we have replaced values on the *key* column, the *data.table* `flights` isn't sorted by `hour` any more. Therefore, the key has been automatically removed by setting to NULL.
+
+Now, there shouldn't be any *24* in the `hour` column.
+
+```{r}
+flights[, sort(unique(hour))]
+```
+
+### e) Aggregation using `by`
+
+Let's set the key back to `origin, dest` first.
+
+```{r}
+setkey(flights, origin, dest)
+key(flights)
+```
+
+#### -- Get the maximum departure delay for each `month` corresponding to `origin = "JFK"`. Order the result by `month`
+
+```{r}
+ans <- flights["JFK", max(dep_delay), keyby = month]
+head(ans)
+
+key(ans)
+```
+
+-   We subset on the `key` column *origin* to obtain the *row indices* corresponding to *"JFK"*.
+
+-   Once we obtain the row indices, we only need two columns - `month` to group by and `dep_delay` to obtain `max()` for each group. *data.table's* query optimisation therefore subsets just those two columns corresponding to the *row indices* obtained in `i`, for speed and memory efficiency.
+
+-   And on that subset, we group by *month* and compute `max(dep_delay)`.
+
+-   We use `keyby` to automatically key that result by *month*. Now we understand what that means. In addition to ordering, it also sets *month* as the `key` column.
+
+## 3) Additional arguments - `mult` and `nomatch`
+
+### a) The *mult* argument
+
+We can choose, for each query, if *"all"* the matching rows should be returned, or just the *"first"* or *"last"* using the `mult` argument. The default value is *"all"* - what we've seen so far.
+
+#### -- Subset only the first matching row from all rows where `origin` matches *"JFK"* and `dest` matches *"MIA"*
+
+```{r}
+flights[.("JFK", "MIA"), mult = "first"]
+```
+
+#### -- Subset only the last matching row of all the rows where `origin` matches *"LGA", "JFK", "EWR"* and `dest` matches *"XNA"*
+
+```{r}
+flights[.(c("LGA", "JFK", "EWR"), "XNA"), mult = "last"]
+```
+
+-   The query *"JFK", "XNA"* doesn't match any rows in `flights` and therefore returns `NA`.
+
+-   Once again, the query for second key column `dest`, *"XNA"*, is recycled to fit the length of the query for first key column `origin`, which is of length 3.
+
+### b) The *nomatch* argument
+
+We can choose if queries that do not match should return `NA` or be skipped altogether using the `nomatch` argument.
+
+#### -- From the previous example, Subset all rows only if there's a match
+
+```{r}
+flights[.(c("LGA", "JFK", "EWR"), "XNA"), mult = "last", nomatch = NULL]
+```
+
+-   Default value for `nomatch` is `NA`. Setting `nomatch = NULL` skips queries with no matches.
+
+-   The query "JFK", "XNA" doesn't match any rows in flights and therefore is skipped.
+
+## 4) binary search vs vector scans
+
+We have seen so far how we can set and use keys to subset. But what's the advantage? For example, instead of doing:
+
+```{r}
+# key by origin,dest columns
+flights[.("JFK", "MIA")]
+```
+
+we could have done:
+
+```{r}
+flights[origin == "JFK" & dest == "MIA"]
+```
+
+One advantage very likely is shorter syntax. But even more than that, *binary search based subsets* are **incredibly fast**.
+
+As the time goes `data.table` gets new optimization and currently the latter call is automatically optimized to use *binary search*.\
+To use slow *vector scan* key needs to be removed.
+
+```{r}
+setkey(flights, NULL)
+flights[origin == "JFK" & dest == "MIA"]
+```
+
+### a) Performance of binary search approach
+
+To illustrate, let's create a sample *data.table* with 20 million rows and three columns and key it by columns `x` and `y`.
+
+```{r}
+set.seed(2L)
+N = 2e7L
+DT = data.table(x = sample(letters, N, TRUE),
+                y = sample(1000L, N, TRUE),
+                val = runif(N))
+print(object.size(DT), units = "Mb")
+```
+
+`DT` is \~380MB. It is not really huge, but this will do to illustrate the point.
+
+From what we have seen in the Introduction to data.table section, we can subset those rows where columns `x = "g"` and `y = 877` as follows:
+
+```{r}
+key(DT)
+
+## (1) Usual way of subsetting - vector scan approach
+t1 <- system.time(ans1 <- DT[x == "g" & y == 877L])
+t1
+
+head(ans1)
+
+dim(ans1)
+```
+
+Now let's try to subset by using keys.
+
+```{r}
+setkeyv(DT, c("x", "y"))
+key(DT)
+
+## (2) Subsetting using keys
+t2 <- system.time(ans2 <- DT[.("g", 877L)])
+t2
+
+head(ans2)
+
+dim(ans2)
+
+identical(ans1$val, ans2$val)
+```
+
+-   The speed-up is **\~289x**!
+
+### b) Why does keying a *data.table* result in blazing fast subsets?
+
+To understand that, let's first look at what *vector scan approach* (method 1) does.
+
+#### Vector scan approach
+
+-   The column `x` is searched for the value "g" row by row, on all 20 million of them. This results in a *logical vector* of size 20 million, with values `TRUE, FALSE or NA` corresponding to `x`'s value.
+
+-   Similarly, the column `y` is searched for `877` on all 20 million rows one by one, and stored in another logical vector.
+
+-   Element wise `&` operations are performed on the intermediate logical vectors and all the rows where the expression evaluates to `TRUE` are returned.
+
+This is what we call a *vector scan approach*. And this is quite inefficient, especially on larger tables and when one needs repeated subsetting, because it has to scan through all the rows each time.
+
+Now let us look at binary search approach (method 2). Recall from [Properties of key](#Keys-and-their-properties) - *setting keys reorders the data.table by key columns*. Since the data is sorted, we don't have to *scan through the entire length of the column*! We can instead use *binary search* to search a value in `O(log n)` as opposed to `O(n)` in case of *vector scan approach*, where `n` is the number of rows in the *data.table*.
+
+#### Binary search approach
+
+Here's a very simple illustration. Let's consider the (sorted) numbers shown below:
+
+    1, 5, 10, 19, 22, 23, 30
+
+Suppose we'd like to find the matching position of the value *1*, using binary search, this is how we would proceed - because we know that the data is *sorted*.
+
+-   Start with the middle value = 19. Is 1 == 19? No. 1 \< 19.
+
+-   Since the value we're looking for is smaller than 19, it should be somewhere before 19. So we can discard the rest of the half that are \>= 19.
+
+-   Our set is now reduced to *1, 5, 10*. Grab the middle value once again = 5. Is 1 == 5? No. 1 \< 5.
+
+-   Our set is reduced to *1*. Is 1 == 1? Yes. The corresponding index is also 1. And that's the only match.
+
+A vector scan approach on the other hand would have to scan through all the values (here, 7).
+
+It can be seen that with every search we reduce the number of searches by half. This is why *binary search* based subsets are **incredibly fast**. Since rows of each column of *data.tables* have contiguous locations in memory, the operations are performed in a very cache efficient manner (also contributes to *speed*).
+
+In addition, since we obtain the matching row indices directly without having to create those huge logical vectors (equal to the number of rows in a *data.table*), it is quite **memory efficient** as well.
+
+## Summary
+
+In this vignette, we have learnt another method to subset rows in `i` by keying a *data.table*. Setting keys allows us to perform blazing fast subsets by using *binary search*. In particular, we have seen how to
+
+-   set key and subset using the key on a *data.table*.
+
+-   subset using keys which fetches *row indices* in `i`, but much faster.
+
+-   combine key based subsets with `j` and `by`. Note that the `j` and `by` operations are exactly the same as before.
+
+Key based subsets are **incredibly fast** and are particularly useful when the task involves *repeated subsetting*. But it may not be always desirable to set key and physically reorder the *data.table*. In the next vignette, we will address this using a *new* feature -- *secondary indexes*.

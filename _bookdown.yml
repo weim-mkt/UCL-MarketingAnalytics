@@ -4,6 +4,7 @@ rmd_files:
     - ["lecturenotes/Syllabus.Rmd"]
     - ["RTutorial/RTutorialIndex.Rmd"] 
     - ["RTutorial/IntroductionR.Rmd"] 
+    - ["RTutorial/datatable_installation.Rmd"] 
     - ["lecturenotes/lecturenotes.Rmd"]      
 delete_merged_file: true
 rmd_subdir: ["lecturenotes","RTutorial"]

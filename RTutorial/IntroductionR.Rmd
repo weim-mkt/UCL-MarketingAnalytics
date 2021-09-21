@@ -1,4 +1,3 @@
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, include = TRUE)
 ```
@@ -9,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE, include = TRUE)
 
 Learning objective:
 
-- Understand R's history and main functionality
+-   Understand R's history and main functionality
 
 -   Be able to setup R and Rstudio
 
@@ -25,19 +24,19 @@ Learning objective:
 
 -   Since 1997, R has been developed by the ***R Development Core Team***.
 
-- Refer to the [Wiki](https://en.wikipedia.org/wiki/R_(programming_language)) page for a full history of R development.
+-   Refer to the [Wiki](https://en.wikipedia.org/wiki/R_(programming_language)) page for a full history of R development.
 
 ### What is R used for?
 
-R can do almost anything you can think of! Below is a (incomplete) list of what I normally use R for on a daily basis.  
+R can do almost anything you can think of! Below is a (incomplete) list of what I normally use R for on a daily basis.
 
--   Data analytics (statistics, data manipulation, machine learning, econometric analysis, etc.)  
+-   Data analytics (statistics, data manipulation, machine learning, econometric analysis, etc.)
 
--   Building your own homepage. I build and maintain my [personal website](http://miaowei.netlify.app) with the `blogdown` package completely in R  
+-   Building your own homepage. I build and maintain my [personal website](http://miaowei.netlify.app) with the `blogdown` package completely in R
 
--   Prepare your presentations using R `markdown`  
+-   Prepare your presentations using R `markdown`
 
--   Write books (such as this whole online supplement) using R `bookdown`  
+-   Write books (such as this whole online supplement) using R `bookdown`
 
 You can even scrawl webpages and send emails with R once you install the right packages.
 
@@ -57,9 +56,9 @@ There are alternative ways to install and use R on your computers. Below is the 
 
 **Step 1**: Download R from the official website [CRAN](https://www.r-project.org).
 
-**Tips**:  
--   Note that R version is updated on a regular basis, to fix bugs or add new features. It's good to keep your R up to date with the official website.  
--   However, sometimes across major versions, some R's base functions may be depreciated and cause breaks in your code, so it's important to read the R News after each update, so that you understand what's been updated in the latest version and if there will be any breaks in your previous code. (For a deeper understanding of this issue, please refer to this [article](http://datacolada.org/95) regarding reproducible research with R.)
+**Tips**:\
+- Note that R version is updated on a regular basis, to fix bugs or add new features. It's good to keep your R up to date with the official website.\
+- However, sometimes across major versions, some R's base functions may be depreciated and cause breaks in your code, so it's important to read the R News after each update, so that you understand what's been updated in the latest version and if there will be any breaks in your previous code. (For a deeper understanding of this issue, please refer to this [article](http://datacolada.org/95) regarding reproducible research with R.)
 
 ### Screenshot of R Console
 
@@ -218,7 +217,7 @@ com5 <- c(2+3i, 3+5i, 4+5i)
 
 ```
 
-- Special type: `NA` which stands for missing values; this is a very tricky type that needs additional attention, as we will show below.
+-   Special type: `NA` which stands for missing values; this is a very tricky type that needs additional attention, as we will show below.
 
 ```{r, include=T, echo=T}
 
@@ -239,9 +238,9 @@ sum(is.na(missing))
 
 ### Data type: other special values
 
-- `Inf` is infinity. You can have either positive or negative infinity.
+-   `Inf` is infinity. You can have either positive or negative infinity.
 
-- `NaN` means "Not a Number". It's an undefined value.
+-   `NaN` means "Not a Number". It's an undefined value.
 
 ```{r, include=T, echo=T}
 a <- 1/0 #Inf
@@ -281,10 +280,9 @@ b <- as.numeric(a)
 class(b)
 ```
 
-
 ### Data structures
 
-![Visualization of data structures](images/r_data_structures.png)  
+![Visualization of data structures](images/r_data_structures.png)
 
 ### Vectors: creating vectors
 
@@ -350,8 +348,8 @@ z
 
 ### Vectors: subsetting
 
-We put the index of elements we would like to extract in a **square bracket**. Different languages use different ways to index and subset vectors and matrices.  
-  - For instance, Matlab uses parentheses for subsetting vectors and matrices.
+We put the index of elements we would like to extract in a **square bracket**. Different languages use different ways to index and subset vectors and matrices.\
+- For instance, Matlab uses parentheses for subsetting vectors and matrices.
 
 ```{r vectors_subset, include=T, echo=T}
 x <- c(1,3,8,7) 
@@ -389,7 +387,6 @@ A special relational operation is `%in%` in R, which tests whether an element ex
 
 3 %in% x & 4 %in% x
 ```
-
 
 ### Vectors: elementwise operations
 
@@ -626,17 +623,17 @@ poll_cars
 
 ### Variables
 
-In programming, a variable denotes an object, i.e., a variable is a name that refers to an object in the memory. Variables in R programming can be used to store any R object discussed previously, including numbers, characters, matrices, and data frames. 
+In programming, a variable denotes an object, i.e., a variable is a name that refers to an object in the memory. Variables in R programming can be used to store any R object discussed previously, including numbers, characters, matrices, and data frames.
 
-R is a ***dynamically programmed language**, which means that unlike other programming languages (such as C++, which is a pain to debug), we do not have to declare the data type of a variable before we can use it in our program.
+R is a \***dynamically programmed language**, which means that unlike other programming languages (such as C++, which is a pain to debug), we do not have to declare the data type of a variable before we can use it in our program.
 
 For a variable to be valid, it should follow these rules
 
-* It should contain letters, numbers, and only dot or underscore characters.
-* It should not start with a number (eg:- 2iota)
-* It should not start with a dot followed by a number (eg:- .2iota)
-* It should not start with an underscore (eg:- _iota)
-* It should not be a reserved keyword.
+-   It should contain letters, numbers, and only dot or underscore characters.
+-   It should not start with a number (eg:- 2iota)
+-   It should not start with a dot followed by a number (eg:- .2iota)
+-   It should not start with an underscore (eg:- \_iota)
+-   It should not be a reserved keyword.
 
 ### if/else
 
@@ -650,7 +647,7 @@ Sometimes, you want to run your code based on different conditions. For instance
       action 3
     }
 
-Example 1: 
+Example 1:
 
 ```{r controlflow, include=T, echo=T}
 
@@ -675,7 +672,6 @@ if(x > 0){
   print("x is a negative number")
 }
 ```
-
 
 ### Loops
 
@@ -763,7 +759,4 @@ get_max(c(-1,3,2))
 
 Exercise:
 
-Write your own version of `which.max()` function 
-
-
-
+Write your own version of `which.max()` function
