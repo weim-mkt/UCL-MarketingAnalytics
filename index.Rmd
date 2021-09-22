@@ -4,7 +4,9 @@ author: "Wei Miao"
 date: "`r Sys.Date()`"
 site: "bookdown::bookdown_site"
 output:
-  bookdown::gitbook: 
+  bookdown::gitbook:
+    includes:
+      in_header: GA.html 
     config:
       toc:
         collapse: subsection
@@ -43,18 +45,6 @@ link-citations: yes
 fontsize: 11pt
 geometry: margin=1in
 ---
-
-<head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MWBY8FZYQ5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MWBY8FZYQ5');
-</script>
-<head>
 
 # Preface
 
