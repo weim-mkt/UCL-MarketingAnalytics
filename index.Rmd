@@ -44,6 +44,7 @@ fontsize: 11pt
 geometry: margin=1in
 ---
 
+<head>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MWBY8FZYQ5"></script>
 <script>
@@ -53,6 +54,7 @@ geometry: margin=1in
 
   gtag('config', 'G-MWBY8FZYQ5');
 </script>
+<head>
 
 # Preface
 
