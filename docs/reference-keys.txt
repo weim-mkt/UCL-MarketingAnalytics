@@ -3,7 +3,7 @@ syllabus-msin0094-marketing-analytics
 instructor-information
 course-objective
 module-structure-overview
-office-hours
+if-you-have-questions-microsoft-teams-and-office-hours
 textbook
 programming-language-r
 classroom-etiquette
