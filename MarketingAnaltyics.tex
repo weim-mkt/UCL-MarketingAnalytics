@@ -1,0 +1,2558 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{book}
+\title{Marketing Analytics}
+\author{Wei Miao}
+\date{2021-12-12}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Marketing Analytics},
+  pdfauthor={Wei Miao},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{preface}{%
+\chapter{Preface}\label{preface}}
+
+\begin{center}\includegraphics{images/MarketingAnalyticsWordCloud} \end{center}
+
+This is the online supplement to the \href{https://www.ucl.ac.uk/module-catalogue/modules/marketing-analytics/MSIN0094}{MSIN0094 Marketing Analytics} Module for the \href{http://www.mgmt.ucl.ac.uk/business-analytics}{MSc Business Analytics program} at UCL School of Management.
+
+\hypertarget{syllabus-msin0094-marketing-analytics}{%
+\chapter{Syllabus: MSIN0094 Marketing Analytics}\label{syllabus-msin0094-marketing-analytics}}
+
+(Last update on 12 December, 2021)
+
+\hypertarget{instructor-information}{%
+\section{Instructor Information}\label{instructor-information}}
+
+\emph{Module Leader}:
+
+\begin{itemize}
+\tightlist
+\item
+  Wei Miao\footnote{Wei is pronounced as ``way'', which stands for jade in Mandarin; Miao is my family name, which is exactly pronounced as ``meow'', the sound of a kitty.} \href{mailto:wei.miao@ucl.ac.uk}{(wei.miao@ucl.ac.uk)}
+\end{itemize}
+
+\emph{Office:}
+
+\begin{itemize}
+\tightlist
+\item
+  S3, Level 38, One Canada Square
+\end{itemize}
+
+\emph{Office hours:}
+
+\begin{itemize}
+\tightlist
+\item
+  Please refer to the office hour session for how to make office hour appointments during term times. More details will be confirmed in Week 1's class.
+\end{itemize}
+
+\hypertarget{course-objective}{%
+\section{Course Objective}\label{course-objective}}
+
+Marketing analytics addresses how to utilize appropriate analytics tools to guide marketing tactics and strategies in a scientific manner. Driven by recent advances in computing power, software, and other information technologies, the very nature of marketing analytics has evolved. This module provides students with systematic and practical training in statistics, econometrics, predictive models, and programming tools in solving real-life marketing problems or any data analytics related problems.
+
+In the first two weeks, students will start building up their business sense by learning the basic concepts of marketing and marketing process (i.e., 5C's, STP, and 4P's of marketing) and how to conduct break-even analysis at the company/product level (net present value) and the customer level (customer lifetime value), respectively. The remaining weeks revolve around such cost-benefit analyses and further explore marketing analytics along three dimensions: descriptive analytics (Week 3), causal inference (Week 4-7), and predictive analytics (Week 8-10).
+
+Descriptive analytics involves using data visualization (\texttt{ggplot2}), statistical tests (e.g., correlation test and t-test), and database manipulation (\texttt{dplyr} package) to provide model-free insights into customer intelligence.
+
+Causal inference aims at understanding the causal effect of marketing initiatives on marketing outcomes, which relates to the benefit part of the break-even analysis. Students will learn how to establish causal inference from primary data via randomized controlled trials and from secondary data via econometric analysis (instrumental variable, difference-in-differences, and regression discontinuity design).
+
+Predictive analytics shed light on how to conduct targeted marketing by taking advantage of state-of-the-art predictive models, which relates to the cost part in the break-even analysis. Students will also learn how to apply predictive analytics tools to important marketing contexts such as conjoint analysis and customer relationship management.
+
+At the end of the module, students will be able to carry out independent marketing research for their dissertation projects and their future jobs.
+
+\hypertarget{module-structure-overview}{%
+\section{Module Structure Overview}\label{module-structure-overview}}
+
+\begin{center}\includegraphics{images/CourseStructure} \end{center}
+
+\hypertarget{if-you-have-questions-microsoft-teams-and-office-hours}{%
+\section{If You Have Questions: Microsoft Teams and Office Hours}\label{if-you-have-questions-microsoft-teams-and-office-hours}}
+
+In the first class, I will provide the code to join the course's Microsoft Teams.
+
+It is a good practice to utilize the Microsoft Teams Q\&A channels as an interactive place to promote peer-to-peer learning. For any questions, please first check the Teams channels and see if the questions are already posted and answered by any of your classmates there. If not, please post your questions in the Teams channels.
+
+For any questions posted in the Teams channels, I will first leave for your classmates to provide answers. I will monitor and summarize the questions posted on Teams channels and clarify important ones in the subsequent week's class.
+
+You can also ask questions during my office hours. I am happy to answer any questions you may have about this module (well, definitely excluding assignment questions before the submission date). To make an appointment, please use this shared Excel form as in this \href{https://liveuclac.sharepoint.com/:x:/s/MSIN0094MarketingAnalytics-2021-2022/EWD_4NkH-NhEqyw7Ab3wbBABtAotIn4TjsK7TrvQFeBTOw?e=mSbfAq}{link}. The Excel form is also available in the Teams channel.
+
+Please make sure of the following before/when you make your appointment:
+
+\begin{itemize}
+\tightlist
+\item
+  Please be careful when operating on the Excel form and kindly avoid overwriting/modifying other students' appointments.
+\item
+  Please use the ``comment'' function in Excel form to briefly describe the questions you have so that other students sharing similar questions can drop in as well.
+\item
+  Each session lasts for 10 minutes. If you expect your questions may take a longer time to solve, you can book two consecutive sessions. Each student is entitled to at most two sessions per week to ensure equal opportunities for all students.
+\end{itemize}
+
+\hypertarget{textbook}{%
+\section{Textbook}\label{textbook}}
+
+We will not rely on any specific textbook in this module. All classes will be based on the lecture notes and supplementary readings I have prepared for you. However, if you would like to further enrich your learning journey and extend your knowledge of marketing analytics, I recommend ``\href{https://ucl-new-primo.hosted.exlibrisgroup.com/permalink/f/5qfvbu/UCL_LMS_DS51237610180004761}{Handbook of Marketing Analytics}''. This book is free for download at UCL's E-library.
+
+\hypertarget{programming-language-r}{%
+\section{Programming Language R}\label{programming-language-r}}
+
+We will use an open-source programming language R throughout the module. R is one of the most commonly used programming languages by data scientists, economists, and statisticians, and is sometimes called the ``golden child'' of data science. R is cross-platform compatible on Windows, Mac, and Linux, with thousands of packages ready for use. Undoubtedly, it has one of the richest ecosystems to perform data analytics tasks. More importantly, it is free of charge compared with other commercial software (it is good to start developing cost-benefit concepts now as you are now business school students. And we will learn more on cost-benefit analysis in the module later on)!
+
+The teaching of R will consist of the following part:
+
+\begin{itemize}
+\tightlist
+\item
+  In the induction week, Yongdong and I will provide a tutorial on introduction to R, which covers R basics.
+\item
+  In the remaining weeks, there will be R tutorials specific to each class's topic.
+\end{itemize}
+
+If you have little prior exposure to R, it is highly recommended that you should read this tutorial, ``\href{https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf}{Introduction to R}''.
+
+During (and even after) this module, whenever your run into any problems with R, Google (especially Stack Overflow) is always your best place to seek answers for most debugging issues; if you have any specific tasks in mind, the \href{https://cran.r-project.org/web/views/}{R Task Views page} provides comprehensive guidance of which packages on CRAN are relevant for tasks related to a certain topic.
+
+\hypertarget{classroom-etiquette}{%
+\section{Classroom Etiquette}\label{classroom-etiquette}}
+
+\begin{itemize}
+\item
+  \textbf{Punctuality}. Classes will start on time. Please be on time.
+\item
+  \textbf{Class participation}. Please keep your mobile phones and laptops muted at all times unless otherwise instructed. (It's good that we no longer need to attend the University of Zoom this year! Crazy things like \href{https://www.youtube.com/watch?v=yZpEpNPaxsw}{these} do happen! :D)
+\end{itemize}
+
+\hypertarget{assignments-and-grading-policy}{%
+\section{Assignments and Grading policy}\label{assignments-and-grading-policy}}
+
+There will be no exams in this module. Learning outcomes will be examined through three individual assignments. Your final grade in this module will be a weighted average of the following:
+
+\begin{itemize}
+\tightlist
+\item
+  First assignment, 30\% weight, 1500 words
+\item
+  Second assignment, 40\% weight, 2000 words
+\item
+  Third assignment, 30\% weight, 1500 words
+\end{itemize}
+
+Detailed assignment descriptions will be given in due course.
+
+\hypertarget{code-of-conduct-and-plagiarism}{%
+\subsection{Code of Conduct and Plagiarism}\label{code-of-conduct-and-plagiarism}}
+
+You will receive training in Student Academic Misconduct Procedure in the induction week, in which you will learn how to properly reference your work and avoid plagiarism. As all assignments in this module are \textbf{individual} assignments, you should \textbf{NOT} work with other students in any way.
+
+Note that it will be a severe violation of academic integrity if you look for solutions on the Internet or even outsource the assignments to any agency. You may risk failing this module if such a violation is found and investigated by the University.
+
+\hypertarget{word-count}{%
+\subsection{Word Count}\label{word-count}}
+
+Please note, according to UCL's policy, you should \textbf{follow the word limit}. Otherwise, your marks may be reduced. Therefore, try to keep your answer concise and to the point.
+
+\hypertarget{for-extenuating-circumstances-and-emergencies}{%
+\subsection{For Extenuating Circumstances and Emergencies}\label{for-extenuating-circumstances-and-emergencies}}
+
+Please double check (or even triple check) whether the file to be uploaded is the correct, finalized answer sheet before submission. The final marks will be ONLY based on the file you submit, even though you may be able to show evidence that a wrong file is uploaded. Neither I nor the TAs are authorized to handle ECs or any emergencies related to assignment submission. If anything, please contact the MSc program admin \href{}{here} for assistance.
+
+\hypertarget{marks-and-feedback}{%
+\subsection{Marks and Feedback}\label{marks-and-feedback}}
+
+Your marks and feedback for each assignment will be usually released no later than 4 weeks after the submission date. Each assignment will be carefully marked according to the mark scheme by our teaching assistants, and there will be adequate second-marking procedures in the marking process to ensure the marking quality, as required by UCL. As a result, it is the university policy that students shouldn't question the academic judgment of markers, and \textbf{please refrain from emailing teaching assistants for any re-marking}.
+
+\hypertarget{copyright-issues}{%
+\section{Copyright Issues}\label{copyright-issues}}
+
+All of the materials in this module are copyrighted, either purchased by UCL or written by me. Please refrain from uploading any materials in the module to other external websites or sharing any materials with anyone unauthorized. A copyright violation may be investigated by the school.
+
+\hypertarget{install-and-setup-r}{%
+\chapter{Install and Setup R}\label{install-and-setup-r}}
+
+\hypertarget{class-objective}{%
+\section{Class Objective}\label{class-objective}}
+
+Learning objective:
+
+\begin{itemize}
+\item
+  Understand R's history and main functionality
+\item
+  Be able to setup R and Rstudio
+\item
+  Understand how to use install and load packages in R
+\item
+  Understand the key concepts of R
+\end{itemize}
+
+\hypertarget{what-is-r}{%
+\section{What is R}\label{what-is-r}}
+
+\begin{itemize}
+\item
+  R is both a programming language and software environment for statistical computing, which is free and open-source (\url{https://www.r-project.org/about.html}).
+\item
+  The \textbf{\emph{R Project}} was initiated by Robert Gentleman and Ross Ihaka (University of Auckland) in the early 1990s as a different implementation of the S language, which was developed at Bell Laboratories.
+\item
+  Since 1997, R has been developed by the \textbf{\emph{R Development Core Team}}.
+\item
+  Refer to the \href{https://en.wikipedia.org/wiki/R_(programming_language)}{Wiki} page for a full history of R development.
+\end{itemize}
+
+\hypertarget{what-is-r-used-for}{%
+\section{What is R used for?}\label{what-is-r-used-for}}
+
+R can do almost anything you can think of! Below is a (incomplete) list of what I normally use R for on a daily basis.
+
+\begin{itemize}
+\item
+  Data analytics (statistics, data manipulation, machine learning, econometric analysis, etc.)
+\item
+  Building your own homepage. I build and maintain my \href{http://miaowei.netlify.app}{personal website} with the \texttt{blogdown} package completely in R
+\item
+  Prepare your presentations using R \texttt{markdown}
+\item
+  Write books (such as this whole online supplement) using R \texttt{bookdown}
+\end{itemize}
+
+You can even scrawl webpages and send emails with R once you install the right packages.
+
+\hypertarget{popularity-of-r}{%
+\section{Popularity of R}\label{popularity-of-r}}
+
+R has been one of the most popular programming language used by statisticians, economists, and data analysts.
+
+Below is the popularity index of different languages by \href{https://www.tiobe.com}{tiobe.com}. R reached its historic highest in August 2020, ranking the 8th among all.
+
+\begin{center}\includegraphics{images/R ranking} \end{center}
+
+\hypertarget{install-and-setup-r-on-your-computers-step-1}{%
+\section{Install and Setup R on your computers: Step 1}\label{install-and-setup-r-on-your-computers-step-1}}
+
+There are alternative ways to install and use R on your computers. Below is the most recommended and hassle free way to install and setup R on your computer.
+
+\textbf{Step 1}: Download R from the official website \href{https://www.r-project.org}{CRAN}.
+
+\textbf{Tips}:\\
+- Note that R version is updated on a regular basis, to fix bugs or add new features. It's good to keep your R up to date with the official website.\\
+- However, sometimes across major versions, some R's base functions may be depreciated and cause breaks in your code, so it's important to read the R News after each update, so that you understand what's been updated in the latest version and if there will be any breaks in your previous code. (For a deeper understanding of this issue, please refer to this \href{http://datacolada.org/95}{article} regarding reproducible research with R.)
+
+\hypertarget{screenshot-of-r-console}{%
+\section{Screenshot of R Console}\label{screenshot-of-r-console}}
+
+R's default user interface:
+
+\begin{center}\includegraphics{images/r_console} \end{center}
+
+\hypertarget{install-and-setup-r-on-your-computers-step-2}{%
+\section{Install and Setup R on your computers: Step 2}\label{install-and-setup-r-on-your-computers-step-2}}
+
+After step 1, you can already open R's own GUI and run R codes. However, we still need an \href{https://en.wikipedia.org/wiki/Integrated_development_environment}{integrated development environment} (IDE) to help us better write R codes. Rstudio is currently the best IDE for R.
+
+\textbf{Step 2}: Download and install Rstudio from \href{https://www.rstudio.com/products/rstudio/download/}{Rstudio's website}.
+
+For a introduction to the Rstudio IDE, refer to this \href{https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf}{cheat sheet}.
+
+\hypertarget{screenshot-of-rstudio}{%
+\section{Screenshot of RStudio}\label{screenshot-of-rstudio}}
+
+Our preferred R editor: Rstudio
+
+\begin{center}\includegraphics{images/r_Rstudio} \end{center}
+
+\hypertarget{glossary}{%
+\section{Glossary}\label{glossary}}
+
+\begin{itemize}
+\item
+  \textbf{\emph{script}}: (top left) where you write codes a text-readable file (E.g., `test.R', `test.Rmd', etc.), each separated by a new line.
+\item
+  \textbf{\emph{console}}: (bottom left) where you can type commands interactively with R and get the results immediately
+\item
+  \textbf{\emph{environment}}: (top right) a list of named variables/objects that we have generated; can be checked on the `environment' panel.
+\item
+  \textbf{\emph{history}}: (top right) the list of past commands thaty we have used
+\item
+  \textbf{\emph{help}}: (bottom right) a documentation of all the functions available in R (the user manual)
+\item
+  \textbf{\emph{package}}: (bottom right) a collection of additional functions and dataset
+\end{itemize}
+
+\hypertarget{use-help}{%
+\section{Use Help}\label{use-help}}
+
+Whenever you don't know how to use a function, you can either
+
+\begin{itemize}
+\tightlist
+\item
+  use \texttt{help}. Enter the command \texttt{help(log)} in R console
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?log}
+\FunctionTok{help}\NormalTok{(log)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  or you can directly search for the function in RStudio help panel.
+\end{itemize}
+
+If you cannot get an answer:
+
+\begin{itemize}
+\item
+  (1st) Google your error message or search/ask for help in Stack Overflow
+\item
+  (2nd) Ask in Moodle Forum
+\item
+  (3rd) Use office hours
+\end{itemize}
+
+\hypertarget{libraries-and-packages-management-the-coventional-way}{%
+\section{Libraries and packages management: the coventional way}\label{libraries-and-packages-management-the-coventional-way}}
+
+To achieve certain tasks, for instance, to run a regression analysis, we can definitely write our own code from scratch. However, it may take much time if we would like to build everything from zero. That's when the packages/libraries can help us to improve our efficiency by a large margin.
+
+One of the best things about R is that it has tens of thousands of extremely useful packages/libraries. And some are even exclusive to R, for instance, the \texttt{grf} package that runs the causal forest model, which I have used for my research.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages(\textquotesingle{}data.table\textquotesingle{}) \# install the package}
+\FunctionTok{library}\NormalTok{(}\StringTok{\textquotesingle{}data.table\textquotesingle{}}\NormalTok{) }\CommentTok{\# load the package}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{libraries-and-packages-management-the-simplest-way}{%
+\section{Libraries and packages management: the simplest way}\label{libraries-and-packages-management-the-simplest-way}}
+
+In R, there is a package called \texttt{pacman}, which stands for package management and is probably the most convenient way to manage R packages.
+
+\textbf{Task:} Load \texttt{ggplot2} and \texttt{data.table} packages; if they are not installed, install them and then load them.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages(\textquotesingle{}pacman\textquotesingle{})}
+
+\NormalTok{pacman}\SpecialCharTok{::}\FunctionTok{p\_load}\NormalTok{(data.table,ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{comment-your-codes}{%
+\section{Comment your codes}\label{comment-your-codes}}
+
+You can put a ``\#'' before any line of code, to indicate that this line is your comment, and this line will turn green and not run by R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# print("David is handsome")}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{r-basics}{%
+\chapter{R Basics}\label{r-basics}}
+
+\hypertarget{use-r-as-a-calculator}{%
+\section{Use R as a calculator}\label{use-r-as-a-calculator}}
+
+We can do the basic mathematical calculation in R as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{8}\SpecialCharTok{+}\DecValTok{8}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{8{-}8}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{8}\SpecialCharTok{*}\DecValTok{8}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\SpecialCharTok{/}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+Common mathematical operations/functions can also be used in R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{log}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{exp}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.718282
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{log}\NormalTok{(}\FunctionTok{exp}\NormalTok{(}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sqrt}\NormalTok{(}\DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\hypertarget{assign-value}{%
+\section{Assign value}\label{assign-value}}
+
+In R, we normally use the left arrow to assign a value to an object \texttt{\textless{}-}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6931472
+\end{verbatim}
+
+You can also use equal sign \texttt{=} without issues, but it's recommended to stick with R's tradition.
+
+\hypertarget{data-types}{%
+\section{Data types}\label{data-types}}
+
+\begin{itemize}
+\item
+  Numeric/Double (e.g.~2.5, 1/5, 1.0, etc.)
+\item
+  Integer (e.g.~1, 2, 3, etc.)
+\item
+  Complex (e.g.~1 + 2i, etc.)
+\item
+  Logical (e.g.~TRUE, FALSE or NA)
+\item
+  Character (e.g.~``Wei'', ``UCL'', ``1 + 1 = 3'', ``TRUE'', etc.)
+\item
+  Factor/Categorical (``male'', ``female'', etc.)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Character Vector}
+\NormalTok{str1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"R"}\NormalTok{,}\StringTok{"Python"}\NormalTok{,}\StringTok{"Java"}\NormalTok{,}\StringTok{"Scala"}\NormalTok{,}\StringTok{"Julia"}\NormalTok{)}
+
+\CommentTok{\# Numeric Vector }
+\NormalTok{num2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{3.4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\FloatTok{5.9}\NormalTok{)}
+
+\CommentTok{\# Integer Vector  }
+\NormalTok{int3 }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{) }
+
+\CommentTok{\# Logical Vector }
+\NormalTok{log4 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, T, F) }
+
+\CommentTok{\# 5. Complex}
+\NormalTok{com5 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\SpecialCharTok{+}\NormalTok{3i, }\DecValTok{3}\SpecialCharTok{+}\NormalTok{5i, }\DecValTok{4}\SpecialCharTok{+}\NormalTok{5i)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Special type: \texttt{NA} which stands for missing values; this is a very tricky type that needs additional attention, as we will show below.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{missing }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\ConstantTok{NA}\NormalTok{,}\DecValTok{2}\NormalTok{,}\ConstantTok{NA}\NormalTok{)}
+
+\FunctionTok{mean}\NormalTok{(missing)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(missing,}\AttributeTok{na.rm =}\NormalTok{ T) }\DocumentationTok{\#\#\#\#\# important!!!, do not forget na.rm = T}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# check missing values}
+\FunctionTok{is.na}\NormalTok{(missing)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE  TRUE FALSE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anyNA}\NormalTok{(missing)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(missing))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\hypertarget{data-type-other-special-values}{%
+\section{Data type: other special values}\label{data-type-other-special-values}}
+
+\begin{itemize}
+\item
+  \texttt{Inf} is infinity. You can have either positive or negative infinity.
+\item
+  \texttt{NaN} means ``Not a Number''. It's an undefined value.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{/}\DecValTok{0} \CommentTok{\#Inf}
+\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Inf
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.infinite}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.na}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b }\OtherTok{\textless{}{-}} \DecValTok{0}\SpecialCharTok{/}\DecValTok{0} \CommentTok{\#NaN}
+\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NaN
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.nan}\NormalTok{(b)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.na}\NormalTok{(b)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\hypertarget{data-type-check-data-type-using-class}{%
+\section{Data type: check data type using class()}\label{data-type-check-data-type-using-class}}
+
+We can use \texttt{class()} to check the type of an object in R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}1+1\textquotesingle{}}
+\FunctionTok{class}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{+}\DecValTok{1}
+\FunctionTok{class}\NormalTok{(b)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\hypertarget{data-type-conversion}{%
+\section{Data type: conversion}\label{data-type-conversion}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}1\textquotesingle{}}
+\FunctionTok{class}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(a)}
+\FunctionTok{class}\NormalTok{(b)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\hypertarget{data-structures}{%
+\section{Data structures}\label{data-structures}}
+
+\begin{figure}
+\centering
+\includegraphics{images/r_data_structures.png}
+\caption{Visualization of data structures}
+\end{figure}
+
+\hypertarget{vectors-creating-vectors}{%
+\section{Vectors: creating vectors}\label{vectors-creating-vectors}}
+
+\hypertarget{creating-vectors-c}{%
+\subsection{Creating vectors: c()}\label{creating-vectors-c}}
+
+Vector can be created using the command \texttt{c()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  3  5 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+Vectors must contain elements of the same data type. Otherwise, it will convert elements into the same type.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\StringTok{"intro"}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{class}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\hypertarget{creating-vectors-length}{%
+\subsection{Creating vectors: length()}\label{creating-vectors-length}}
+
+You can measure the length of a \textbf{vector} using the command \texttt{length()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}R\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{} is\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{} fun\textquotesingle{}}\NormalTok{)}
+\FunctionTok{length}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{NULL}\NormalTok{)}
+\FunctionTok{length}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\hypertarget{creating-vectors-seq-and-rep}{%
+\subsection{Creating vectors: seq() and rep()}\label{creating-vectors-seq-and-rep}}
+
+It is also possible to easily create sequences
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# use colon \textquotesingle{}:\textquotesingle{}}
+\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# use seq()}
+\FunctionTok{seq}\NormalTok{(}\AttributeTok{from =} \DecValTok{1}\NormalTok{, }\AttributeTok{to =} \DecValTok{2}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# for date object}
+\FunctionTok{seq.Date}\NormalTok{(}\AttributeTok{from =} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2021{-}09{-}27"}\NormalTok{), }
+         \AttributeTok{to =} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2021{-}10{-}01"}\NormalTok{), }
+         \AttributeTok{by =} \StringTok{\textquotesingle{}1 days\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2021-09-27" "2021-09-28" "2021-09-29" "2021-09-30" "2021-10-01"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# replication using rep()}
+\FunctionTok{rep}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\AttributeTok{times =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "A" "A" "A" "A" "A"
+\end{verbatim}
+
+To understand all usages of a function, use \texttt{help()}
+
+\hypertarget{creating-vectors-combine-vectors}{%
+\subsection{Creating vectors: combine vectors}\label{creating-vectors-combine-vectors}}
+
+You can use \texttt{c()} to combine different vectors; this is very commonly used when concatenating vectors.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3} \CommentTok{\# from 1 to 3}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{15}\NormalTok{) }\CommentTok{\# 10 and 15}
+\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(x,y) }\CommentTok{\# x first and then y }
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  2  3 10 15
+\end{verbatim}
+
+\hypertarget{vectors-subsetting}{%
+\section{Vectors: subsetting}\label{vectors-subsetting}}
+
+We put the index of elements we would like to extract in a \textbf{square bracket}. Different languages use different ways to index and subset vectors and matrices.\\
+- For instance, Matlab uses parentheses for subsetting vectors and matrices.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{7}\NormalTok{) }
+\NormalTok{x[}\DecValTok{2}\NormalTok{] }\CommentTok{\# which element is in the second position?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{] }\CommentTok{\# which elements are in the first 2 positions?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{)] }\CommentTok{\# which elements are in positions 1, 3 and 4?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 8 7
+\end{verbatim}
+
+\hypertarget{vectors-relational-operation}{%
+\section{Vectors: relational operation}\label{vectors-relational-operation}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{7}\NormalTok{) }
+\NormalTok{x }\SpecialCharTok{\textless{}} \DecValTok{6} \CommentTok{\# is each element lower than 6?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE  TRUE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\SpecialCharTok{==} \DecValTok{10} \CommentTok{\# is the element equal to 10?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(x }\SpecialCharTok{==} \DecValTok{8}\NormalTok{) }\CommentTok{\# which element equals 8 }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{max}\NormalTok{(x) }\CommentTok{\# what is the max element}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which.max}\NormalTok{(x) }\CommentTok{\# which is the max element }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[(}\FunctionTok{which.min}\NormalTok{(x))] }\CommentTok{\#  = min(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# logical operation}
+\NormalTok{T }\SpecialCharTok{\&}\NormalTok{ F }\CommentTok{\# and}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{T }\SpecialCharTok{|}\NormalTok{ F }\CommentTok{\# or}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialCharTok{!}\NormalTok{T }\CommentTok{\# not}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+A special relational operation is \texttt{\%in\%} in R, which tests whether an element exists in the object.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3} \SpecialCharTok{\%in\%}\NormalTok{ x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{4} \SpecialCharTok{\%in\%}\NormalTok{ x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3} \SpecialCharTok{\%in\%}\NormalTok{ x }\SpecialCharTok{\&} \DecValTok{4} \SpecialCharTok{\%in\%}\NormalTok{ x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\hypertarget{vectors-elementwise-operations}{%
+\section{Vectors: elementwise operations}\label{vectors-elementwise-operations}}
+
+Similar to other matrix languages (Matlab), R is a vectorized language, meaning by default it will do vector operation internally.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{7}\NormalTok{)}
+\NormalTok{x}\SpecialCharTok{+}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  3  5 10  9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\DecValTok{{-}2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1  1  6  5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\SpecialCharTok{*}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  2  6 16 14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\SpecialCharTok{\^{}}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  9 64 49
+\end{verbatim}
+
+\hypertarget{caveat-with-vector-elementwise-operation}{%
+\subsection{Caveat with vector elementwise operation}\label{caveat-with-vector-elementwise-operation}}
+
+\textbf{\emph{Caveat}} When the length of vectors do not match, R will still do it for your without reporting error but a warning message. As you can see, even if the length of vectors does not match, R can still return an output.
+
+It's important to check the warning messages when there is any!!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{7}\NormalTok{)}
+
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{) }\CommentTok{\# careful!!! does not report error}
+\NormalTok{x }\SpecialCharTok{+}\NormalTok{ y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in x + y: longer object length is not a multiple of shorter object length
+\end{verbatim}
+
+\begin{verbatim}
+## [1]  2  6 12  8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{14}\NormalTok{)}
+\NormalTok{x }\SpecialCharTok{+}\NormalTok{ z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11 15 21 21
+\end{verbatim}
+
+\hypertarget{matrices-creating-matrices}{%
+\section{Matrices: creating matrices}\label{matrices-creating-matrices}}
+
+\hypertarget{creating-matrices-matrix}{%
+\subsection{Creating matrices: matrix()}\label{creating-matrices-matrix}}
+
+A matrix can be created using the command \texttt{matrix()}\\
+- the first argument is the vector to be converted into matrix\\
+- the second argument is the number of rows\\
+- the last argument is the number of cols (optional)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{9}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{9}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{9}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in matrix(1:9, nrow = 3, ncol = 2): data length [9] is not a sub-multiple or multiple of the number of columns
+## [2]
+\end{verbatim}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6
+\end{verbatim}
+
+Note: R automatically inserts elements by columns
+
+\hypertarget{creating-matrices-inserting-by-row}{%
+\subsection{Creating matrices: inserting by row}\label{creating-matrices-inserting-by-row}}
+
+However, we can ask R to insert by rows by setting the `byrow' argument.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{9}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+\end{verbatim}
+
+\hypertarget{creating-matrices-concatenation-of-matrices-cbind-and-rbind}{%
+\subsection{Creating matrices: concatenation of matrices cbind() and rbind()}\label{creating-matrices-concatenation-of-matrices-cbind-and-rbind}}
+
+We can use \texttt{cbind()} and \texttt{rbind()} to concatenate vectors and matrices into new matrices.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{4}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\CommentTok{\# column bind}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\DecValTok{7}\SpecialCharTok{:}\DecValTok{9}\NormalTok{, }\DecValTok{10}\SpecialCharTok{:}\DecValTok{12}\NormalTok{) }\CommentTok{\# row bind}
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    7    8    9
+## [2,]   10   11   12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cbind}\NormalTok{(x,x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    1    4
+## [2,]    2    5    2    5
+## [3,]    3    6    3    6
+\end{verbatim}
+
+\hypertarget{matrices-indexing-and-subsetting}{%
+\section{Matrices: indexing and subsetting}\label{matrices-indexing-and-subsetting}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{] }\CommentTok{\# the element in the 1st row, 2nd column}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\DecValTok{1}\NormalTok{,] }\CommentTok{\# all elements in the first row}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[,}\DecValTok{2}\NormalTok{] }\CommentTok{\# all elements in the second columns}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4 5 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{),]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+\end{verbatim}
+
+\hypertarget{matrices-operations}{%
+\section{Matrices: operations}\label{matrices-operations}}
+
+Let's use 3 matrices \texttt{x}, \texttt{y}, and \texttt{z}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    7    8    9
+## [2,]   10   11   12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1   16
+## [2,]    4   25
+## [3,]    9   36
+\end{verbatim}
+
+\hypertarget{matrices-operations-matrix-addition-and-multiplication}{%
+\subsection{Matrices' operations: matrix addition and multiplication}\label{matrices-operations-matrix-addition-and-multiplication}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\SpecialCharTok{+}\NormalTok{z   }\CommentTok{\# elementwise addition}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    2   20
+## [2,]    6   30
+## [3,]   12   42
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\SpecialCharTok{*}\NormalTok{z   }\CommentTok{\# elementwise multiplication}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1   64
+## [2,]    8  125
+## [3,]   27  216
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\SpecialCharTok{\%*\%}\NormalTok{y }\CommentTok{\# matrix multiplication}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]   47   52   57
+## [2,]   64   71   78
+## [3,]   81   90   99
+\end{verbatim}
+
+\hypertarget{matrices-operations-inverse-and-transpose}{%
+\subsection{Matrices' operations: inverse and transpose}\label{matrices-operations-inverse-and-transpose}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t}\NormalTok{(x) }\CommentTok{\# transpose}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t}\NormalTok{(x)}\SpecialCharTok{\%*\%}\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]   14   32
+## [2,]   32   77
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(x)}\SpecialCharTok{\%*\%}\NormalTok{x) }\CommentTok{\# inverse; must be on a square matrix}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            [,1]       [,2]
+## [1,]  1.4259259 -0.5925926
+## [2,] -0.5925926  0.2592593
+\end{verbatim}
+
+\hypertarget{arrays}{%
+\section{Arrays}\label{arrays}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{4}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\AttributeTok{data =}\NormalTok{ x, }\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    1    3    1
+## [2,]    2    4    2
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]    3    1    3
+## [2,]    4    2    4
+\end{verbatim}
+
+\begin{itemize}
+\item
+  Just like vectors and matrices, arrays can include only data types of the same kind.
+\item
+  A 3D array is basically a combination of matrices each laid on top of other
+\end{itemize}
+
+\hypertarget{lists}{%
+\section{Lists}\label{lists}}
+
+A list is an R object that can contain anything.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{2}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{)}
+\NormalTok{L }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{( }\AttributeTok{numbers =}\NormalTok{ x, }\AttributeTok{letters =}\NormalTok{ y)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{lists-indexing-and-subsetting}{%
+\section{Lists: indexing and subsetting}\label{lists-indexing-and-subsetting}}
+
+There are many ways to extract a certain element from a list.\\
+- by index\\
+- by the name of the element\\
+- by dollar sign \texttt{\$}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{L[[}\DecValTok{1}\NormalTok{]] }\CommentTok{\# extract the first element}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{L[[}\StringTok{\textquotesingle{}numbers\textquotesingle{}}\NormalTok{]] }\CommentTok{\# based on element name}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{L}\SpecialCharTok{$}\NormalTok{numbers }\CommentTok{\# extract the element called numbers}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2
+\end{verbatim}
+
+After extracting the element, we can work on the element further:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{L}\SpecialCharTok{$}\NormalTok{numbers[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{] }\SpecialCharTok{\textgreater{}} \DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE    NA
+\end{verbatim}
+
+\hypertarget{data-frames-creating-dataframe}{%
+\section{Data Frames: creating dataframe}\label{data-frames-creating-dataframe}}
+
+\hypertarget{data-frames-create-dataframe-using-data.frame}{%
+\subsection{Data Frames: create dataframe using data.frame()}\label{data-frames-create-dataframe-using-data.frame}}
+
+Data Frame is the R object that we will deal with most of the time in the MSc program. You can think of \texttt{data.frame} as a spreadsheet in excel.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}}  \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{id =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{,}
+  \AttributeTok{name =} \FunctionTok{c}\NormalTok{(}\StringTok{"David"}\NormalTok{, }\StringTok{"Yongdong"}\NormalTok{, }\StringTok{"Anil"}\NormalTok{, }\StringTok{"Wei"}\NormalTok{),}
+  \AttributeTok{wage =} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n=}\DecValTok{4}\NormalTok{, }\AttributeTok{mean =} \DecValTok{10}\SpecialCharTok{\^{}}\DecValTok{5}\NormalTok{, }\AttributeTok{sd =} \DecValTok{10}\SpecialCharTok{\^{}}\DecValTok{3}\NormalTok{), }
+  \AttributeTok{male =} \FunctionTok{c}\NormalTok{(T, T, T, T)}
+\NormalTok{  )}
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   id     name      wage male
+## 1  1    David  98478.91 TRUE
+## 2  2 Yongdong  98396.14 TRUE
+## 3  3     Anil 101618.90 TRUE
+## 4  4      Wei  98396.62 TRUE
+\end{verbatim}
+
+\hypertarget{data-frames-create-dataframe-using-read.csv}{%
+\subsection{Data Frames: create dataframe using read.csv()}\label{data-frames-create-dataframe-using-read.csv}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#read.csv(\textquotesingle{}data.csv\textquotesingle{})}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{use-rs-own-dataset}{%
+\subsection{Use R's own dataset}\label{use-rs-own-dataset}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(}\StringTok{"mtcars"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-frames-property}{%
+\section{Data Frames: property}\label{data-frames-property}}
+
+Each row stands for an observation; each column stands for a variable.
+
+Each column should have a \textbf{unique} name.
+
+Each column must contain the same data type, but the different columns can store different data types.\\
+- dataframe is a special type of matrix, but allows different types across columns.
+
+Each column must be of same length, because rows have the same length across variables.
+
+You can verify the size of the \texttt{data.frame} using the command \texttt{dim()}; or \texttt{nrow()} and \texttt{ncol()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{nrow}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ncol}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+You can get the \texttt{data\ type} info using the command \texttt{str()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "data.frame"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    4 obs. of  4 variables:
+##  $ id  : int  1 2 3 4
+##  $ name: chr  "David" "Yongdong" "Anil" "Wei"
+##  $ wage: num  98479 98396 101619 98397
+##  $ male: logi  TRUE TRUE TRUE TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{lapply}\NormalTok{(df, class)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $id
+## [1] "integer"
+## 
+## $name
+## [1] "character"
+## 
+## $wage
+## [1] "numeric"
+## 
+## $male
+## [1] "logical"
+\end{verbatim}
+
+\hypertarget{data-frames-inspection}{%
+\section{Data Frames: inspection}\label{data-frames-inspection}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(df, }\AttributeTok{n=}\DecValTok{3}\NormalTok{) }\CommentTok{\# first n observations}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   id     name      wage male
+## 1  1    David  98478.91 TRUE
+## 2  2 Yongdong  98396.14 TRUE
+## 3  3     Anil 101618.90 TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tail}\NormalTok{(df, }\AttributeTok{n=}\DecValTok{3}\NormalTok{) }\CommentTok{\# last n observations}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   id     name      wage male
+## 2  2 Yongdong  98396.14 TRUE
+## 3  3     Anil 101618.90 TRUE
+## 4  4      Wei  98396.62 TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "id"   "name" "wage" "male"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        id           name                wage          male        
+##  Min.   :1.00   Length:4           Min.   : 98396   Mode:logical  
+##  1st Qu.:1.75   Class :character   1st Qu.: 98396   TRUE:4        
+##  Median :2.50   Mode  :character   Median : 98438                 
+##  Mean   :2.50                      Mean   : 99223                 
+##  3rd Qu.:3.25                      3rd Qu.: 99264                 
+##  Max.   :4.00                      Max.   :101619
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    4 obs. of  4 variables:
+##  $ id  : int  1 2 3 4
+##  $ name: chr  "David" "Yongdong" "Anil" "Wei"
+##  $ wage: num  98479 98396 101619 98397
+##  $ male: logi  TRUE TRUE TRUE TRUE
+\end{verbatim}
+
+\hypertarget{data-frames-subsetting}{%
+\section{Data Frames: subsetting}\label{data-frames-subsetting}}
+
+Since a dataframe is essentially a matrix, all the subsetting syntax with matrices can be applied here.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{name }\CommentTok{\# subset a column}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "David"    "Yongdong" "Anil"     "Wei"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[,}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)] }\CommentTok{\# can also subset like a matrix}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       name      wage
+## 1    David  98478.91
+## 2 Yongdong  98396.14
+## 3     Anil 101618.90
+## 4      Wei  98396.62
+\end{verbatim}
+
+We are interesting in the cylinders and the weights of inefficient cars (lower than 15 miles per gallon).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{poll\_cars }\OtherTok{\textless{}{-}}\NormalTok{ mtcars[mtcars}\SpecialCharTok{$}\NormalTok{mpg}\SpecialCharTok{\textless{}}\DecValTok{15}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\StringTok{"cyl"}\NormalTok{, }\StringTok{"wt"}\NormalTok{)] }\CommentTok{\# remember to assign the generated dataframe to a new name}
+\NormalTok{poll\_cars}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                     cyl    wt
+## Duster 360            8 3.570
+## Cadillac Fleetwood    8 5.250
+## Lincoln Continental   8 5.424
+## Chrysler Imperial     8 5.345
+## Camaro Z28            8 3.840
+\end{verbatim}
+
+\hypertarget{programming-basics}{%
+\chapter{Programming Basics}\label{programming-basics}}
+
+\hypertarget{variables}{%
+\section{Variables}\label{variables}}
+
+In programming, a variable denotes an object, i.e., a variable is a name that refers to an object in the memory. Variables in R programming can be used to store any R object discussed previously, including numbers, characters, matrices, and data frames.
+
+R is a *\textbf{dynamically programmed language}, which means that unlike other programming languages (such as C++, which is a pain to debug), we do not have to declare the data type of a variable before we can use it in our program.
+
+For a variable to be valid, it should follow these rules
+
+\begin{itemize}
+\tightlist
+\item
+  It should contain letters, numbers, and only dot or underscore characters.
+\item
+  It should not start with a number (eg:- 2iota)
+\item
+  It should not start with a dot followed by a number (eg:- .2iota)
+\item
+  It should not start with an underscore (eg:- \_iota)
+\item
+  It should not be a reserved keyword.
+\end{itemize}
+
+\hypertarget{ifelse}{%
+\section{if/else}\label{ifelse}}
+
+Sometimes, you want to run your code based on different conditions. For instance, if the observation is a missing value, then use the population average to impute the missing value. This is where \texttt{if/else} kicks in.
+
+\begin{verbatim}
+if (condition == TRUE) {
+  action 1
+} else if (condition == TRUE ){
+  action 2
+} else {
+  action 3
+}
+\end{verbatim}
+
+Example 1:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \DecValTok{15}
+
+\ControlFlowTok{if}\NormalTok{ (a }\SpecialCharTok{\textgreater{}} \DecValTok{10}\NormalTok{) \{}
+\NormalTok{larger\_than\_10 }\OtherTok{\textless{}{-}} \ConstantTok{TRUE}  
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{  larger\_than\_10 }\OtherTok{\textless{}{-}} \ConstantTok{FALSE}
+\NormalTok{\}}
+
+\NormalTok{larger\_than\_10  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+Example 2:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{5}
+\ControlFlowTok{if}\NormalTok{(x }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{)\{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"x is a non{-}negative number"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"x is a negative number"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "x is a negative number"
+\end{verbatim}
+
+\hypertarget{loops}{%
+\section{Loops}\label{loops}}
+
+As the name suggests, in a loop the program repeats a set of instructions many times, until the stopping criteria is met.
+
+Loop is very useful for repetitive jobs.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)\{ }\CommentTok{\# i is the iterator}
+  \CommentTok{\# loop body: gets executed each time}
+  \CommentTok{\# the value of i changes with each iteration}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{nested-loops}{%
+\section{Nested loops}\label{nested-loops}}
+
+We can also nest loops into other loops.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{4}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\CommentTok{\# column bind}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\DecValTok{7}\SpecialCharTok{:}\DecValTok{9}\NormalTok{, }\DecValTok{10}\SpecialCharTok{:}\DecValTok{12}\NormalTok{) }\CommentTok{\# row bind}
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    7   10
+## [2,]    8   11
+## [3,]    9   12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z }\OtherTok{\textless{}{-}}\NormalTok{ x}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(x)) \{}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(x))\{}
+\NormalTok{    z[i,j] }\OtherTok{\textless{}{-}}\NormalTok{ x[i,j] }\SpecialCharTok{+}\NormalTok{ y[i,j]}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    8   14
+## [2,]   10   16
+## [3,]   12   18
+\end{verbatim}
+
+\hypertarget{functions}{%
+\section{Functions}\label{functions}}
+
+A function takes the argument as input, run some specified actions, and then return the result to us.
+
+Functions are very useful. When we would like to test different ideas, we can combine functions with loops: We can write a function which takes different parameters as input, and we can use a loop to go through all the possible combinations of parameters.
+
+\hypertarget{user-defined-function-syntax}{%
+\subsection{User-defined function syntax}\label{user-defined-function-syntax}}
+
+Here is how to define a function in general:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{function\_name }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(arg1 ,}\AttributeTok{arg2 =}\NormalTok{ default\_value)\{}
+  \CommentTok{\# write the actions to be done with arg1 and arg2}
+  \CommentTok{\# you can have any number of arguments, with or without defaults}
+  \FunctionTok{return}\NormalTok{() }\CommentTok{\# the last line is to return some value }
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{magic }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{( x, y)\{}
+  \FunctionTok{return}\NormalTok{(x}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+}\NormalTok{ y)}
+\NormalTok{\}}
+
+\FunctionTok{magic}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\hypertarget{a-comprehensive-example}{%
+\section{A comprehensive example}\label{a-comprehensive-example}}
+
+Task: write a function, which takes a vector as input, and returns the max value of the vector
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{get\_max }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input)\{}
+\NormalTok{  max\_value }\OtherTok{\textless{}{-}}\NormalTok{ input[}\DecValTok{1}\NormalTok{]}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(input) ) \{}
+    \ControlFlowTok{if}\NormalTok{ (input[i] }\SpecialCharTok{\textgreater{}}\NormalTok{ max\_value) \{}
+\NormalTok{      max }\OtherTok{\textless{}{-}}\NormalTok{ input[i]}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  
+  \FunctionTok{return}\NormalTok{(max)}
+\NormalTok{\}}
+
+\FunctionTok{get\_max}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+Exercise:
+
+Write your own version of \texttt{which.max()} function
+
+\hypertarget{introduction-to-r-markdown}{%
+\chapter{Introduction to R Markdown}\label{introduction-to-r-markdown}}
+
+\hypertarget{tutorial-objective}{%
+\section{Tutorial Objective}\label{tutorial-objective}}
+
+\begin{itemize}
+\item
+  Learn and understand the Markdown basic syntax
+\item
+  Learn how to use R Markdown package to run R codes and generate reports
+\end{itemize}
+
+\hypertarget{markdown}{%
+\section{Markdown}\label{markdown}}
+
+\hypertarget{conventional-typesetting}{%
+\subsection{Conventional Typesetting}\label{conventional-typesetting}}
+
+As business analysts, we often need to communicate our thoughts (text, math, codes, and findings) to colleagues, clients, or future selves.
+
+Problems with conventional \href{https://en.wikipedia.org/wiki/WYSIWYG}{WYSIWYG} tools such as Microsoft Word:
+
+\begin{itemize}
+\tightlist
+\item
+  too much focus on formatting
+\item
+  difficult to format as the complexity of content increases
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.75\linewidth]{images/class3_WordMovingPicture} \end{center}
+
+\hypertarget{the-hardcore-solution-latex}{%
+\subsection{The Hardcore Solution: Latex}\label{the-hardcore-solution-latex}}
+
+\begin{quote}
+{[}\ldots{]} it is better to leave document design to document designers, and to let authors get on with writing documents
+\end{quote}
+
+\hfill - LaTeX Official Website
+
+\begin{center}\includegraphics[width=0.5\linewidth]{images/class3_WordVersusLatex} \end{center}
+
+\hypertarget{problems-with-latex}{%
+\subsection{Problems with LaTex}\label{problems-with-latex}}
+
+\begin{itemize}
+\tightlist
+\item
+  Complex syntax and high learning cost
+\item
+  The content can not be read as-is
+\item
+  Inconvenient when collaborating with co-authors
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.7\linewidth]{images/class3_LatexScreenshot} \end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  Another student benefit provided by UCL: free access to \href{https://www.overleaf.com/edu/ucl}{overleaf}, a very powerful LaTex editor made for collaboration.
+\end{itemize}
+
+\hypertarget{the-compromised-solution-markdown}{%
+\subsection{The ``Compromised'' Solution: Markdown}\label{the-compromised-solution-markdown}}
+
+\hypertarget{markdown-1}{%
+\subsubsection{Markdown}\label{markdown-1}}
+
+Markdown is a lightweight \textbf{markup language} for creating formatted text using a \textbf{plain-text\footnote{Plain text file means you can edit the file with any text editor such as Notepad or TextEdit.} editor}.
+
+\begin{itemize}
+\tightlist
+\item
+  A Markdown file comes with the extension of \texttt{.md}.
+\end{itemize}
+
+\hfill\break
+
+\begin{quote}
+A Markdown-formatted document should be publishable as-is, as plain text, without looking like it's been marked up with tags or formatting instructions.
+\end{quote}
+
+\hfill - John Gruber
+
+\hypertarget{implementations-of-markdown}{%
+\subsection{Implementations of Markdown}\label{implementations-of-markdown}}
+
+\begin{itemize}
+\tightlist
+\item
+  There are multiple variants of the language
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Strict (original version)
+  \item
+    Github
+  \item
+    Reddit
+  \item
+    Stack Exchange
+  \item
+    R
+  \end{itemize}
+\item
+  Each variant has its own features that may not be compatible with others.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Analogous to the difference between British and American English
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{r-markdown}{%
+\section{R Markdown}\label{r-markdown}}
+
+\hypertarget{what-is-r-markdown}{%
+\subsection{What is R Markdown}\label{what-is-r-markdown}}
+
+R Markdown is a member of the Markdown family. You can use a single R Markdown file to both
+
+\begin{itemize}
+\tightlist
+\item
+  execute and save R code
+\item
+  generate high quality reports that can be shared with an audience
+\end{itemize}
+
+A R Markdown file is a \textbf{plain text file} that has the extension \texttt{.Rmd}.
+
+\hypertarget{internal-workflow-in-r}{%
+\subsection{Internal Workflow in R}\label{internal-workflow-in-r}}
+
+\begin{center}\includegraphics[width=1\linewidth]{images/class3_RMarkdownWorkflow} \end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  R Markdown feeds the .Rmd file to \texttt{knitr}
+\item
+  \texttt{knitr} executes all of the code chunks and creates a new markdown (.md) document which includes the code and its output.
+\item
+  The .md markdown file generated by \texttt{knitr} is then processed by \texttt{Pandoc}, which is responsible for creating the finished format (e.g., PDF, html, notebook, etc.).
+\end{enumerate}
+
+This may sound complicated, but R Markdown makes it extremely simple by encapsulating all of the above processing into a single click of ``knit'' button.
+
+\hypertarget{installation-of-r-markdown-packages}{%
+\subsection{Installation of R Markdown Packages}\label{installation-of-r-markdown-packages}}
+
+\small
+
+Use \texttt{pacman::p\_load()} to manage R packages
+
+\begin{itemize}
+\tightlist
+\item
+  put the packages names in the parenthesis, separated by commas
+\item
+  if the package is not yet installed, \texttt{pacman::p\_load} will first install it and then load it
+\item
+  if the package is already installed, \texttt{pacman::p\_load} will simply load the package
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# \textasciigrave{}knitr\textasciigrave{}: convert R code to Markdown}
+\NormalTok{pacman}\SpecialCharTok{::}\FunctionTok{p\_load}\NormalTok{(knitr)}
+
+\CommentTok{\# \textasciigrave{}rmarkdown\textasciigrave{}: convert markdown to PDF, html, etc.}
+\NormalTok{pacman}\SpecialCharTok{::}\FunctionTok{p\_load}\NormalTok{(rmarkdown)}
+
+\CommentTok{\# \textasciigrave{}bookdown\textasciigrave{}: further enhancement for better aesthetics}
+\NormalTok{pacman}\SpecialCharTok{::}\FunctionTok{p\_load}\NormalTok{(bookdown,kableExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{or-in-one-step}{%
+\subsubsection{Or in one step:}\label{or-in-one-step}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pacman}\SpecialCharTok{::}\FunctionTok{p\_load}\NormalTok{(knitr,rmarkdown,bookdown,kableExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{a-closer-look-at-the-interface}{%
+\subsection{A Closer look at the Interface}\label{a-closer-look-at-the-interface}}
+
+\begin{center}\includegraphics[width=0.85\linewidth]{images/class3_RMarkdownScreenshot} \end{center}
+
+\small
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  An YAML header surrounded by \textbf{3} endashes
+\item
+  R code chunks surrounded by \textbf{3} backquotes
+\item
+  Text with Markdown syntax
+\end{enumerate}
+
+\hypertarget{code-chunks}{%
+\subsection{Code Chunks}\label{code-chunks}}
+
+Two categories of code chunks:
+
+\begin{itemize}
+\tightlist
+\item
+  setup chunk (set up the global options)
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{images/class3_SetupChunk} \end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  R code chunk (run data analytics code)
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{images/class3_RCodeChunk} \end{center}
+
+\hypertarget{code-chunks-how-to-insert}{%
+\subsection{Code Chunks: How to Insert}\label{code-chunks-how-to-insert}}
+
+You can quickly insert chunks like these into your file with
+
+\begin{itemize}
+\tightlist
+\item
+  the keyboard shortcut Ctrl + Alt + I (OS X: Cmd + Option + I)
+\item
+  the Add Chunk icon (green +C icon) in the editor toolbar
+\end{itemize}
+
+When you knit your .Rmd file, R Markdown will run each code chunk and embed the results beneath the code chunk in your final report.
+
+\hypertarget{code-chunks-options}{%
+\subsection{Code Chunks: Options}\label{code-chunks-options}}
+
+\textbf{You can set up the options of output}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  globally in the setup code chunk
+\item
+  locally in each code chunk
+\end{enumerate}
+
+\textbf{Common options include:}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{include\ =\ FALSE}: no code, no result
+
+  \begin{itemize}
+  \tightlist
+  \item
+    R Markdown still runs the code in the chunk, and the results can be used by other chunks.
+  \end{itemize}
+\item
+  \texttt{echo\ =\ FALSE}: no code, with result
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This is a useful way to embed figures.
+  \end{itemize}
+\item
+  \texttt{message\ =\ FALSE}: no message
+\item
+  \texttt{warning\ =\ FALSE}: no warnings
+\end{itemize}
+
+\hypertarget{inline-code}{%
+\subsection{Inline Code}\label{inline-code}}
+
+Code results can be inserted inline by wrapping the code with \texttt{\textasciigrave{}r\ \textasciigrave{}}.
+
+For example, try \texttt{\textasciigrave{}r\ 1+1\textasciigrave{}}
+
+\begin{itemize}
+\tightlist
+\item
+  you will just get a single number 2
+\end{itemize}
+
+\begin{center}\includegraphics[width=1\linewidth]{images/class3_inlinecode} \end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  very useful when you want the numbers in your report to be dynamic; you can use a variable to represent that value
+\end{itemize}
+
+\hypertarget{text-with-markdown-syntax}{%
+\subsection{Text with Markdown Syntax}\label{text-with-markdown-syntax}}
+
+Now, let's look at how to write the ``Markdown'' language to format the text.
+
+\begin{cols}
+
+\begin{col}{0.45\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  Headers
+\item
+  Lists
+\item
+  Links
+\item
+  Images
+\item
+  Block quotes
+\item
+  \href{https://www.docx2latex.com/tutorials/Mathematical-equations-LaTeX.html/}{Latex equations} (\href{https://mathpix.com}{Mathpix})
+\item
+  Horizontal rules
+\end{itemize}
+
+\end{col}
+
+\begin{col}{0.1\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  Tables
+\item
+  Footnotes
+\item
+  Italicized text
+\item
+  Bold text
+\item
+  Superscripts
+\item
+  Subscripts
+\end{itemize}
+
+\end{col}
+
+\end{cols}
+
+\hfill\break
+
+Let's move on to the \textbf{R Markdown Reference Guide} to see the most used R Markdown syntax.
+
+For a systematic training, please refer to \href{https://bookdown.org/yihui/rmarkdown/}{\textbf{R Markdown: The Definitive Guide}}
+
+\hypertarget{common-r-errors-and-troubleshooting}{%
+\chapter{Common R Errors and Troubleshooting}\label{common-r-errors-and-troubleshooting}}
+
+\hypertarget{where-you-can-run-r-codes}{%
+\section{Where you can run R codes}\label{where-you-can-run-r-codes}}
+
+As discussed in the R Basics tutorial, you can run R codes in 3 places.
+
+\hypertarget{r-console}{%
+\subsection{R Console}\label{r-console}}
+
+If the code is simple and just one line, then you can type the command in R console (NOT terminal, they are different; Console is the first tab)
+
+\begin{center}\includegraphics[width=1\linewidth]{images/class5_RConsole} \end{center}
+
+\hypertarget{r-script}{%
+\subsection{R Script}\label{r-script}}
+
+\begin{itemize}
+\item
+  R Script has the extension of \texttt{.R}, and any text in this file will be treated as R codes, just like a python .py file.
+\item
+  R Script (with \texttt{.R} extension) is not a R Markdown file (with \texttt{.Rmd} extension)
+\item
+  R Script is used when there is no need to generate any report and you just need to write some codes and run some analyses. In this case, R Scripts are the best choice.
+\end{itemize}
+
+To create a new R Script, click the \texttt{insert\ new\ file} button, and select \texttt{R\ Script} option:
+
+\begin{center}\includegraphics[width=1\linewidth]{images/class5_addRScript} \end{center}
+
+And then, you can copy the codes in lecture slides and paste them into R Script file.
+Select the codes you want to run and run them by hitting the \texttt{Run} button (not the \texttt{Knit} button; \texttt{Knit} is only for generating reports from .Rmd file).
+
+\begin{center}\includegraphics[width=1\linewidth]{images/class5_RScript} \end{center}
+
+\hypertarget{r-markdown-1}{%
+\subsection{R Markdown}\label{r-markdown-1}}
+
+In a \texttt{.Rmd} file, R codes can only be run in R code chunks; otherwise, they will be treated as normal text. We have discussed how to use R Markdown file in Week 2.
+
+\hypertarget{packages-not-installed}{%
+\section{Packages not installed}\label{packages-not-installed}}
+
+If you see this banner in your RStudio in the screenshot, it means RStudio detects some packages mentioned in the R Markdown file or R script but are not yet installed on your computer. So it prompts you for installation.
+
+\begin{center}\includegraphics[width=1\linewidth]{images/class5_RErrorPackageNotInstalled} \end{center}
+
+For instance, in this case, the error message means, \texttt{knitr} and \texttt{pacman} are found in the .Rmd file, but they are not installed, so RStudio is smart enough to prompt you to install.
+
+\textbf{Solution:} Just click install button in the banner. RStudio will install the missing components.
+
+\hypertarget{r-packages-not-up-to-date}{%
+\section{R packages not up-to-date}\label{r-packages-not-up-to-date}}
+
+Since the R packages are being updated every day (just like our mobile apps, there could be bugs so that the developers have to update R packages to fix those bugs), sometimes, though we may have installed some packages, they are too old to run the functions. And you may see this prompted message:
+
+\begin{center}\includegraphics[width=1\linewidth]{images/class5_RErrorPackageNeedsUpdated} \end{center}
+
+It means, the aforementioned packages, \texttt{base64enc}, \texttt{digest}, etc. are outdated and must be updated to function.
+
+\textbf{Solution:} Click \texttt{Yes} and RStudio will update all the packages for you.
+
+\hypertarget{latex-not-found-when-kniting-the-.rmd-file.}{%
+\section{Latex not found when kniting the .Rmd file.}\label{latex-not-found-when-kniting-the-.rmd-file.}}
+
+In Class 4, I gave you the ``Preliminary Customer Analysis.Rmd''. You should be fine to run the codes in the code chunks. However, if this is your first time to knit the PDF document, you may see an error message as below:
+
+\begin{center}\includegraphics[width=1\linewidth]{images/class5_RErrorLatexNotFound} \end{center}
+
+In the future, whenever you see such error messages, the first step is to take a breath, then get a coffee from Level 50, and finally start reading the error message. The error message usually tells you everything on how to troubleshoot (that's what an error message is for!).
+
+In this screenshot, if you read along, you will find the cause of problem:
+
+\begin{quote}
+{[}\ldots{]} LaTex failed to compile,
+\end{quote}
+
+because
+
+\begin{quote}
+{[}\ldots{]} No LaTeX installation detected (LaTeX is required to create PDF output).
+\end{quote}
+
+and the \textbf{solution} is also consideratebly given in this error message:
+
+\begin{quote}
+{[}\ldots{]} You should install a LaTeX distribution for your platform: \url{https://www.latex-project.org/get/}
+\end{quote}
+
+\begin{quote}
+If you are not sure, you may install TinyTeX in R: tinytex::install\_tinytex()
+\end{quote}
+
+So this error message tells us the \textbf{solution}: run the following command in Console
+
+\texttt{tinytex::install\_tinytex()}
+
+in order to install LaTex on your laptop.
+
+If you run the command in R Console, you will see that Latex is being installed
+
+\begin{center}\includegraphics[width=1\linewidth]{images/Class5_RErrorInstallTinyTex} \end{center}
+
+After this progress bar finishes, you will be able to knit the PDF document!
+
+\hypertarget{connection-not-found}{%
+\section{Connection Not Found}\label{connection-not-found}}
+
+In Class 4, I mentioned this problem. Connection Not Found is usually caused by RStudio being unable to locate your files on your hard disk.
+
+In the .Rmd file I give to you, the purchase data and demographics data are using the file paths on my laptop. So you should change them to yours.
+
+If you don't know how to find the path names for a file on your computer, please refer to this \href{https://www.sony.com/electronics/support/articles/00015251}{link} for Windows and this \href{https://macpaw.com/how-to/get-file-path-mac}{link} for Mac.
+
+\hypertarget{other-questions}{%
+\section{Other Questions}\label{other-questions}}
+
+Please leave a screenshot of error message in the MSTeams channel named ``R QnA''.
+
+\hypertarget{lecture-notes}{%
+\chapter{Lecture Notes}\label{lecture-notes}}
+
+The lecture notes and reading materials will be released on the \textbf{course's Moodle page} (not online here due to copyright issues) a few days before each class. Please do check the Moodle page one day before the class.
+
+\end{document}

@@ -24,7 +24,7 @@
 <meta name="author" content="Wei Miao" />
 
 
-<meta name="date" content="2021-10-16" />
+<meta name="date" content="2021-12-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -213,14 +213,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3.5" data-path="r-tutorials.html"><a href="r-tutorials.html#functions"><i class="fa fa-check"></i><b>3.3.5</b> Functions</a></li>
 <li class="chapter" data-level="3.3.6" data-path="r-tutorials.html"><a href="r-tutorials.html#a-comprehensive-example"><i class="fa fa-check"></i><b>3.3.6</b> A comprehensive example</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="r-tutorials.html"><a href="r-tutorials.html#common-r-errors-and-troubleshooting"><i class="fa fa-check"></i><b>3.4</b> Common R Errors and Troubleshooting</a>
+<li class="chapter" data-level="3.4" data-path="r-tutorials.html"><a href="r-tutorials.html#introduction-to-r-markdown"><i class="fa fa-check"></i><b>3.4</b> Introduction to R Markdown</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="r-tutorials.html"><a href="r-tutorials.html#where-you-can-run-r-codes"><i class="fa fa-check"></i><b>3.4.1</b> Where you can run R codes</a></li>
-<li class="chapter" data-level="3.4.2" data-path="r-tutorials.html"><a href="r-tutorials.html#packages-not-installed"><i class="fa fa-check"></i><b>3.4.2</b> Packages not installed</a></li>
-<li class="chapter" data-level="3.4.3" data-path="r-tutorials.html"><a href="r-tutorials.html#r-packages-not-up-to-date"><i class="fa fa-check"></i><b>3.4.3</b> R packages not up-to-date</a></li>
-<li class="chapter" data-level="3.4.4" data-path="r-tutorials.html"><a href="r-tutorials.html#latex-not-found-when-kniting-the-.rmd-file."><i class="fa fa-check"></i><b>3.4.4</b> Latex not found when kniting the .Rmd file.</a></li>
-<li class="chapter" data-level="3.4.5" data-path="r-tutorials.html"><a href="r-tutorials.html#connection-not-found"><i class="fa fa-check"></i><b>3.4.5</b> Connection Not Found</a></li>
-<li class="chapter" data-level="3.4.6" data-path="r-tutorials.html"><a href="r-tutorials.html#other-questions"><i class="fa fa-check"></i><b>3.4.6</b> Other Questions</a></li>
+<li class="chapter" data-level="3.4.1" data-path="r-tutorials.html"><a href="r-tutorials.html#tutorial-objective"><i class="fa fa-check"></i><b>3.4.1</b> Tutorial Objective</a></li>
+<li class="chapter" data-level="3.4.2" data-path="r-tutorials.html"><a href="r-tutorials.html#markdown"><i class="fa fa-check"></i><b>3.4.2</b> Markdown</a></li>
+<li class="chapter" data-level="3.4.3" data-path="r-tutorials.html"><a href="r-tutorials.html#r-markdown"><i class="fa fa-check"></i><b>3.4.3</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="r-tutorials.html"><a href="r-tutorials.html#common-r-errors-and-troubleshooting"><i class="fa fa-check"></i><b>3.5</b> Common R Errors and Troubleshooting</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="r-tutorials.html"><a href="r-tutorials.html#where-you-can-run-r-codes"><i class="fa fa-check"></i><b>3.5.1</b> Where you can run R codes</a></li>
+<li class="chapter" data-level="3.5.2" data-path="r-tutorials.html"><a href="r-tutorials.html#packages-not-installed"><i class="fa fa-check"></i><b>3.5.2</b> Packages not installed</a></li>
+<li class="chapter" data-level="3.5.3" data-path="r-tutorials.html"><a href="r-tutorials.html#r-packages-not-up-to-date"><i class="fa fa-check"></i><b>3.5.3</b> R packages not up-to-date</a></li>
+<li class="chapter" data-level="3.5.4" data-path="r-tutorials.html"><a href="r-tutorials.html#latex-not-found-when-kniting-the-.rmd-file."><i class="fa fa-check"></i><b>3.5.4</b> Latex not found when kniting the .Rmd file.</a></li>
+<li class="chapter" data-level="3.5.5" data-path="r-tutorials.html"><a href="r-tutorials.html#connection-not-found"><i class="fa fa-check"></i><b>3.5.5</b> Connection Not Found</a></li>
+<li class="chapter" data-level="3.5.6" data-path="r-tutorials.html"><a href="r-tutorials.html#other-questions"><i class="fa fa-check"></i><b>3.5.6</b> Other Questions</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="lecture-notes.html"><a href="lecture-notes.html"><i class="fa fa-check"></i><b>4</b> Lecture Notes</a></li>
@@ -619,8 +625,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [2,]    2    5    8
 ## [3,]    3    6    9</code></pre>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="r-tutorials.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## Warning in matrix(1:9, nrow = 3, ncol = 2): data length [9] is not a sub-multiple or multiple of the
-## number of columns [2]</code></pre>
+<pre><code>## Warning in matrix(1:9, nrow = 3, ncol = 2): data length [9] is not a sub-multiple or multiple of the number
+## of columns [2]</code></pre>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    4
 ## [2,]    2    5
@@ -782,11 +788,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb171-4"><a href="r-tutorials.html#cb171-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">male =</span> <span class="fu">c</span>(T, T, T, T)</span>
 <span id="cb171-5"><a href="r-tutorials.html#cb171-5" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb171-6"><a href="r-tutorials.html#cb171-6" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
-<pre><code>##   id     name      wage male
-## 1  1    David 100836.90 TRUE
-## 2  2 Yongdong 101038.79 TRUE
-## 3  3     Anil  99477.39 TRUE
-## 4  4      Wei 100869.11 TRUE</code></pre>
+<pre><code>##   id     name     wage male
+## 1  1    David 100623.5 TRUE
+## 2  2 Yongdong 100256.8 TRUE
+## 3  3     Anil 101787.5 TRUE
+## 4  4      Wei 100522.4 TRUE</code></pre>
 </div>
 <div id="data-frames-create-dataframe-using-read.csv" class="section level4" number="3.2.18.2">
 <h4><span class="header-section-number">3.2.18.2</span> Data Frames: create dataframe using read.csv()</h4>
@@ -818,7 +824,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## &#39;data.frame&#39;:    4 obs. of  4 variables:
 ##  $ id  : int  1 2 3 4
 ##  $ name: chr  &quot;David&quot; &quot;Yongdong&quot; &quot;Anil&quot; &quot;Wei&quot;
-##  $ wage: num  100837 101039 99477 100869
+##  $ wage: num  100624 100257 101788 100522
 ##  $ male: logi  TRUE TRUE TRUE TRUE</code></pre>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="r-tutorials.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(df, class)</span></code></pre></div>
 <pre><code>## $id
@@ -836,30 +842,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-frames-inspection" class="section level3" number="3.2.20">
 <h3><span class="header-section-number">3.2.20</span> Data Frames: inspection</h3>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="r-tutorials.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df, <span class="at">n=</span><span class="dv">3</span>) <span class="co"># first n observations</span></span></code></pre></div>
-<pre><code>##   id     name      wage male
-## 1  1    David 100836.90 TRUE
-## 2  2 Yongdong 101038.79 TRUE
-## 3  3     Anil  99477.39 TRUE</code></pre>
+<pre><code>##   id     name     wage male
+## 1  1    David 100623.5 TRUE
+## 2  2 Yongdong 100256.8 TRUE
+## 3  3     Anil 101787.5 TRUE</code></pre>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="r-tutorials.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df, <span class="at">n=</span><span class="dv">3</span>) <span class="co"># last n observations</span></span></code></pre></div>
-<pre><code>##   id     name      wage male
-## 2  2 Yongdong 101038.79 TRUE
-## 3  3     Anil  99477.39 TRUE
-## 4  4      Wei 100869.11 TRUE</code></pre>
+<pre><code>##   id     name     wage male
+## 2  2 Yongdong 100256.8 TRUE
+## 3  3     Anil 101787.5 TRUE
+## 4  4      Wei 100522.4 TRUE</code></pre>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="r-tutorials.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;   &quot;name&quot; &quot;wage&quot; &quot;male&quot;</code></pre>
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="r-tutorials.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
 <pre><code>##        id           name                wage          male        
-##  Min.   :1.00   Length:4           Min.   : 99477   Mode:logical  
-##  1st Qu.:1.75   Class :character   1st Qu.:100497   TRUE:4        
-##  Median :2.50   Mode  :character   Median :100853                 
-##  Mean   :2.50                      Mean   :100556                 
-##  3rd Qu.:3.25                      3rd Qu.:100912                 
-##  Max.   :4.00                      Max.   :101039</code></pre>
+##  Min.   :1.00   Length:4           Min.   :100257   Mode:logical  
+##  1st Qu.:1.75   Class :character   1st Qu.:100456   TRUE:4        
+##  Median :2.50   Mode  :character   Median :100573                 
+##  Mean   :2.50                      Mean   :100798                 
+##  3rd Qu.:3.25                      3rd Qu.:100915                 
+##  Max.   :4.00                      Max.   :101788</code></pre>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="r-tutorials.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    4 obs. of  4 variables:
 ##  $ id  : int  1 2 3 4
 ##  $ name: chr  &quot;David&quot; &quot;Yongdong&quot; &quot;Anil&quot; &quot;Wei&quot;
-##  $ wage: num  100837 101039 99477 100869
+##  $ wage: num  100624 100257 101788 100522
 ##  $ male: logi  TRUE TRUE TRUE TRUE</code></pre>
 </div>
 <div id="data-frames-subsetting" class="section level3" number="3.2.21">
@@ -868,11 +874,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="r-tutorials.html#cb197-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>name <span class="co"># subset a column</span></span></code></pre></div>
 <pre><code>## [1] &quot;David&quot;    &quot;Yongdong&quot; &quot;Anil&quot;     &quot;Wei&quot;</code></pre>
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="r-tutorials.html#cb199-1" aria-hidden="true" tabindex="-1"></a>df[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)] <span class="co"># can also subset like a matrix</span></span></code></pre></div>
-<pre><code>##       name      wage
-## 1    David 100836.90
-## 2 Yongdong 101038.79
-## 3     Anil  99477.39
-## 4      Wei 100869.11</code></pre>
+<pre><code>##       name     wage
+## 1    David 100623.5
+## 2 Yongdong 100256.8
+## 3     Anil 101787.5
+## 4      Wei 100522.4</code></pre>
 <p>We are interesting in the cylinders and the weights of inefficient cars (lower than 15 miles per gallon).</p>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="r-tutorials.html#cb201-1" aria-hidden="true" tabindex="-1"></a>poll_cars <span class="ot">&lt;-</span> mtcars[mtcars<span class="sc">$</span>mpg<span class="sc">&lt;</span><span class="dv">15</span>, <span class="fu">c</span>(<span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;wt&quot;</span>)] <span class="co"># remember to assign the generated dataframe to a new name</span></span>
 <span id="cb201-2"><a href="r-tutorials.html#cb201-2" aria-hidden="true" tabindex="-1"></a>poll_cars</span></code></pre></div>
@@ -1009,18 +1015,243 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </div>
-<div id="common-r-errors-and-troubleshooting" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Common R Errors and Troubleshooting</h2>
-<div id="where-you-can-run-r-codes" class="section level3" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Where you can run R codes</h3>
+<div id="introduction-to-r-markdown" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Introduction to R Markdown</h2>
+<div id="tutorial-objective" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Tutorial Objective</h3>
+<ul>
+<li><p>Learn and understand the Markdown basic syntax</p></li>
+<li><p>Learn how to use R Markdown package to run R codes and generate reports</p></li>
+</ul>
+</div>
+<div id="markdown" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Markdown</h3>
+<div id="conventional-typesetting" class="section level4" number="3.4.2.1">
+<h4><span class="header-section-number">3.4.2.1</span> Conventional Typesetting</h4>
+<p>As business analysts, we often need to communicate our thoughts (text, math, codes, and findings) to colleagues, clients, or future selves.</p>
+<p>Problems with conventional <a href="https://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG</a> tools such as Microsoft Word:</p>
+<ul>
+<li>too much focus on formatting</li>
+<li>difficult to format as the complexity of content increases</li>
+</ul>
+<p><img src="images/class3_WordMovingPicture.jpg" width="75%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="the-hardcore-solution-latex" class="section level4" number="3.4.2.2">
+<h4><span class="header-section-number">3.4.2.2</span> The Hardcore Solution: Latex</h4>
+<blockquote>
+<p>[…] it is better to leave document design to document designers, and to let authors get on with writing documents</p>
+</blockquote>
+<footer>
+<ul>
+<li>LaTeX Official Website
+</footer></li>
+</ul>
+<p><img src="images/class3_WordVersusLatex.png" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="problems-with-latex" class="section level4" number="3.4.2.3">
+<h4><span class="header-section-number">3.4.2.3</span> Problems with LaTex</h4>
+<ul>
+<li>Complex syntax and high learning cost</li>
+<li>The content can not be read as-is</li>
+<li>Inconvenient when collaborating with co-authors</li>
+</ul>
+<p><img src="images/class3_LatexScreenshot.png" width="70%" style="display: block; margin: auto;" /></p>
+<ul>
+<li>Another student benefit provided by UCL: free access to <a href="https://www.overleaf.com/edu/ucl">overleaf</a>, a very powerful LaTex editor made for collaboration.</li>
+</ul>
+</div>
+<div id="the-compromised-solution-markdown" class="section level4" number="3.4.2.4">
+<h4><span class="header-section-number">3.4.2.4</span> The “Compromised” Solution: Markdown</h4>
+<div id="markdown-1" class="section level5 block" number="3.4.2.4.1">
+<h5><span class="header-section-number">3.4.2.4.1</span> Markdown</h5>
+<p>Markdown is a lightweight <strong>markup language</strong> for creating formatted text using a <strong>plain-text<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> editor</strong>.</p>
+<ul>
+<li>A Markdown file comes with the extension of <code>.md</code>.</li>
+</ul>
+</div>
+<p><br />
+</p>
+<blockquote>
+<p>A Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions.</p>
+</blockquote>
+<footer>
+<ul>
+<li>John Gruber
+</footer></li>
+</ul>
+</div>
+<div id="implementations-of-markdown" class="section level4" number="3.4.2.5">
+<h4><span class="header-section-number">3.4.2.5</span> Implementations of Markdown</h4>
+<ul>
+<li>There are multiple variants of the language
+<ul>
+<li>Strict (original version)</li>
+<li>Github</li>
+<li>Reddit</li>
+<li>Stack Exchange</li>
+<li>R</li>
+</ul></li>
+<li>Each variant has its own features that may not be compatible with others.
+<ul>
+<li>Analogous to the difference between British and American English</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="r-markdown" class="section level3" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> R Markdown</h3>
+<div id="what-is-r-markdown" class="section level4" number="3.4.3.1">
+<h4><span class="header-section-number">3.4.3.1</span> What is R Markdown</h4>
+<p>R Markdown is a member of the Markdown family. You can use a single R Markdown file to both</p>
+<ul>
+<li>execute and save R code</li>
+<li>generate high quality reports that can be shared with an audience</li>
+</ul>
+<p>A R Markdown file is a <strong>plain text file</strong> that has the extension <code>.Rmd</code>.</p>
+</div>
+<div id="internal-workflow-in-r" class="section level4" number="3.4.3.2">
+<h4><span class="header-section-number">3.4.3.2</span> Internal Workflow in R</h4>
+<p><img src="images/class3_RMarkdownWorkflow.png" width="100%" style="display: block; margin: auto;" /></p>
+<ol style="list-style-type: decimal">
+<li>R Markdown feeds the .Rmd file to <code>knitr</code></li>
+<li><code>knitr</code> executes all of the code chunks and creates a new markdown (.md) document which includes the code and its output.</li>
+<li>The .md markdown file generated by <code>knitr</code> is then processed by <code>Pandoc</code>, which is responsible for creating the finished format (e.g., PDF, html, notebook, etc.).</li>
+</ol>
+<p>This may sound complicated, but R Markdown makes it extremely simple by encapsulating all of the above processing into a single click of “knit” button.</p>
+</div>
+<div id="installation-of-r-markdown-packages" class="section level4" number="3.4.3.3">
+<h4><span class="header-section-number">3.4.3.3</span> Installation of R Markdown Packages</h4>
+<p>Use <code>pacman::p_load()</code> to manage R packages</p>
+<ul>
+<li>put the packages names in the parenthesis, separated by commas</li>
+<li>if the package is not yet installed, <code>pacman::p_load</code> will first install it and then load it</li>
+<li>if the package is already installed, <code>pacman::p_load</code> will simply load the package</li>
+</ul>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="r-tutorials.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="co"># `knitr`: convert R code to Markdown</span></span>
+<span id="cb220-2"><a href="r-tutorials.html#cb220-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(knitr)</span>
+<span id="cb220-3"><a href="r-tutorials.html#cb220-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-4"><a href="r-tutorials.html#cb220-4" aria-hidden="true" tabindex="-1"></a><span class="co"># `rmarkdown`: convert markdown to PDF, html, etc.</span></span>
+<span id="cb220-5"><a href="r-tutorials.html#cb220-5" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rmarkdown)</span>
+<span id="cb220-6"><a href="r-tutorials.html#cb220-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-7"><a href="r-tutorials.html#cb220-7" aria-hidden="true" tabindex="-1"></a><span class="co"># `bookdown`: further enhancement for better aesthetics</span></span>
+<span id="cb220-8"><a href="r-tutorials.html#cb220-8" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(bookdown,kableExtra)</span></code></pre></div>
+<div id="or-in-one-step" class="section level5" number="3.4.3.3.1">
+<h5><span class="header-section-number">3.4.3.3.1</span> Or in one step:</h5>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="r-tutorials.html#cb221-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(knitr,rmarkdown,bookdown,kableExtra)</span></code></pre></div>
+</div>
+</div>
+<div id="a-closer-look-at-the-interface" class="section level4" number="3.4.3.4">
+<h4><span class="header-section-number">3.4.3.4</span> A Closer look at the Interface</h4>
+<p><img src="images/class3_RMarkdownScreenshot.png" width="85%" style="display: block; margin: auto;" /></p>
+<ol style="list-style-type: decimal">
+<li>An YAML header surrounded by <strong>3</strong> endashes</li>
+<li>R code chunks surrounded by <strong>3</strong> backquotes</li>
+<li>Text with Markdown syntax</li>
+</ol>
+</div>
+<div id="code-chunks" class="section level4" number="3.4.3.5">
+<h4><span class="header-section-number">3.4.3.5</span> Code Chunks</h4>
+<p>Two categories of code chunks:</p>
+<ul>
+<li>setup chunk (set up the global options)</li>
+</ul>
+<p><img src="images/class3_SetupChunk.png" width="80%" style="display: block; margin: auto;" /></p>
+<ul>
+<li>R code chunk (run data analytics code)
+<img src="images/class3_RCodeChunk.png" width="80%" style="display: block; margin: auto;" /></li>
+</ul>
+</div>
+<div id="code-chunks-how-to-insert" class="section level4" number="3.4.3.6">
+<h4><span class="header-section-number">3.4.3.6</span> Code Chunks: How to Insert</h4>
+<p>You can quickly insert chunks like these into your file with</p>
+<ul>
+<li>the keyboard shortcut Ctrl + Alt + I (OS X: Cmd + Option + I)</li>
+<li>the Add Chunk icon (green +C icon) in the editor toolbar</li>
+</ul>
+<p>When you knit your .Rmd file, R Markdown will run each code chunk and embed the results beneath the code chunk in your final report.</p>
+</div>
+<div id="code-chunks-options" class="section level4" number="3.4.3.7">
+<h4><span class="header-section-number">3.4.3.7</span> Code Chunks: Options</h4>
+<p><strong>You can set up the options of output</strong></p>
+<ol style="list-style-type: decimal">
+<li>globally in the setup code chunk</li>
+<li>locally in each code chunk</li>
+</ol>
+<p><strong>Common options include:</strong></p>
+<ul>
+<li><code>include = FALSE</code>: no code, no result
+<ul>
+<li>R Markdown still runs the code in the chunk, and the results can be used by other chunks.</li>
+</ul></li>
+<li><code>echo = FALSE</code>: no code, with result
+<ul>
+<li>This is a useful way to embed figures.</li>
+</ul></li>
+<li><code>message = FALSE</code>: no message</li>
+<li><code>warning = FALSE</code>: no warnings</li>
+</ul>
+</div>
+<div id="inline-code" class="section level4" number="3.4.3.8">
+<h4><span class="header-section-number">3.4.3.8</span> Inline Code</h4>
+<p>Code results can be inserted inline by wrapping the code with <code>`r `</code>.</p>
+<p>For example, try <code>`r 1+1`</code></p>
+<ul>
+<li>you will just get a single number 2</li>
+</ul>
+<p><img src="images/class3_inlinecode.png" width="100%" style="display: block; margin: auto;" /></p>
+<ul>
+<li>very useful when you want the numbers in your report to be dynamic; you can use a variable to represent that value</li>
+</ul>
+</div>
+<div id="text-with-markdown-syntax" class="section level4" number="3.4.3.9">
+<h4><span class="header-section-number">3.4.3.9</span> Text with Markdown Syntax</h4>
+<p>Now, let’s look at how to write the “Markdown” language to format the text.</p>
+<div class="cols">
+<div class="col">
+<ul>
+<li>Headers</li>
+<li>Lists</li>
+<li>Links</li>
+<li>Images</li>
+<li>Block quotes</li>
+<li><a href="https://www.docx2latex.com/tutorials/Mathematical-equations-LaTeX.html/">Latex equations</a> (<a href="https://mathpix.com">Mathpix</a>)</li>
+<li>Horizontal rules</li>
+</ul>
+</div>
+<div class="col">
+<p> </p>
+</div>
+<div class="col">
+<ul>
+<li>Tables</li>
+<li>Footnotes</li>
+<li>Italicized text</li>
+<li>Bold text</li>
+<li>Superscripts</li>
+<li>Subscripts</li>
+</ul>
+</div>
+</div>
+<p><br />
+</p>
+<p>Let’s move on to the <strong>R Markdown Reference Guide</strong> to see the most used R Markdown syntax.</p>
+<p>For a systematic training, please refer to <a href="https://bookdown.org/yihui/rmarkdown/"><strong>R Markdown: The Definitive Guide</strong></a></p>
+
+</div>
+</div>
+</div>
+<div id="common-r-errors-and-troubleshooting" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Common R Errors and Troubleshooting</h2>
+<div id="where-you-can-run-r-codes" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Where you can run R codes</h3>
 <p>As discussed in the R Basics tutorial, you can run R codes in 3 places.</p>
-<div id="r-console" class="section level4" number="3.4.1.1">
-<h4><span class="header-section-number">3.4.1.1</span> R Console</h4>
+<div id="r-console" class="section level4" number="3.5.1.1">
+<h4><span class="header-section-number">3.5.1.1</span> R Console</h4>
 <p>If the code is simple and just one line, then you can type the command in R console (NOT terminal, they are different; Console is the first tab)</p>
 <p><img src="images/class5_RConsole.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="r-script" class="section level4" number="3.4.1.2">
-<h4><span class="header-section-number">3.4.1.2</span> R Script</h4>
+<div id="r-script" class="section level4" number="3.5.1.2">
+<h4><span class="header-section-number">3.5.1.2</span> R Script</h4>
 <ul>
 <li><p>R Script has the extension of <code>.R</code>, and any text in this file will be treated as R codes, just like a python .py file.</p></li>
 <li><p>R Script (with <code>.R</code> extension) is not a R Markdown file (with <code>.Rmd</code> extension)</p></li>
@@ -1032,27 +1263,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Select the codes you want to run and run them by hitting the <code>Run</code> button (not the <code>Knit</code> button; <code>Knit</code> is only for generating reports from .Rmd file).</p>
 <p><img src="images/class5_RScript.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="r-markdown" class="section level4" number="3.4.1.3">
-<h4><span class="header-section-number">3.4.1.3</span> R Markdown</h4>
+<div id="r-markdown-1" class="section level4" number="3.5.1.3">
+<h4><span class="header-section-number">3.5.1.3</span> R Markdown</h4>
 <p>In a <code>.Rmd</code> file, R codes can only be run in R code chunks; otherwise, they will be treated as normal text. We have discussed how to use R Markdown file in Week 2.</p>
 </div>
 </div>
-<div id="packages-not-installed" class="section level3" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> Packages not installed</h3>
+<div id="packages-not-installed" class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Packages not installed</h3>
 <p>If you see this banner in your RStudio in the screenshot, it means RStudio detects some packages mentioned in the R Markdown file or R script but are not yet installed on your computer. So it prompts you for installation.</p>
 <p><img src="images/class5_RErrorPackageNotInstalled.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>For instance, in this case, the error message means, <code>knitr</code> and <code>pacman</code> are found in the .Rmd file, but they are not installed, so RStudio is smart enough to prompt you to install.</p>
 <p><strong>Solution:</strong> Just click install button in the banner. RStudio will install the missing components.</p>
 </div>
-<div id="r-packages-not-up-to-date" class="section level3" number="3.4.3">
-<h3><span class="header-section-number">3.4.3</span> R packages not up-to-date</h3>
+<div id="r-packages-not-up-to-date" class="section level3" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> R packages not up-to-date</h3>
 <p>Since the R packages are being updated every day (just like our mobile apps, there could be bugs so that the developers have to update R packages to fix those bugs), sometimes, though we may have installed some packages, they are too old to run the functions. And you may see this prompted message:</p>
 <p><img src="images/class5_RErrorPackageNeedsUpdated.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>It means, the aforementioned packages, <code>base64enc</code>, <code>digest</code>, etc. are outdated and must be updated to function.</p>
 <p><strong>Solution:</strong> Click <code>Yes</code> and RStudio will update all the packages for you.</p>
 </div>
-<div id="latex-not-found-when-kniting-the-.rmd-file." class="section level3" number="3.4.4">
-<h3><span class="header-section-number">3.4.4</span> Latex not found when kniting the .Rmd file.</h3>
+<div id="latex-not-found-when-kniting-the-.rmd-file." class="section level3" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Latex not found when kniting the .Rmd file.</h3>
 <p>In Class 4, I gave you the “Preliminary Customer Analysis.Rmd”. You should be fine to run the codes in the code chunks. However, if this is your first time to knit the PDF document, you may see an error message as below:</p>
 <p><img src="images/class5_RErrorLatexNotFound.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>In the future, whenever you see such error messages, the first step is to take a breath, then get a coffee from Level 50, and finally start reading the error message. The error message usually tells you everything on how to troubleshoot (that’s what an error message is for!).</p>
@@ -1078,18 +1309,24 @@ Select the codes you want to run and run them by hitting the <code>Run</code> bu
 <p><img src="images/Class5_RErrorInstallTinyTex.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>After this progress bar finishes, you will be able to knit the PDF document!</p>
 </div>
-<div id="connection-not-found" class="section level3" number="3.4.5">
-<h3><span class="header-section-number">3.4.5</span> Connection Not Found</h3>
+<div id="connection-not-found" class="section level3" number="3.5.5">
+<h3><span class="header-section-number">3.5.5</span> Connection Not Found</h3>
 <p>In Class 4, I mentioned this problem. Connection Not Found is usually caused by RStudio being unable to locate your files on your hard disk.</p>
 <p>In the .Rmd file I give to you, the purchase data and demographics data are using the file paths on my laptop. So you should change them to yours.</p>
 <p>If you don’t know how to find the path names for a file on your computer, please refer to this <a href="https://www.sony.com/electronics/support/articles/00015251">link</a> for Windows and this <a href="https://macpaw.com/how-to/get-file-path-mac">link</a> for Mac.</p>
 </div>
-<div id="other-questions" class="section level3" number="3.4.6">
-<h3><span class="header-section-number">3.4.6</span> Other Questions</h3>
+<div id="other-questions" class="section level3" number="3.5.6">
+<h3><span class="header-section-number">3.5.6</span> Other Questions</h3>
 <p>Please leave a screenshot of error message in the MSTeams channel named “R QnA”.</p>
 
 </div>
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>Plain text file means you can edit the file with any text editor such as Notepad or TextEdit.<a href="r-tutorials.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 

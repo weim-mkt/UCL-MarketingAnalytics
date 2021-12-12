@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8 Lecture Notes | Marketing Analytics</title>
-  <meta name="description" content="8 Lecture Notes | Marketing Analytics" />
+  <title>5 Programming Basics | Marketing Analytics</title>
+  <meta name="description" content="5 Programming Basics | Marketing Analytics" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8 Lecture Notes | Marketing Analytics" />
+  <meta property="og:title" content="5 Programming Basics | Marketing Analytics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 Lecture Notes | Marketing Analytics" />
+  <meta name="twitter:title" content="5 Programming Basics | Marketing Analytics" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="common-r-errors-and-troubleshooting.html"/>
-
+<link rel="prev" href="r-basics.html"/>
+<link rel="next" href="introduction-to-r-markdown.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -293,25 +293,138 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lecture-notes" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> Lecture Notes</h1>
-<p>The lecture notes and reading materials will be released on the <strong>course’s Moodle page</strong> (not online here due to copyright issues) a few days before each class. Please do check the Moodle page one day before the class.</p>
+<div id="programming-basics" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Programming Basics</h1>
+<div id="variables" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Variables</h2>
+<p>In programming, a variable denotes an object, i.e., a variable is a name that refers to an object in the memory. Variables in R programming can be used to store any R object discussed previously, including numbers, characters, matrices, and data frames.</p>
+<p>R is a *<strong>dynamically programmed language</strong>, which means that unlike other programming languages (such as C++, which is a pain to debug), we do not have to declare the data type of a variable before we can use it in our program.</p>
+<p>For a variable to be valid, it should follow these rules</p>
+<ul>
+<li>It should contain letters, numbers, and only dot or underscore characters.</li>
+<li>It should not start with a number (eg:- 2iota)</li>
+<li>It should not start with a dot followed by a number (eg:- .2iota)</li>
+<li>It should not start with an underscore (eg:- _iota)</li>
+<li>It should not be a reserved keyword.</li>
+</ul>
+</div>
+<div id="ifelse" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> if/else</h2>
+<p>Sometimes, you want to run your code based on different conditions. For instance, if the observation is a missing value, then use the population average to impute the missing value. This is where <code>if/else</code> kicks in.</p>
+<pre><code>if (condition == TRUE) {
+  action 1
+} else if (condition == TRUE ){
+  action 2
+} else {
+  action 3
+}</code></pre>
+<p>Example 1:</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="programming-basics.html#cb204-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb204-2"><a href="programming-basics.html#cb204-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb204-3"><a href="programming-basics.html#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a <span class="sc">&gt;</span> <span class="dv">10</span>) {</span>
+<span id="cb204-4"><a href="programming-basics.html#cb204-4" aria-hidden="true" tabindex="-1"></a>larger_than_10 <span class="ot">&lt;-</span> <span class="cn">TRUE</span>  </span>
+<span id="cb204-5"><a href="programming-basics.html#cb204-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb204-6"><a href="programming-basics.html#cb204-6" aria-hidden="true" tabindex="-1"></a>  larger_than_10 <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb204-7"><a href="programming-basics.html#cb204-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb204-8"><a href="programming-basics.html#cb204-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb204-9"><a href="programming-basics.html#cb204-9" aria-hidden="true" tabindex="-1"></a>larger_than_10  </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Example 2:</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="programming-basics.html#cb206-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span></span>
+<span id="cb206-2"><a href="programming-basics.html#cb206-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb206-3"><a href="programming-basics.html#cb206-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is a non-negative number&quot;</span>)</span>
+<span id="cb206-4"><a href="programming-basics.html#cb206-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb206-5"><a href="programming-basics.html#cb206-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is a negative number&quot;</span>)</span>
+<span id="cb206-6"><a href="programming-basics.html#cb206-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;x is a negative number&quot;</code></pre>
+</div>
+<div id="loops" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Loops</h2>
+<p>As the name suggests, in a loop the program repeats a set of instructions many times, until the stopping criteria is met.</p>
+<p>Loop is very useful for repetitive jobs.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="programming-basics.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){ <span class="co"># i is the iterator</span></span>
+<span id="cb208-2"><a href="programming-basics.html#cb208-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># loop body: gets executed each time</span></span>
+<span id="cb208-3"><a href="programming-basics.html#cb208-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the value of i changes with each iteration</span></span>
+<span id="cb208-4"><a href="programming-basics.html#cb208-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="nested-loops" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Nested loops</h2>
+<p>We can also nest loops into other loops.</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="programming-basics.html#cb209-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>) <span class="co"># column bind</span></span>
+<span id="cb209-2"><a href="programming-basics.html#cb209-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6</code></pre>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="programming-basics.html#cb211-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>) <span class="co"># row bind</span></span>
+<span id="cb211-2"><a href="programming-basics.html#cb211-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    7   10
+## [2,]    8   11
+## [3,]    9   12</code></pre>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="programming-basics.html#cb213-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> x</span>
+<span id="cb213-2"><a href="programming-basics.html#cb213-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-3"><a href="programming-basics.html#cb213-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)) {</span>
+<span id="cb213-4"><a href="programming-basics.html#cb213-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(x)){</span>
+<span id="cb213-5"><a href="programming-basics.html#cb213-5" aria-hidden="true" tabindex="-1"></a>    z[i,j] <span class="ot">&lt;-</span> x[i,j] <span class="sc">+</span> y[i,j]</span>
+<span id="cb213-6"><a href="programming-basics.html#cb213-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb213-7"><a href="programming-basics.html#cb213-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb213-8"><a href="programming-basics.html#cb213-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-9"><a href="programming-basics.html#cb213-9" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    8   14
+## [2,]   10   16
+## [3,]   12   18</code></pre>
+</div>
+<div id="functions" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Functions</h2>
+<p>A function takes the argument as input, run some specified actions, and then return the result to us.</p>
+<p>Functions are very useful. When we would like to test different ideas, we can combine functions with loops: We can write a function which takes different parameters as input, and we can use a loop to go through all the possible combinations of parameters.</p>
+<div id="user-defined-function-syntax" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> User-defined function syntax</h3>
+<p>Here is how to define a function in general:</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="programming-basics.html#cb215-1" aria-hidden="true" tabindex="-1"></a>function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1 ,<span class="at">arg2 =</span> default_value){</span>
+<span id="cb215-2"><a href="programming-basics.html#cb215-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># write the actions to be done with arg1 and arg2</span></span>
+<span id="cb215-3"><a href="programming-basics.html#cb215-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># you can have any number of arguments, with or without defaults</span></span>
+<span id="cb215-4"><a href="programming-basics.html#cb215-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>() <span class="co"># the last line is to return some value </span></span>
+<span id="cb215-5"><a href="programming-basics.html#cb215-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Example:</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="programming-basics.html#cb216-1" aria-hidden="true" tabindex="-1"></a>magic <span class="ot">&lt;-</span> <span class="cf">function</span>( x, y){</span>
+<span id="cb216-2"><a href="programming-basics.html#cb216-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y)</span>
+<span id="cb216-3"><a href="programming-basics.html#cb216-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb216-4"><a href="programming-basics.html#cb216-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb216-5"><a href="programming-basics.html#cb216-5" aria-hidden="true" tabindex="-1"></a><span class="fu">magic</span>(<span class="dv">1</span>,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+</div>
+</div>
+<div id="a-comprehensive-example" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> A comprehensive example</h2>
+<p>Task: write a function, which takes a vector as input, and returns the max value of the vector</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="programming-basics.html#cb218-1" aria-hidden="true" tabindex="-1"></a>get_max <span class="ot">&lt;-</span> <span class="cf">function</span>(input){</span>
+<span id="cb218-2"><a href="programming-basics.html#cb218-2" aria-hidden="true" tabindex="-1"></a>  max_value <span class="ot">&lt;-</span> input[<span class="dv">1</span>]</span>
+<span id="cb218-3"><a href="programming-basics.html#cb218-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(input) ) {</span>
+<span id="cb218-4"><a href="programming-basics.html#cb218-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (input[i] <span class="sc">&gt;</span> max_value) {</span>
+<span id="cb218-5"><a href="programming-basics.html#cb218-5" aria-hidden="true" tabindex="-1"></a>      max <span class="ot">&lt;-</span> input[i]</span>
+<span id="cb218-6"><a href="programming-basics.html#cb218-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb218-7"><a href="programming-basics.html#cb218-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb218-8"><a href="programming-basics.html#cb218-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb218-9"><a href="programming-basics.html#cb218-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(max)</span>
+<span id="cb218-10"><a href="programming-basics.html#cb218-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb218-11"><a href="programming-basics.html#cb218-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb218-12"><a href="programming-basics.html#cb218-12" aria-hidden="true" tabindex="-1"></a><span class="fu">get_max</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Exercise:</p>
+<p>Write your own version of <code>which.max()</code> function</p>
 
 </div>
-
-
-
-
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="common-r-errors-and-troubleshooting.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="r-basics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -50,6 +50,7 @@ geometry: margin=1in
 
 ```{r, echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/MarketingAnalyticsWordCloud.png")
+pacman::p_load(data.table,knitr,blogdown,tufte)
 ```
 
 This is the online supplement to the [MSIN0094 Marketing Analytics](https://www.ucl.ac.uk/module-catalogue/modules/marketing-analytics/MSIN0094) Module for the [MSc Business Analytics program](http://www.mgmt.ucl.ac.uk/business-analytics) at UCL School of Management.

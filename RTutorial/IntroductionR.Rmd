@@ -2,9 +2,9 @@
 knitr::opts_chunk$set(echo = TRUE, include = TRUE)
 ```
 
-## Install and Setup R
+# Install and Setup R
 
-### Class Objective
+## Class Objective
 
 Learning objective:
 
@@ -16,7 +16,7 @@ Learning objective:
 
 -   Understand the key concepts of R
 
-### What is R
+## What is R
 
 -   R is both a programming language and software environment for statistical computing, which is free and open-source (<https://www.r-project.org/about.html>).
 
@@ -26,7 +26,7 @@ Learning objective:
 
 -   Refer to the [Wiki](https://en.wikipedia.org/wiki/R_(programming_language)) page for a full history of R development.
 
-### What is R used for?
+## What is R used for?
 
 R can do almost anything you can think of! Below is a (incomplete) list of what I normally use R for on a daily basis.
 
@@ -40,7 +40,7 @@ R can do almost anything you can think of! Below is a (incomplete) list of what 
 
 You can even scrawl webpages and send emails with R once you install the right packages.
 
-### Popularity of R
+## Popularity of R
 
 R has been one of the most popular programming language used by statisticians, economists, and data analysts.
 
@@ -50,7 +50,7 @@ Below is the popularity index of different languages by [tiobe.com](https://www.
 knitr::include_graphics("images/R ranking.png")
 ```
 
-### Install and Setup R on your computers: Step 1
+## Install and Setup R on your computers: Step 1
 
 There are alternative ways to install and use R on your computers. Below is the most recommended and hassle free way to install and setup R on your computer.
 
@@ -60,7 +60,7 @@ There are alternative ways to install and use R on your computers. Below is the 
 - Note that R version is updated on a regular basis, to fix bugs or add new features. It's good to keep your R up to date with the official website.\
 - However, sometimes across major versions, some R's base functions may be depreciated and cause breaks in your code, so it's important to read the R News after each update, so that you understand what's been updated in the latest version and if there will be any breaks in your previous code. (For a deeper understanding of this issue, please refer to this [article](http://datacolada.org/95) regarding reproducible research with R.)
 
-### Screenshot of R Console
+## Screenshot of R Console
 
 R's default user interface:
 
@@ -68,7 +68,7 @@ R's default user interface:
 knitr::include_graphics("images/r_console.png")
 ```
 
-### Install and Setup R on your computers: Step 2
+## Install and Setup R on your computers: Step 2
 
 After step 1, you can already open R's own GUI and run R codes. However, we still need an [integrated development environment](https://en.wikipedia.org/wiki/Integrated_development_environment) (IDE) to help us better write R codes. Rstudio is currently the best IDE for R.
 
@@ -76,7 +76,7 @@ After step 1, you can already open R's own GUI and run R codes. However, we stil
 
 For a introduction to the Rstudio IDE, refer to this [cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf).
 
-### Screenshot of RStudio
+## Screenshot of RStudio
 
 Our preferred R editor: Rstudio
 
@@ -84,7 +84,7 @@ Our preferred R editor: Rstudio
 knitr::include_graphics("images/r_Rstudio.png")
 ```
 
-### Glossary
+## Glossary
 
 -   ***script***: (top left) where you write codes a text-readable file (E.g., 'test.R', 'test.Rmd', etc.), each separated by a new line.
 
@@ -98,7 +98,7 @@ knitr::include_graphics("images/r_Rstudio.png")
 
 -   ***package***: (bottom right) a collection of additional functions and dataset
 
-### Use Help
+## Use Help
 
 Whenever you don't know how to use a function, you can either
 
@@ -119,7 +119,7 @@ If you cannot get an answer:
 
 -   (3rd) Use office hours
 
-### Libraries and packages management: the coventional way
+## Libraries and packages management: the coventional way
 
 To achieve certain tasks, for instance, to run a regression analysis, we can definitely write our own code from scratch. However, it may take much time if we would like to build everything from zero. That's when the packages/libraries can help us to improve our efficiency by a large margin.
 
@@ -130,7 +130,7 @@ One of the best things about R is that it has tens of thousands of extremely use
 library('data.table') # load the package
 ```
 
-### Libraries and packages management: the simplest way
+## Libraries and packages management: the simplest way
 
 In R, there is a package called `pacman`, which stands for package management and is probably the most convenient way to manage R packages.
 
@@ -143,7 +143,7 @@ pacman::p_load(data.table,ggplot2)
 
 ```
 
-### Comment your codes
+## Comment your codes
 
 You can put a "\#" before any line of code, to indicate that this line is your comment, and this line will turn green and not run by R.
 
@@ -152,9 +152,9 @@ You can put a "\#" before any line of code, to indicate that this line is your c
 
 ```
 
-## R Basics
+# R Basics
 
-### Use R as a calculator
+## Use R as a calculator
 
 We can do the basic mathematical calculation in R as follows:
 
@@ -174,7 +174,7 @@ log(exp(1))
 sqrt(25)
 ```
 
-### Assign value
+## Assign value
 
 In R, we normally use the left arrow to assign a value to an object `<-`
 
@@ -185,7 +185,7 @@ x
 
 You can also use equal sign `=` without issues, but it's recommended to stick with R's tradition.
 
-### Data types
+## Data types
 
 -   Numeric/Double (e.g. 2.5, 1/5, 1.0, etc.)
 
@@ -236,7 +236,7 @@ sum(is.na(missing))
 
 ```
 
-### Data type: other special values
+## Data type: other special values
 
 -   `Inf` is infinity. You can have either positive or negative infinity.
 
@@ -257,7 +257,7 @@ is.nan(b)
 is.na(b)
 ```
 
-### Data type: check data type using class()
+## Data type: check data type using class()
 
 We can use `class()` to check the type of an object in R.
 
@@ -271,7 +271,7 @@ class(b)
 
 ```
 
-### Data type: conversion
+## Data type: conversion
 
 ```{r}
 a <- '1'
@@ -280,13 +280,13 @@ b <- as.numeric(a)
 class(b)
 ```
 
-### Data structures
+## Data structures
 
 ![Visualization of data structures](images/r_data_structures.png)
 
-### Vectors: creating vectors
+## Vectors: creating vectors
 
-#### Creating vectors: c()
+### Creating vectors: c()
 
 Vector can be created using the command `c()`.
 
@@ -304,7 +304,7 @@ x <- c(1, "intro", TRUE)
 class(x)
 ```
 
-#### Creating vectors: length()
+### Creating vectors: length()
 
 You can measure the length of a **vector** using the command `length()`
 
@@ -316,7 +316,7 @@ y <- c(NULL)
 length(y)
 ```
 
-#### Creating vectors: seq() and rep()
+### Creating vectors: seq() and rep()
 
 It is also possible to easily create sequences
 
@@ -335,7 +335,7 @@ rep("A", times = 5)
 
 To understand all usages of a function, use `help()`
 
-#### Creating vectors: combine vectors
+### Creating vectors: combine vectors
 
 You can use `c()` to combine different vectors; this is very commonly used when concatenating vectors.
 
@@ -346,7 +346,7 @@ z <- c(x,y) # x first and then y
 z
 ```
 
-### Vectors: subsetting
+## Vectors: subsetting
 
 We put the index of elements we would like to extract in a **square bracket**. Different languages use different ways to index and subset vectors and matrices.\
 - For instance, Matlab uses parentheses for subsetting vectors and matrices.
@@ -358,7 +358,7 @@ x[1:2] # which elements are in the first 2 positions?
 x[c(1,3,4)] # which elements are in positions 1, 3 and 4?
 ```
 
-### Vectors: relational operation
+## Vectors: relational operation
 
 ```{r vectors_subset2, include=T, echo=T}
 x <- c(1,3,8,7) 
@@ -388,7 +388,7 @@ A special relational operation is `%in%` in R, which tests whether an element ex
 3 %in% x & 4 %in% x
 ```
 
-### Vectors: elementwise operations
+## Vectors: elementwise operations
 
 Similar to other matrix languages (Matlab), R is a vectorized language, meaning by default it will do vector operation internally.
 
@@ -400,7 +400,7 @@ x*2
 x^2
 ```
 
-#### Caveat with vector elementwise operation
+### Caveat with vector elementwise operation
 
 ***Caveat*** When the length of vectors do not match, R will still do it for your without reporting error but a warning message. As you can see, even if the length of vectors does not match, R can still return an output.
 
@@ -416,9 +416,9 @@ z <- c(10,12,13,14)
 x + z
 ```
 
-### Matrices: creating matrices
+## Matrices: creating matrices
 
-#### Creating matrices: matrix()
+### Creating matrices: matrix()
 
 A matrix can be created using the command `matrix()`\
 - the first argument is the vector to be converted into matrix\
@@ -436,7 +436,7 @@ matrix(1:9, nrow = 3, ncol = 2)
 
 Note: R automatically inserts elements by columns
 
-#### Creating matrices: inserting by row
+### Creating matrices: inserting by row
 
 However, we can ask R to insert by rows by setting the 'byrow' argument.
 
@@ -444,7 +444,7 @@ However, we can ask R to insert by rows by setting the 'byrow' argument.
 matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)
 ```
 
-#### Creating matrices: concatenation of matrices cbind() and rbind()
+### Creating matrices: concatenation of matrices cbind() and rbind()
 
 We can use `cbind()` and `rbind()` to concatenate vectors and matrices into new matrices.
 
@@ -457,7 +457,7 @@ y
 cbind(x,x)
 ```
 
-### Matrices: indexing and subsetting
+## Matrices: indexing and subsetting
 
 ```{r matrix_subset, include=T, echo=T}
 x
@@ -467,7 +467,7 @@ x[,2] # all elements in the second columns
 x[c(1,2),]
 ```
 
-### Matrices: operations
+## Matrices: operations
 
 Let's use 3 matrices `x`, `y`, and `z`:
 
@@ -478,7 +478,7 @@ z <- x^2
 z
 ```
 
-#### Matrices' operations: matrix addition and multiplication
+### Matrices' operations: matrix addition and multiplication
 
 ```{r matrix_operations2, include=T, echo=T}
 x+z   # elementwise addition
@@ -486,7 +486,7 @@ x*z   # elementwise multiplication
 x%*%y # matrix multiplication
 ```
 
-#### Matrices' operations: inverse and transpose
+### Matrices' operations: inverse and transpose
 
 ```{r matrix_operations3, include=T, echo=T}
 
@@ -498,7 +498,7 @@ solve(t(x)%*%x) # inverse; must be on a square matrix
 
 ```
 
-### Arrays
+## Arrays
 
 ```{r arrays, include=T, echo=T}
 x <- 1:4
@@ -510,7 +510,7 @@ x
 
 -   A 3D array is basically a combination of matrices each laid on top of other
 
-### Lists
+## Lists
 
 A list is an R object that can contain anything.
 
@@ -520,7 +520,7 @@ y <- c("a", "b")
 L <- list( numbers = x, letters = y)
 ```
 
-### Lists: indexing and subsetting
+## Lists: indexing and subsetting
 
 There are many ways to extract a certain element from a list.\
 - by index\
@@ -539,9 +539,9 @@ After extracting the element, we can work on the element further:
 L$numbers[1:3] > 2
 ```
 
-### Data Frames: creating dataframe
+## Data Frames: creating dataframe
 
-#### Data Frames: create dataframe using data.frame()
+### Data Frames: create dataframe using data.frame()
 
 Data Frame is the R object that we will deal with most of the time in the MSc program. You can think of `data.frame` as a spreadsheet in excel.
 
@@ -554,19 +554,19 @@ df <-  data.frame(id = 1:4,
 df
 ```
 
-#### Data Frames: create dataframe using read.csv()
+### Data Frames: create dataframe using read.csv()
 
 ```{r, include=T, echo=T}
 #read.csv('data.csv')
 ```
 
-#### Use R's own dataset
+### Use R's own dataset
 
 ```{r, include=T, echo=T}
 data("mtcars")
 ```
 
-### Data Frames: property
+## Data Frames: property
 
 Each row stands for an observation; each column stands for a variable.
 
@@ -593,7 +593,7 @@ str(df)
 lapply(df, class)
 ```
 
-### Data Frames: inspection
+## Data Frames: inspection
 
 ```{r dataframe_subset2, include=T, echo=T}
 head(df, n=3) # first n observations
@@ -603,7 +603,7 @@ summary(df)
 str(df)
 ```
 
-### Data Frames: subsetting
+## Data Frames: subsetting
 
 Since a dataframe is essentially a matrix, all the subsetting syntax with matrices can be applied here.
 
@@ -619,9 +619,9 @@ poll_cars <- mtcars[mtcars$mpg<15, c("cyl", "wt")] # remember to assign the gene
 poll_cars
 ```
 
-## Programming Basics
+# Programming Basics
 
-### Variables
+## Variables
 
 In programming, a variable denotes an object, i.e., a variable is a name that refers to an object in the memory. Variables in R programming can be used to store any R object discussed previously, including numbers, characters, matrices, and data frames.
 
@@ -635,7 +635,7 @@ For a variable to be valid, it should follow these rules
 -   It should not start with an underscore (eg:- \_iota)
 -   It should not be a reserved keyword.
 
-### if/else
+## if/else
 
 Sometimes, you want to run your code based on different conditions. For instance, if the observation is a missing value, then use the population average to impute the missing value. This is where `if/else` kicks in.
 
@@ -673,7 +673,7 @@ if(x > 0){
 }
 ```
 
-### Loops
+## Loops
 
 As the name suggests, in a loop the program repeats a set of instructions many times, until the stopping criteria is met.
 
@@ -686,7 +686,7 @@ for (i in 1:10){ # i is the iterator
 }
 ```
 
-### Nested loops
+## Nested loops
 
 We can also nest loops into other loops.
 
@@ -707,13 +707,13 @@ for (i in 1:nrow(x)) {
 z
 ```
 
-### Functions
+## Functions
 
 A function takes the argument as input, run some specified actions, and then return the result to us.
 
 Functions are very useful. When we would like to test different ideas, we can combine functions with loops: We can write a function which takes different parameters as input, and we can use a loop to go through all the possible combinations of parameters.
 
-#### User-defined function syntax
+### User-defined function syntax
 
 Here is how to define a function in general:
 
@@ -736,7 +736,7 @@ magic(1,3)
 
 ```
 
-### A comprehensive example
+## A comprehensive example
 
 Task: write a function, which takes a vector as input, and returns the max value of the vector
 

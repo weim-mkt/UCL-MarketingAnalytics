@@ -1,11 +1,11 @@
 
-## Common R Errors and Troubleshooting
+# Common R Errors and Troubleshooting
 
-### Where you can run R codes
+## Where you can run R codes
 
 As discussed in the R Basics tutorial, you can run R codes in 3 places.
 
-#### R Console
+### R Console
 
 If the code is simple and just one line, then you can type the command in R console (NOT terminal, they are different; Console is the first tab)
 
@@ -13,7 +13,7 @@ If the code is simple and just one line, then you can type the command in R cons
   include_graphics(path = "images/class5_RConsole.png")
 ```
 
-#### R Script
+### R Script
 
 - R Script has the extension of `.R`, and any text in this file will be treated as R codes, just like a python .py file.
 
@@ -34,11 +34,11 @@ Select the codes you want to run and run them by hitting the `Run` button (not t
   include_graphics(path = "images/class5_RScript.png")
 ```
 
-#### R Markdown
+### R Markdown
 
 In a `.Rmd` file, R codes can only be run in R code chunks; otherwise, they will be treated as normal text. We have discussed how to use R Markdown file in Week 2.
 
-### Packages not installed
+## Packages not installed
 
 If you see this banner in your RStudio in the screenshot, it means RStudio detects some packages mentioned in the R Markdown file or R script but are not yet installed on your computer. So it prompts you for installation.
 
@@ -50,7 +50,7 @@ For instance, in this case, the error message means, `knitr` and `pacman` are fo
 
 **Solution:** Just click install button in the banner. RStudio will install the missing components.
 
-### R packages not up-to-date
+## R packages not up-to-date
 
 Since the R packages are being updated every day (just like our mobile apps, there could be bugs so that the developers have to update R packages to fix those bugs), sometimes, though we may have installed some packages, they are too old to run the functions. And you may see this prompted message:
 
@@ -63,7 +63,7 @@ It means, the aforementioned packages, `base64enc`, `digest`, etc. are outdated 
 **Solution:** Click `Yes` and RStudio will update all the packages for you.
 
 
-### Latex not found when kniting the .Rmd file.
+## Latex not found when kniting the .Rmd file.
 
 In Class 4, I gave you the "Preliminary Customer Analysis.Rmd". You should be fine to run the codes in the code chunks. However, if this is your first time to knit the PDF document, you may see an error message as below:
 
@@ -101,7 +101,7 @@ If you run the command in R Console, you will see that Latex is being installed
 
 After this progress bar finishes, you will be able to knit the PDF document!
 
-### Connection Not Found
+## Connection Not Found
 
 In Class 4, I mentioned this problem. Connection Not Found is usually caused by RStudio being unable to locate your files on your hard disk. 
 
@@ -110,6 +110,6 @@ In the .Rmd file I give to you, the purchase data and demographics data are usin
 If you don't know how to find the path names for a file on your computer, please refer to this [link](https://www.sony.com/electronics/support/articles/00015251) for Windows and this [link](https://macpaw.com/how-to/get-file-path-mac) for Mac. 
 
 
-### Other Questions
+## Other Questions
 
 Please leave a screenshot of error message in the MSTeams channel named "R QnA".

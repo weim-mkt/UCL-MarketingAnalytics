@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8 Lecture Notes | Marketing Analytics</title>
-  <meta name="description" content="8 Lecture Notes | Marketing Analytics" />
+  <title>3 Install and Setup R | Marketing Analytics</title>
+  <meta name="description" content="3 Install and Setup R | Marketing Analytics" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8 Lecture Notes | Marketing Analytics" />
+  <meta property="og:title" content="3 Install and Setup R | Marketing Analytics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 Lecture Notes | Marketing Analytics" />
+  <meta name="twitter:title" content="3 Install and Setup R | Marketing Analytics" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="common-r-errors-and-troubleshooting.html"/>
-
+<link rel="prev" href="syllabus-msin0094-marketing-analytics.html"/>
+<link rel="next" href="r-basics.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -293,25 +293,125 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lecture-notes" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> Lecture Notes</h1>
-<p>The lecture notes and reading materials will be released on the <strong>course’s Moodle page</strong> (not online here due to copyright issues) a few days before each class. Please do check the Moodle page one day before the class.</p>
-
+<div id="install-and-setup-r" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Install and Setup R</h1>
+<div id="class-objective" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Class Objective</h2>
+<p>Learning objective:</p>
+<ul>
+<li><p>Understand R’s history and main functionality</p></li>
+<li><p>Be able to setup R and Rstudio</p></li>
+<li><p>Understand how to use install and load packages in R</p></li>
+<li><p>Understand the key concepts of R</p></li>
+</ul>
 </div>
-
-
-
-
-
-
-
+<div id="what-is-r" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> What is R</h2>
+<ul>
+<li><p>R is both a programming language and software environment for statistical computing, which is free and open-source (<a href="https://www.r-project.org/about.html" class="uri">https://www.r-project.org/about.html</a>).</p></li>
+<li><p>The <strong><em>R Project</em></strong> was initiated by Robert Gentleman and Ross Ihaka (University of Auckland) in the early 1990s as a different implementation of the S language, which was developed at Bell Laboratories.</p></li>
+<li><p>Since 1997, R has been developed by the <strong><em>R Development Core Team</em></strong>.</p></li>
+<li><p>Refer to the <a href="https://en.wikipedia.org/wiki/R_(programming_language)">Wiki</a> page for a full history of R development.</p></li>
+</ul>
+</div>
+<div id="what-is-r-used-for" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> What is R used for?</h2>
+<p>R can do almost anything you can think of! Below is a (incomplete) list of what I normally use R for on a daily basis.</p>
+<ul>
+<li><p>Data analytics (statistics, data manipulation, machine learning, econometric analysis, etc.)</p></li>
+<li><p>Building your own homepage. I build and maintain my <a href="http://miaowei.netlify.app">personal website</a> with the <code>blogdown</code> package completely in R</p></li>
+<li><p>Prepare your presentations using R <code>markdown</code></p></li>
+<li><p>Write books (such as this whole online supplement) using R <code>bookdown</code></p></li>
+</ul>
+<p>You can even scrawl webpages and send emails with R once you install the right packages.</p>
+</div>
+<div id="popularity-of-r" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Popularity of R</h2>
+<p>R has been one of the most popular programming language used by statisticians, economists, and data analysts.</p>
+<p>Below is the popularity index of different languages by <a href="https://www.tiobe.com">tiobe.com</a>. R reached its historic highest in August 2020, ranking the 8th among all.</p>
+<p><img src="images/R%20ranking.png" style="display: block; margin: auto;" /></p>
+</div>
+<div id="install-and-setup-r-on-your-computers-step-1" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Install and Setup R on your computers: Step 1</h2>
+<p>There are alternative ways to install and use R on your computers. Below is the most recommended and hassle free way to install and setup R on your computer.</p>
+<p><strong>Step 1</strong>: Download R from the official website <a href="https://www.r-project.org">CRAN</a>.</p>
+<p><strong>Tips</strong>:<br />
+- Note that R version is updated on a regular basis, to fix bugs or add new features. It’s good to keep your R up to date with the official website.<br />
+- However, sometimes across major versions, some R’s base functions may be depreciated and cause breaks in your code, so it’s important to read the R News after each update, so that you understand what’s been updated in the latest version and if there will be any breaks in your previous code. (For a deeper understanding of this issue, please refer to this <a href="http://datacolada.org/95">article</a> regarding reproducible research with R.)</p>
+</div>
+<div id="screenshot-of-r-console" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Screenshot of R Console</h2>
+<p>R’s default user interface:</p>
+<p><img src="images/r_console.png" style="display: block; margin: auto;" /></p>
+</div>
+<div id="install-and-setup-r-on-your-computers-step-2" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> Install and Setup R on your computers: Step 2</h2>
+<p>After step 1, you can already open R’s own GUI and run R codes. However, we still need an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">integrated development environment</a> (IDE) to help us better write R codes. Rstudio is currently the best IDE for R.</p>
+<p><strong>Step 2</strong>: Download and install Rstudio from <a href="https://www.rstudio.com/products/rstudio/download/">Rstudio’s website</a>.</p>
+<p>For a introduction to the Rstudio IDE, refer to this <a href="https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf">cheat sheet</a>.</p>
+</div>
+<div id="screenshot-of-rstudio" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> Screenshot of RStudio</h2>
+<p>Our preferred R editor: Rstudio</p>
+<p><img src="images/r_Rstudio.png" style="display: block; margin: auto;" /></p>
+</div>
+<div id="glossary" class="section level2" number="3.9">
+<h2><span class="header-section-number">3.9</span> Glossary</h2>
+<ul>
+<li><p><strong><em>script</em></strong>: (top left) where you write codes a text-readable file (E.g., ‘test.R’, ‘test.Rmd’, etc.), each separated by a new line.</p></li>
+<li><p><strong><em>console</em></strong>: (bottom left) where you can type commands interactively with R and get the results immediately</p></li>
+<li><p><strong><em>environment</em></strong>: (top right) a list of named variables/objects that we have generated; can be checked on the ‘environment’ panel.</p></li>
+<li><p><strong><em>history</em></strong>: (top right) the list of past commands thaty we have used</p></li>
+<li><p><strong><em>help</em></strong>: (bottom right) a documentation of all the functions available in R (the user manual)</p></li>
+<li><p><strong><em>package</em></strong>: (bottom right) a collection of additional functions and dataset</p></li>
+</ul>
+</div>
+<div id="use-help" class="section level2" number="3.10">
+<h2><span class="header-section-number">3.10</span> Use Help</h2>
+<p>Whenever you don’t know how to use a function, you can either</p>
+<ul>
+<li>use <code>help</code>. Enter the command <code>help(log)</code> in R console</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="install-and-setup-r.html#cb1-1" aria-hidden="true" tabindex="-1"></a>?log</span>
+<span id="cb1-2"><a href="install-and-setup-r.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(log)</span></code></pre></div>
+<ul>
+<li>or you can directly search for the function in RStudio help panel.</li>
+</ul>
+<p>If you cannot get an answer:</p>
+<ul>
+<li><p>(1st) Google your error message or search/ask for help in Stack Overflow</p></li>
+<li><p>(2nd) Ask in Moodle Forum</p></li>
+<li><p>(3rd) Use office hours</p></li>
+</ul>
+</div>
+<div id="libraries-and-packages-management-the-coventional-way" class="section level2" number="3.11">
+<h2><span class="header-section-number">3.11</span> Libraries and packages management: the coventional way</h2>
+<p>To achieve certain tasks, for instance, to run a regression analysis, we can definitely write our own code from scratch. However, it may take much time if we would like to build everything from zero. That’s when the packages/libraries can help us to improve our efficiency by a large margin.</p>
+<p>One of the best things about R is that it has tens of thousands of extremely useful packages/libraries. And some are even exclusive to R, for instance, the <code>grf</code> package that runs the causal forest model, which I have used for my research.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="install-and-setup-r.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;data.table&#39;) # install the package</span></span>
+<span id="cb2-2"><a href="install-and-setup-r.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;data.table&#39;</span>) <span class="co"># load the package</span></span></code></pre></div>
+</div>
+<div id="libraries-and-packages-management-the-simplest-way" class="section level2" number="3.12">
+<h2><span class="header-section-number">3.12</span> Libraries and packages management: the simplest way</h2>
+<p>In R, there is a package called <code>pacman</code>, which stands for package management and is probably the most convenient way to manage R packages.</p>
+<p><strong>Task:</strong> Load <code>ggplot2</code> and <code>data.table</code> packages; if they are not installed, install them and then load them.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="install-and-setup-r.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;pacman&#39;)</span></span>
+<span id="cb3-2"><a href="install-and-setup-r.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="install-and-setup-r.html#cb3-3" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(data.table,ggplot2)</span></code></pre></div>
+</div>
+<div id="comment-your-codes" class="section level2" number="3.13">
+<h2><span class="header-section-number">3.13</span> Comment your codes</h2>
+<p>You can put a “#” before any line of code, to indicate that this line is your comment, and this line will turn green and not run by R.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="install-and-setup-r.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print(&quot;David is handsome&quot;)</span></span></code></pre></div>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="common-r-errors-and-troubleshooting.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="syllabus-msin0094-marketing-analytics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
