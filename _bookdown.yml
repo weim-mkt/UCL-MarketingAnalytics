@@ -5,6 +5,7 @@ rmd_files:
     - ["RTutorial/IntroductionR.Rmd"]
     - ["RTutorial/RMarkdown.Rmd"]
     - ["RTutorial/RError.Rmd"] 
+    - ["RTutorial/Doraemons-R-Toolbox.Rmd"] 
     - ["lecturenotes/lecturenotes.Rmd"]      
 delete_merged_file: true
 rmd_subdir: ["lecturenotes","RTutorial"]
