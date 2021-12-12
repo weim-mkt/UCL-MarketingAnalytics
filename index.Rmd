@@ -36,6 +36,8 @@ output:
         all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper']
       info: true
   bookdown::pdf_book:
+    includes:
+      in_header: columns.tex
     config:
       toc: true
       number_sections: false
